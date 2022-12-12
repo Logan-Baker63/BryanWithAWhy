@@ -36,9 +36,12 @@ public class Attack : MonoBehaviour
 
     protected virtual void Melee()
     {
-        //Do sword swing
-        //Play sound
-        cooldownRoutine = StartCoroutine(MeleeCooldown());
+        if (canAction)
+        {
+            //Do sword swing
+            //Play sound
+            cooldownRoutine = StartCoroutine(MeleeCooldown());
+        }
     }
 
     IEnumerator ShootCooldown()
