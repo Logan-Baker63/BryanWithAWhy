@@ -3064,9 +3064,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4058996632899424097}
   - component: {fileID: 2915122762596182195}
+  - component: {fileID: 7798715901331089998}
   m_Layer: 5
   m_Name: HP
-  m_TagString: Untagged
+  m_TagString: HealthBar
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3144,6 +3145,18 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7798715901331089998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7758705304999761703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180bb5bba6c51c34ca30ab52e712a9a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7975647890480357672
 GameObject:
   m_ObjectHideFlags: 0

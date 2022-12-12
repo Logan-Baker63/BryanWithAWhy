@@ -11,6 +11,9 @@ public class Projectile : MonoBehaviour
     Vector2 dir;
 
     [SerializeField] int defaultDamage;
+    [SerializeField] public bool playerBullet;
+
+    HealthBar healthBar;
 
     int damage
     {
@@ -21,6 +24,7 @@ public class Projectile : MonoBehaviour
     private void Awake()
     {
         damage = defaultDamage;
+        healthBar = FindObjectOfType<HealthBar>();
     }
 
     public void SetDir(Vector2 _dir) { dir = _dir; }
@@ -46,7 +50,18 @@ public class Projectile : MonoBehaviour
         {
             if (other.tag == "Enemy")
             {
-                other.GetComponent<Health>().TakeDamage(damage);
+                if (playerBullet)
+                {
+                    other.GetComponent<Health>().TakeDamage(damage);
+                }
+            }
+            else if (other.tag == "Player")
+            {
+                if (!playerBullet)
+                {
+                    other.GetComponent<Health>().TakeDamage(damage);
+                    healthBar.UpdateHealthBar();
+                }
             }
 
             Destroy(gameObject);

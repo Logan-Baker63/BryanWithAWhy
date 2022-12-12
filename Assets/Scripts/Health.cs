@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] protected int maxHealth = 100;
-    [SerializeField] protected int currentHealth = 100;
+    [SerializeField] public int maxHealth = 100;
+    [SerializeField] public int currentHealth = 100;
 
     public virtual void TakeDamage(int _damageToTake)
     {
