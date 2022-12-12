@@ -8,6 +8,7 @@ public class AbilityMeter : MonoBehaviour
     [SerializeField] Color defaultColour;
     [SerializeField] Color aquiredColour;
     int abilityUses = 0;
+    AbilityCounter abilityCounter;
 
     [SerializeField] List<Image> abilitySlots;
 
@@ -18,6 +19,8 @@ public class AbilityMeter : MonoBehaviour
         {
             abilitySlots.Add(slot.GetComponent<Image>());
         }
+
+        abilityCounter = GetComponentInChildren<AbilityCounter>();
     }
 
     // Update is called once per frame
@@ -28,6 +31,8 @@ public class AbilityMeter : MonoBehaviour
 
     void UpdateUses()
     {
+        abilityCounter.UpdateCounter(abilityUses);
+
         if (abilityUses > abilitySlots.Count)
         {
             abilityUses = abilitySlots.Count;
