@@ -8,7 +8,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform spawnPos;
     [SerializeField] float shootCooldown = 0.2f;
-    [SerializeField] public bool canShoot = true;
+    [SerializeField] float meleeCooldown = 0.2f;
+    [SerializeField] public bool canAction = true;
     public Coroutine cooldownRoutine;
     
     AudioManager manager;
@@ -20,7 +21,7 @@ public class PlayerAttack : MonoBehaviour
 
     public void Shoot(InputAction.CallbackContext context)
     {
-        if (context.performed && canShoot)
+        if (context.performed && canAction)
         {
             GameObject bulletInstance = Instantiate(bullet, spawnPos.position, transform.rotation);
             bulletInstance.GetComponent<Projectile>().SetDir(-transform.right);
@@ -29,11 +30,29 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public void Melee(InputAction.CallbackContext context)
+    {
+        if(context.performed && canAction)
+        {
+            //Do sword swing
+            //Play sound
+            cooldownRoutine = StartCoroutine(MeleeCooldown());
+        }
+    }
+
     IEnumerator ShootCooldown()
     {
-        canShoot = false;
+        canAction = false;
         yield return new WaitForSeconds(shootCooldown);
-        canShoot = true;
+        canAction = true;
+        cooldownRoutine = null;
+    }
+
+    IEnumerator MeleeCooldown()
+    {
+        canAction = false;
+        yield return new WaitForSeconds(meleeCooldown);
+        canAction = true;
         cooldownRoutine = null;
     }
 }
