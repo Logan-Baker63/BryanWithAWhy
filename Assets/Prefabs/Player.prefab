@@ -952,6 +952,7 @@ GameObject:
   - component: {fileID: 4145463335847454503}
   - component: {fileID: 4145463335847454502}
   - component: {fileID: 4145463335847454496}
+  - component: {fileID: 1551989228}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1172,8 +1173,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a886186d77be048a2657c7802a9565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 250
   canMove: 1
+  movementSpeed: 250
 --- !u!114 &4145463335847454496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1190,3 +1191,17 @@ MonoBehaviour:
   spawnPos: {fileID: 4145463336927675421}
   shootCooldown: 0.6
   canShoot: 1
+--- !u!114 &1551989228
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6483149998409928581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866c9de454e4b114ea938bcdb910fd7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100

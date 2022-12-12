@@ -10,6 +10,19 @@ public class Projectile : MonoBehaviour
     [SerializeField] float projectileSpeed = 300;
     Vector2 dir;
 
+    [SerializeField] int defaultDamage;
+
+    int damage
+    {
+        get;
+        set;
+    }
+
+    private void Awake()
+    {
+        damage = defaultDamage;
+    }
+
     public void SetDir(Vector2 _dir) { dir = _dir; }
     // Update is called once per frame
     void LateUpdate()
@@ -27,10 +40,15 @@ public class Projectile : MonoBehaviour
         transform.GetComponent<Rigidbody2D>().velocity = dir * projectileSpeed * Time.fixedDeltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.transform.tag != "Bullet")
         {
+            if (other.tag == "Enemy")
+            {
+                other.GetComponent<Health>().TakeDamage(damage);
+            }
+
             Destroy(gameObject);
         }
     }
