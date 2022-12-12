@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float movementSpeed = 5;
 
     Vector2 moveVelocity;
+    public bool canMove = true;
 
     // Update is called once per frame
     void FixedUpdate()
