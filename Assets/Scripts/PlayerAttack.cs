@@ -9,14 +9,17 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] Transform spawnPos;
     [SerializeField] float shootCooldown = 0.2f;
     [SerializeField] float meleeCooldown = 0.2f;
+    [SerializeField] float rollCooldown = 0.4f;
     [SerializeField] public bool canAction = true;
     public Coroutine cooldownRoutine;
     
     AudioManager manager;
+    PlayerMovement playerMovement;
 
     private void Awake()
     {
         manager = FindObjectOfType<AudioManager>();
+        playerMovement = GetComponent<PlayerMovement>();
     }
 
     public void Shoot(InputAction.CallbackContext context)
@@ -40,6 +43,16 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public void Roll(InputAction.CallbackContext context)
+    {
+        if(context.performed && canAction)
+        {
+            //Roll
+            //Play sound
+            cooldownRoutine = StartCoroutine(RollCooldown());
+        }
+    }
+
     IEnumerator ShootCooldown()
     {
         canAction = false;
@@ -53,6 +66,16 @@ public class PlayerAttack : MonoBehaviour
         canAction = false;
         yield return new WaitForSeconds(meleeCooldown);
         canAction = true;
+        cooldownRoutine = null;
+    }
+
+    IEnumerator RollCooldown()
+    {
+        canAction = false;
+        playerMovement.canMove = false;
+        yield return new WaitForSeconds(rollCooldown);
+        canAction = true;
+        playerMovement.canMove = true;
         cooldownRoutine = null;
     }
 }
