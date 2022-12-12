@@ -1,5 +1,87 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &212694059896232623
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 98817123898331113}
+  - component: {fileID: 1180815388066320343}
+  m_Layer: 7
+  m_Name: OffScreenCheck
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &98817123898331113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212694059896232623}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.42, y: 0, z: 0}
+  m_LocalScale: {x: 0.0000599982, y: 0.0000599982, z: 0.0000599982}
+  m_Children: []
+  m_Father: {fileID: 4777661230844624907}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1180815388066320343
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212694059896232623}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 3
+  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &608737746056180886
 GameObject:
   m_ObjectHideFlags: 0
@@ -14,7 +96,7 @@ GameObject:
   - component: {fileID: 7497870654567832631}
   - component: {fileID: 1336083523}
   - component: {fileID: 1336083524}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -40,6 +122,7 @@ Transform:
   - {fileID: 1495037612870795048}
   - {fileID: 1495037613167241126}
   - {fileID: 1495037613727103586}
+  - {fileID: 98817123898331113}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -170,7 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037612097290214}
   - component: {fileID: 1495037612097290209}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +335,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037612474244981}
   - component: {fileID: 1495037612474244980}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -336,7 +419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037612482682992}
   - component: {fileID: 1495037612482682995}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -418,7 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037612870795048}
   - component: {fileID: 1495037612870795051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -500,7 +583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037613003871299}
   - component: {fileID: 1495037613003871298}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Colour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037613167241126}
   - component: {fileID: 1495037613167241121}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Arm (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -664,7 +747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037613256790405}
   - component: {fileID: 1495037613256790404}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -746,7 +829,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037613276721224}
   - component: {fileID: 1495037613276721227}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Colour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,7 +911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037613551892536}
   - component: {fileID: 1495037613551892539}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -912,7 +995,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1495037613727103586}
   - component: {fileID: 1495037613727103597}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -993,7 +1076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7497870655639682830}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: BulletPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1024,7 +1107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7497870655850952044}
   - component: {fileID: 7497870655850952043}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
