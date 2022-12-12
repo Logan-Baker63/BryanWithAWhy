@@ -26,5 +26,6 @@ public class PlayerAttack : MonoBehaviour
         canShoot = false;
         yield return new WaitForSeconds(shootCooldown);
         canShoot = true;
+        cooldownRoutine = null;
     }
 }
