@@ -129,6 +129,7 @@ public class DevMode : MonoBehaviour
         currentLineRenderer = null;
         isDrawing = false;
         lineDist = 0;
+        lastPos = Vector2.zero;
     }
 
     public void CreateBrush()
@@ -151,7 +152,7 @@ public class DevMode : MonoBehaviour
 
             if (mousePos != lastPos)
             {
-                pointCost = lineDist / lengthBeforeUseConsumed + 1;
+                pointCost = (lineDist / lengthBeforeUseConsumed) + 1;
                 Debug.Log("Attempting Drawing... cost equals: " + pointCost + " and line dist equals: " + lineDist);
                 if (pointCost < artMeter.GetAbilityPoints() + 1)
                 {
