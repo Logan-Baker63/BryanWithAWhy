@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
                 rotateToMouse.canRotate = true;
                 if(attack.cooldownRoutine == null)
                 {
-                    attack.canShoot = true;
+                    attack.canAction = true;
                 }
             }
             else
@@ -47,7 +47,7 @@ public class PauseMenu : MonoBehaviour
                 Time.timeScale = 0f;
                 playerMovement.canMove = false;
                 rotateToMouse.canRotate = false;
-                attack.canShoot = false;
+                attack.canAction = false;
             }
         }
     }
