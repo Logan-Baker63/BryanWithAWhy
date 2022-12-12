@@ -14,6 +14,16 @@ public class DevMode : MonoBehaviour
     LineRenderer currentLineRenderer;
 
     Vector2 lastPos;
+    
+    public float lineDist = 0;
+
+    [SerializeField] float lengthBeforeUseConsumed = 10;
+
+    AbilityMeter designMeter;
+    AbilityMeter programmingMeter;
+    AbilityMeter artMeter;
+
+    float pointCost = 0;
 
     [SerializeField] GameObject artCirclePrefab;
     public enum DevType
@@ -27,6 +37,25 @@ public class DevMode : MonoBehaviour
 
     public bool IsGameSlow() { return isGameSlow; }
 
+    private void Awake()
+    {
+        foreach (AbilityMeter meter in FindObjectsOfType<AbilityMeter>())
+        {
+            if (meter.abilityType == AbilityMeter.AbilityType.Design)
+            {
+                designMeter = meter;
+            }
+            else if (meter.abilityType == AbilityMeter.AbilityType.Programming)
+            {
+                programmingMeter = meter;
+            }
+            else if (meter.abilityType == AbilityMeter.AbilityType.Art)
+            {
+                artMeter = meter;
+            }
+        }
+    }
+
     public void EnterDevMode()
     {
         isGameSlow = true;
@@ -37,18 +66,24 @@ public class DevMode : MonoBehaviour
         }
     }
 
-    public void ExitDevMode(InputAction.CallbackContext context)
+    public void OnExitDevMode(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            devType = DevType.None;
-            isGameSlow = false;
-            foreach (Movement movement in FindObjectsOfType<Movement>())
-            {
-                movement.SetSlowness(1);
-                movement.GetComponent<Attack>().canAttack = true;
-            }
+            ExitDevMode();
         }
+    }
+
+    public void ExitDevMode()
+    {
+        devType = DevType.None;
+        isGameSlow = false;
+        foreach (Movement movement in FindObjectsOfType<Movement>())
+        {
+            movement.SetSlowness(1);
+            movement.GetComponent<Attack>().canAttack = true;
+        }
+        lineDist = 0;
     }
 
     public void EnterArtDevMode(InputAction.CallbackContext context)
@@ -72,11 +107,13 @@ public class DevMode : MonoBehaviour
         {
             if (currentLineRenderer)
             {
+                artMeter.SpendAbilityPoints((int)pointCost);
                 currentLineRenderer.GetComponent<DrawnLine>().GenerateLineCollider();
             }
             
             currentLineRenderer = null;
             isDrawing = false;
+            lineDist = 0;
         }
     }
 
@@ -100,8 +137,23 @@ public class DevMode : MonoBehaviour
 
             if (mousePos != lastPos)
             {
-                AddPoint(mousePos);
-                lastPos = mousePos;
+                pointCost = lineDist / lengthBeforeUseConsumed + 1;
+
+                if (pointCost < artMeter.GetAbilityPoints() + 1)
+                {
+                    artMeter.SetHighlightPoints((int)pointCost);
+                    if (lastPos != Vector2.zero)
+                    {
+                        lineDist += (mousePos - lastPos).magnitude;
+                    }
+
+                    AddPoint(mousePos);
+                    lastPos = mousePos;
+                }
+                else
+                {
+                    ExitDevMode();
+                }
             }
             
             //Instantiate(artCirclePrefab, (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity);

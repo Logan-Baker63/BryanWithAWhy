@@ -1206,7 +1206,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: -6928757437711052279}
         m_TargetAssemblyTypeName: DevMode, Assembly-CSharp
-        m_MethodName: ExitDevMode
+        m_MethodName: OnExitDevMode
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1282,6 +1282,7 @@ MonoBehaviour:
   staminaRegen: 1.5
   staminaJailSentence: 3
   staminaJailTime: 0
+  amountOfKillsForAbilityPoint: 4
 --- !u!114 &1551989228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1329,6 +1330,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slowness: 10
   brush: {fileID: 5292117413414553659, guid: 0555de70fd603514aa709882c46ffc7e, type: 3}
+  lineDist: 0
+  lengthBeforeUseConsumed: 10
   artCirclePrefab: {fileID: 1430236743949168258, guid: 84506317c6db08043bfbccc4e9a31e25, type: 3}
 --- !u!60 &7428820390796569223
 PolygonCollider2D:

@@ -7,10 +7,14 @@ public class AbilityMeter : MonoBehaviour
 {
     [SerializeField] Color defaultColour;
     [SerializeField] Color aquiredColour;
-    int abilityUses = 0;
+    [SerializeField] Color highlightedColour;
+
+    int abilityPoints = 3;
     AbilityCounter abilityCounter;
 
     [SerializeField] List<Image> abilitySlots;
+
+    public int GetAbilityPoints() { return abilityPoints; }
 
     public enum AbilityType
     {
@@ -32,26 +36,52 @@ public class AbilityMeter : MonoBehaviour
         }
 
         abilityCounter = GetComponentInChildren<AbilityCounter>();
+
+        UpdateUses();
     }
 
-    public void AquireAbilityUses(int _abilityUses)
+    public void AquireAbilityPoints(int _abilityPoinrs)
     {
-        abilityUses += _abilityUses;
+        abilityPoints += _abilityPoinrs;
+
+        UpdateUses();
+    }
+
+    public void SpendAbilityPoints(int _abilityPoints)
+    {
+        abilityPoints -= _abilityPoints;
+
+        if (abilityPoints < 0)
+        {
+            abilityPoints = 0;
+        }
+
+        UpdateUses();
+    }
+
+    public void SetHighlightPoints(int _abilityPoints)
+    {
+        int startingSlotID = abilityPoints - _abilityPoints;
+
+        for (int i = startingSlotID; i < abilityPoints; i++)
+        {
+            abilitySlots[i].color = highlightedColour;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateUses();
+        
     }
 
     void UpdateUses()
     {
-        abilityCounter.UpdateCounter(abilityUses);
+        abilityCounter.UpdateCounter(abilityPoints);
 
-        if (abilityUses > abilitySlots.Count)
+        if (abilityPoints > abilitySlots.Count)
         {
-            abilityUses = abilitySlots.Count;
+            abilityPoints = abilitySlots.Count;
         }
         
         foreach (Image img in abilitySlots)
@@ -59,7 +89,7 @@ public class AbilityMeter : MonoBehaviour
             img.color = defaultColour;
         }
         
-        for (int i = 0; i < abilityUses; i++)
+        for (int i = 0; i < abilityPoints; i++)
         {
             abilitySlots[i].color = aquiredColour;
         }
