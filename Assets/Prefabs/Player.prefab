@@ -953,11 +953,7 @@ GameObject:
   - component: {fileID: 4145463335847454502}
   - component: {fileID: 4145463335847454496}
   - component: {fileID: 1551989228}
-<<<<<<< Updated upstream
   - component: {fileID: 515545644083058268}
-=======
-  - component: {fileID: -6877822326820337067}
->>>>>>> Stashed changes
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1143,18 +1139,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -6877822326820337067}
-        m_TargetAssemblyTypeName: DevMode, Assembly-CSharp
-        m_MethodName: Draw
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
     m_ActionId: a804d00e-e58e-4c2c-ac88-a9ae73e119a9
     m_ActionName: Player/Attack[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -1205,54 +1189,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 6073d0ec-43d4-4c98-a9eb-8d50f735a0ac
     m_ActionName: Player/Roll[/Keyboard/leftShift]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -6877822326820337067}
-        m_TargetAssemblyTypeName: DevMode, Assembly-CSharp
-        m_MethodName: EnterArtDevMode
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 48c6b462-7b92-4178-a22c-0baf47a80835
-    m_ActionName: Player/DrawMode[/Keyboard/q]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: -6877822326820337067}
-        m_TargetAssemblyTypeName: DevMode, Assembly-CSharp
-        m_MethodName: ExitDevMode
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 32a5a7f2-ed2d-45df-adc2-85d66d05d956
-    m_ActionName: Player/ProgramMode[/Keyboard/e]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2144fe15-d44d-40b9-97f6-8e407f0030b7
-    m_ActionName: Player/DesignMode[/Keyboard/r]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1305,21 +1241,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
-<<<<<<< Updated upstream
 --- !u!95 &515545644083058268
 Animator:
   serializedVersion: 3
-=======
---- !u!114 &-6877822326820337067
-MonoBehaviour:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6483149998409928581}
   m_Enabled: 1
-<<<<<<< Updated upstream
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 87e3bb202f1b48a48b99243e0ec18c01, type: 2}
   m_CullingMode: 0
@@ -1330,12 +1260,3 @@ MonoBehaviour:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
-=======
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0cd2fe5f11d0de4e8d74abace7006d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slowness: 10
-  brush: {fileID: 5292117413414553659, guid: 0555de70fd603514aa709882c46ffc7e, type: 3}
-  artCirclePrefab: {fileID: 1430236743949168258, guid: 84506317c6db08043bfbccc4e9a31e25, type: 3}
->>>>>>> Stashed changes
