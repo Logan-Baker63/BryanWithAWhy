@@ -31,6 +31,14 @@ public class Attack : MonoBehaviour
         {
             GameObject bulletInstance = Instantiate(bullet, spawnPos.position, transform.rotation);
             bulletInstance.GetComponent<Projectile>().SetDir(-transform.right);
+            if(gameObject.tag == "Player")
+            {
+                bulletInstance.GetComponent<Projectile>().playerBullet = true;
+            }
+            else
+            {
+                bulletInstance.GetComponent<Projectile>().playerBullet = false;
+            }
             manager.PlaySound(0);
             cooldownRoutine = StartCoroutine(ShootCooldown());
         }
