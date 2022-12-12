@@ -953,6 +953,7 @@ GameObject:
   - component: {fileID: 4145463335847454502}
   - component: {fileID: 4145463335847454496}
   - component: {fileID: 1551989228}
+  - component: {fileID: 515545644083058268}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1225,9 +1226,6 @@ MonoBehaviour:
   meleeCooldown: 0.2
   canAttack: 1
   rollCooldown: 0.4
-  rollSpeed: 0.3
-  rollInv: 0.15
-  rollDist: 16
   canRoll: 1
 --- !u!114 &1551989228
 MonoBehaviour:
@@ -1243,3 +1241,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
+--- !u!95 &515545644083058268
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6483149998409928581}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 87e3bb202f1b48a48b99243e0ec18c01, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
