@@ -17,32 +17,35 @@ public class EnemyMovement : Movement
 
     protected override void Move(Vector2 velocity)
     {
-        // rotation
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, GetAngle(transform.position, player.position)));
+        if (player)
+        {
+            // rotation
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, GetAngle(transform.position, player.position)));
 
-        // movement
-        if ((player.position - transform.position).magnitude > minFollowDist || !transform.Find("OffScreenCheck").GetComponent<Renderer>().isVisible)
-        {
-            GetComponent<EnemyState>().SetState(0);
-            moveVelocity = (player.position - transform.position).normalized * movementSpeed * Time.fixedDeltaTime;
-            transform.GetComponent<Rigidbody2D>().velocity = moveVelocity / slowness;
-        }
-        else
-        {
-            if (GetComponent<EnemyState>().GetEnemyType() == EnemyState.EnemyType.Ranged)
+            // movement
+            if ((player.position - transform.position).magnitude > minFollowDist || !transform.Find("OffScreenCheck").GetComponent<Renderer>().isVisible)
             {
-                GetComponent<EnemyState>().SetState(1);
+                GetComponent<EnemyState>().SetState(0);
+                moveVelocity = (player.position - transform.position).normalized * movementSpeed * Time.fixedDeltaTime;
+                transform.GetComponent<Rigidbody2D>().velocity = moveVelocity / slowness;
             }
-            else if (GetComponent<EnemyState>().GetEnemyType() == EnemyState.EnemyType.Melee)
+            else
             {
-                GetComponent<EnemyState>().SetState(2);
+                if (GetComponent<EnemyState>().GetEnemyType() == EnemyState.EnemyType.Ranged)
+                {
+                    GetComponent<EnemyState>().SetState(1);
+                }
+                else if (GetComponent<EnemyState>().GetEnemyType() == EnemyState.EnemyType.Melee)
+                {
+                    GetComponent<EnemyState>().SetState(2);
+                }
+                else if (GetComponent<EnemyState>().GetEnemyType() == EnemyState.EnemyType.Big)
+                {
+                    GetComponent<EnemyState>().SetState(3);
+                }
+
+                transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
             }
-            else if (GetComponent<EnemyState>().GetEnemyType() == EnemyState.EnemyType.Big)
-            {
-                GetComponent<EnemyState>().SetState(3);
-            }
-            
-            transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
     }
 
