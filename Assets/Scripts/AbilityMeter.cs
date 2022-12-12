@@ -17,7 +17,10 @@ public class AbilityMeter : MonoBehaviour
     {
         foreach (Transform slot in transform)
         {
-            abilitySlots.Add(slot.GetComponent<Image>());
+            if (slot.GetComponent<Image>())
+            {
+                abilitySlots.Add(slot.GetComponent<Image>());
+            }
         }
 
         abilityCounter = GetComponentInChildren<AbilityCounter>();
