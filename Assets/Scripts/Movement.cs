@@ -10,7 +10,10 @@ public class Movement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Move(moveVelocity);
+        if (canMove)
+        {
+            Move(moveVelocity);
+        }
     }
 
     protected virtual void Move(Vector2 velocity)
