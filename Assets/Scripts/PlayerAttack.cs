@@ -10,6 +10,13 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] float shootCooldown = 0.2f;
     [SerializeField] public bool canShoot = true;
     public Coroutine cooldownRoutine;
+    
+    AudioManager manager;
+
+    private void Awake()
+    {
+        manager = FindObjectOfType<AudioManager>();
+    }
 
     public void Shoot(InputAction.CallbackContext context)
     {
@@ -17,6 +24,7 @@ public class PlayerAttack : MonoBehaviour
         {
             GameObject bulletInstance = Instantiate(bullet, spawnPos.position, transform.rotation);
             bulletInstance.GetComponent<Projectile>().SetDir(-transform.right);
+            manager.PlaySound(0);
             cooldownRoutine = StartCoroutine(ShootCooldown());
         }
     }
