@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4145463336576913023}
   - component: {fileID: 4145463336576913016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4145463336927675421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BulletPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,7 +122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924716133598267}
   - component: {fileID: 4986924716133598264}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -204,7 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924716275085136}
   - component: {fileID: 4986924716275085137}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Colour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -286,7 +286,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924716794076003}
   - component: {fileID: 4986924716794076000}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -368,7 +368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924716802483302}
   - component: {fileID: 4986924716802483303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924716912051445}
   - component: {fileID: 4986924716912051442}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -534,7 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924717560398193}
   - component: {fileID: 4986924717560398206}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -616,7 +616,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924717871661867}
   - component: {fileID: 4986924717871661864}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -700,7 +700,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924717990403253}
   - component: {fileID: 4986924717990403250}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Arm (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +782,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924718150142811}
   - component: {fileID: 4986924718150142808}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Colour
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -864,7 +864,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4986924718163782294}
   - component: {fileID: 4986924718163782295}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Pupil
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -955,7 +955,7 @@ GameObject:
   - component: {fileID: 515545644083058268}
   - component: {fileID: -6928757437711052279}
   - component: {fileID: 7428820390796569223}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
