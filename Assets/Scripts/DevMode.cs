@@ -153,15 +153,12 @@ public class DevMode : MonoBehaviour
             if (mousePos != lastPos)
             {
                 pointCost = (lineDist / lengthBeforeUseConsumed) + 1;
-                Debug.Log("Attempting Drawing... cost equals: " + pointCost + " and line dist equals: " + lineDist);
                 if (pointCost < artMeter.GetAbilityPoints() + 1)
                 {
-                    Debug.Log("Allowed to draw with cost of: " + pointCost);
                     artMeter.SetHighlightPoints((int)pointCost);
                     if (lastPos != Vector2.zero)
                     {
                         lineDist += (mousePos - lastPos).magnitude;
-                        Debug.Log("Updated line dist, success");
                     }
 
                     AddPoint(mousePos);
