@@ -49,6 +49,7 @@ public class Attack : MonoBehaviour
         if (canAttack)
         {
             //Do sword swing
+            GetComponent<Animator>().SetTrigger("Punch");
             //Play sound
             cooldownRoutine = StartCoroutine(MeleeCooldown());
         }
