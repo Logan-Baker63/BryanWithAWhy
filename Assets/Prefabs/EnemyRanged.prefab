@@ -215,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   movementSpeed: 100
-  minFollowDist: 6
+  minFollowDist: 10
 --- !u!114 &1336083524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,8 +257,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6498332353340852139, guid: 32dd8b482c1914a439b9810c11a6a6f8, type: 3}
   spawnPos: {fileID: 7497870655639682830}
-  shootCooldown: 0.6
-  meleeCooldown: 0.2
+  shootCooldown: 1.6
+  meleeCooldown: 0.6
   canAttack: 1
 --- !u!95 &-6248253663840615037
 Animator:

@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  movementSpeed: 300
+  movementSpeed: 270
 --- !u!114 &4145463335847454496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1270,17 +1270,17 @@ MonoBehaviour:
   shootCooldown: 0.6
   meleeCooldown: 0.2
   canAttack: 1
-  rollCooldown: 0.4
-  rollSpeed: 0.3
+  rollCooldown: 0.35
+  rollSpeed: 0.25
   rollInv: 0.15
-  rollDist: 18
+  rollDist: 15
   canRoll: 1
   rollInvulnerable: 0
-  currentStamina: 10
-  maxStamina: 10
+  currentStamina: 12
+  maxStamina: 12
   rollCost: 5
-  staminaRegen: 1.5
-  staminaJailSentence: 3
+  staminaRegen: 0.15
+  staminaJailSentence: 2
   staminaJailTime: 0
   amountOfKillsForAbilityPoint: 4
 --- !u!114 &1551989228
@@ -1331,7 +1331,7 @@ MonoBehaviour:
   slowness: 10
   brush: {fileID: 5292117413414553659, guid: 0555de70fd603514aa709882c46ffc7e, type: 3}
   lineDist: 0
-  lengthBeforeUseConsumed: 10
+  lengthBeforeUseConsumed: 5
   artCirclePrefab: {fileID: 1430236743949168258, guid: 84506317c6db08043bfbccc4e9a31e25, type: 3}
 --- !u!60 &7428820390796569223
 PolygonCollider2D:

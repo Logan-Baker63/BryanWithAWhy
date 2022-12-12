@@ -244,7 +244,7 @@ MonoBehaviour:
   bullet: {fileID: 6498332353340852139, guid: 32dd8b482c1914a439b9810c11a6a6f8, type: 3}
   spawnPos: {fileID: 0}
   shootCooldown: 0.6
-  meleeCooldown: 0.2
+  meleeCooldown: 0.9
   canAttack: 1
 --- !u!114 &-3319509391772739528
 MonoBehaviour:

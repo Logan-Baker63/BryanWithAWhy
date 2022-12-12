@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  movementSpeed: 50
+  movementSpeed: 40
   minFollowDist: 2
 --- !u!114 &1336083524
 MonoBehaviour:

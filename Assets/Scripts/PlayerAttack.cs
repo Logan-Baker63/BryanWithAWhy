@@ -14,7 +14,7 @@ public class PlayerAttack : Attack
     public float currentStamina = 10;
     public float maxStamina = 10;
     [SerializeField] float rollCost = 5;
-    [SerializeField] float staminaRegen = 1.5f; //Stamina gained per second
+    [SerializeField] float staminaRegen = 1.5f; //Percentage of max stamina gained per second
     [SerializeField] float staminaJailSentence = 3;
     [SerializeField] float staminaJailTime = 0;
 
@@ -53,7 +53,7 @@ public class PlayerAttack : Attack
         if(staminaJailTime <= 0)
         {
             staminaJailTime = 0;
-            currentStamina += staminaRegen * Time.deltaTime;
+            currentStamina += (staminaRegen * maxStamina) * Time.deltaTime;
             if(currentStamina > maxStamina)
             {
                 currentStamina = maxStamina;

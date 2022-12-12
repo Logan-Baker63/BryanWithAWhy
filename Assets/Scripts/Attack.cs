@@ -41,7 +41,8 @@ public class Attack : MonoBehaviour
             {
                 bulletInstance.GetComponent<Projectile>().playerBullet = false;
                 bulletInstance.layer = 6;
-                bulletInstance.GetComponent<Projectile>().projectileSpeed = 400;
+                bulletInstance.GetComponent<Projectile>().projectileSpeed = 180;
+                bulletInstance.transform.localScale *= 2;
             }
             manager.PlaySound(0);
             cooldownRoutine = StartCoroutine(ShootCooldown());
