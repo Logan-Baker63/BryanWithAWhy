@@ -38,6 +38,8 @@ public class Attack : MonoBehaviour
             else
             {
                 bulletInstance.GetComponent<Projectile>().playerBullet = false;
+                bulletInstance.layer = 6;
+                bulletInstance.GetComponent<Projectile>().projectileSpeed = 400;
             }
             manager.PlaySound(0);
             cooldownRoutine = StartCoroutine(ShootCooldown());
@@ -48,7 +50,7 @@ public class Attack : MonoBehaviour
     {
         if (canAttack)
         {
-            //Do sword swing
+            //Do punch
             GetComponent<Animator>().SetTrigger("Punch");
             //Play sound
             cooldownRoutine = StartCoroutine(MeleeCooldown());

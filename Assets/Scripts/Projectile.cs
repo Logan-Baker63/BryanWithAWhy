@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] float timeToDestroy = 5;
+    public float timeToDestroy = 5;
     float timeFromSpawn = 0;
 
-    [SerializeField] float projectileSpeed = 300;
+    public float projectileSpeed = 300;
     Vector2 dir;
 
     [SerializeField] int defaultDamage;
