@@ -11,9 +11,9 @@ public class RotateToMouse : MonoBehaviour
     {
         Vector2 objectViewportPos = Camera.main.WorldToViewportPoint(transform.position);
 
-        Vector2 mouseViewportPos = (Vector2)Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        Vector2 mouseViewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 
-        float angle = GetAngle(objectViewportPos, mouseViewportPos);
+        float angle = GetAngle(Camera.main.ViewportToWorldPoint(objectViewportPos), Camera.main.ViewportToWorldPoint(mouseViewportPos));
 
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
     }
