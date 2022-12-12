@@ -8,7 +8,9 @@ public class Attack : MonoBehaviour
     [SerializeField] protected Transform spawnPos;
     [SerializeField] protected float shootCooldown = 0.2f;
     [SerializeField] protected float meleeCooldown = 0.2f;
-    [SerializeField] public bool canAction = true;
+
+    [HideInInspector] public bool canAttack = true;
+    
     public Coroutine cooldownRoutine;
 
     protected AudioManager manager;
@@ -25,7 +27,7 @@ public class Attack : MonoBehaviour
 
     protected virtual void Shoot()
     {
-        if (canAction)
+        if (canAttack)
         {
             GameObject bulletInstance = Instantiate(bullet, spawnPos.position, transform.rotation);
             bulletInstance.GetComponent<Projectile>().SetDir(-transform.right);
@@ -44,24 +46,27 @@ public class Attack : MonoBehaviour
 
     protected virtual void Melee()
     {
-        //Do sword swing
-        //Play sound
-        cooldownRoutine = StartCoroutine(MeleeCooldown());
+        if (canAttack)
+        {
+            //Do sword swing
+            //Play sound
+            cooldownRoutine = StartCoroutine(MeleeCooldown());
+        }
     }
 
     IEnumerator ShootCooldown()
     {
-        canAction = false;
+        canAttack = false;
         yield return new WaitForSeconds(shootCooldown);
-        canAction = true;
+        canAttack = true;
         cooldownRoutine = null;
     }
 
     IEnumerator MeleeCooldown()
     {
-        canAction = false;
+        canAttack = false;
         yield return new WaitForSeconds(meleeCooldown);
-        canAction = true;
+        canAttack = true;
         cooldownRoutine = null;
     }
 }

@@ -6,7 +6,8 @@ using UnityEngine.InputSystem;
 public class PlayerAttack : Attack
 {
     [SerializeField] float rollCooldown = 0.4f;
-    
+    [HideInInspector] public bool canRoll = true;
+
     PlayerMovement playerMovement;
 
     protected override void OnAwake()
@@ -33,9 +34,10 @@ public class PlayerAttack : Attack
 
     public void Roll(InputAction.CallbackContext context)
     {
-        if(context.performed && canAction)
+        if(context.performed && canRoll)
         {
             GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity() * 5;
+            StartCoroutine(RollStop());
             //Play sound
             cooldownRoutine = StartCoroutine(RollCooldown());
         }
@@ -43,16 +45,16 @@ public class PlayerAttack : Attack
 
     IEnumerator RollStop()
     {
-        yield return new WaitForSeconds(0.003f);
+        yield return new WaitForSeconds(0.2f);
         GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
     }
 
     IEnumerator RollCooldown()
     {
-        canAction = false;
+        canRoll = false;
         playerMovement.canMove = false;
         yield return new WaitForSeconds(rollCooldown);
-        canAction = true;
+        canRoll = true;
         playerMovement.canMove = true;
         cooldownRoutine = null;
     }

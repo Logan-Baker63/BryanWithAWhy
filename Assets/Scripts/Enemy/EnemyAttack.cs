@@ -28,8 +28,8 @@ public class EnemyAttack : Attack
 
     IEnumerator WaitForOffset()
     {
-        canAction = false;
+        canAttack = false;
         yield return new WaitForSeconds(shootOffset);
-        canAction = true;
+        canAttack = true;
     }
 }
