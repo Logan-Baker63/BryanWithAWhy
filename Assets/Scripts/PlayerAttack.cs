@@ -32,7 +32,7 @@ public class PlayerAttack : Attack
             {
                 if (abilityMeter.abilityType == AbilityMeter.AbilityType.Art)
                 {
-                    abilityMeter.AquireAbilityUses(1);
+                    abilityMeter.AquireAbilityPoints(1);
                 }
             }
         }
