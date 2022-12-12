@@ -35,10 +35,16 @@ public class PlayerAttack : Attack
     {
         if(context.performed && canAction)
         {
-            //Roll
+            GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity() * 5;
             //Play sound
             cooldownRoutine = StartCoroutine(RollCooldown());
         }
+    }
+
+    IEnumerator RollStop()
+    {
+        yield return new WaitForSeconds(0.003f);
+        GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
     }
 
     IEnumerator RollCooldown()

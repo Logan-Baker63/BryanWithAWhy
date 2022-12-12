@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: -6063676884657065486}
   - component: {fileID: -6627968013471034976}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: EnemyRanged
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  movementSpeed: 125
+  movementSpeed: 100
   minFollowDist: 6
 --- !u!114 &1336083524
 MonoBehaviour:
@@ -257,6 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 916063e6a11caa845a5b47498d037896, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
 --- !u!114 &-6627968013471034976
 MonoBehaviour:
   m_ObjectHideFlags: 0

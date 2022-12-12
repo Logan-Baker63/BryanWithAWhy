@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
     [SerializeField] protected float movementSpeed = 5;
     protected Vector2 moveVelocity;
 
+    public Vector2 GetMoveVelocity() { return moveVelocity; }
     private void FixedUpdate()
     {
         if (canMove)

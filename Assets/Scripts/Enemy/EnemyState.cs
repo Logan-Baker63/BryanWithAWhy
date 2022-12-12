@@ -11,4 +11,13 @@ public class EnemyState : MonoBehaviour
     {
         state = _state;
     }
+
+    public enum EnemyType
+    {
+        Ranged,
+        Melee,
+        Big,
+    }
+    [SerializeField] EnemyType enemyType;
+    public EnemyType GetEnemyType() { return enemyType; }
 }

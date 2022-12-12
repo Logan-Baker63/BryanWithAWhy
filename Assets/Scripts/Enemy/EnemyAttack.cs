@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttack : Attack
 {
-    [SerializeField] float shootOffset = 0;
+    float shootOffset = 0;
 
     public void SetShootOffset(float _shootOffset) { shootOffset = _shootOffset; } 
     protected override void OnAwake()

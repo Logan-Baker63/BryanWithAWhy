@@ -29,7 +29,19 @@ public class EnemyMovement : Movement
         }
         else
         {
-            GetComponent<EnemyState>().SetState(1);
+            if (GetComponent<EnemyState>().GetEnemyType() == EnemyState.EnemyType.Ranged)
+            {
+                GetComponent<EnemyState>().SetState(1);
+            }
+            else if (GetComponent<EnemyState>().GetEnemyType() == EnemyState.EnemyType.Melee)
+            {
+                GetComponent<EnemyState>().SetState(2);
+            }
+            else if (GetComponent<EnemyState>().GetEnemyType() == EnemyState.EnemyType.Big)
+            {
+                GetComponent<EnemyState>().SetState(3);
+            }
+            
             transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
     }
