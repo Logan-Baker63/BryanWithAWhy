@@ -7,13 +7,18 @@ public class Movement : MonoBehaviour
     public bool canMove = true;
     [SerializeField] protected float movementSpeed = 5;
     protected Vector2 moveVelocity;
+    protected float slowness = 1;
 
+    public void SetSlowness(float _slownesMulti)
+    {
+        slowness = _slownesMulti;
+    }
     public Vector2 GetMoveVelocity() { return moveVelocity; }
     private void FixedUpdate()
     {
         if (canMove)
         {
-            Move(moveVelocity);
+            Move(moveVelocity / slowness);
         }
     }
 

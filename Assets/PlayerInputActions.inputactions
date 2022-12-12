@@ -44,6 +44,30 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "DrawMode",
+                    "type": "Button",
+                    "id": "48c6b462-7b92-4178-a22c-0baf47a80835",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "ProgramMode",
+                    "type": "Button",
+                    "id": "32a5a7f2-ed2d-45df-adc2-85d66d05d956",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "DesignMode",
+                    "type": "Button",
+                    "id": "2144fe15-d44d-40b9-97f6-8e407f0030b7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -154,6 +178,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1897a34c-be09-4400-bf40-d5b6770df4dd",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DrawMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "edc45787-2d65-4ce1-81c3-32e0c26eb1ca",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ProgramMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9e9ee8ef-890d-411c-a526-b0e5e8dd717f",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DesignMode",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
