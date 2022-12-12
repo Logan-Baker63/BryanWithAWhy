@@ -86,35 +86,49 @@ public class DevMode : MonoBehaviour
         lineDist = 0;
     }
 
+    IEnumerator Delay(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        ExitDevMode();
+    }
+
     public void EnterArtDevMode(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             EnterDevMode();
+            lineDist = 0;
             devType = DevType.Art;
         }
     }
 
     public void Draw(InputAction.CallbackContext context)
     {
+        Debug.Log(devType);
         if (context.performed && devType == DevType.Art)
         {
             CreateBrush();
             isDrawing = true;
         }
 
-        if (context.canceled)
+        if (context.canceled && devType == DevType.Art)
         {
-            if (currentLineRenderer)
-            {
-                artMeter.SpendAbilityPoints((int)pointCost);
-                currentLineRenderer.GetComponent<DrawnLine>().GenerateLineCollider();
-            }
-            
-            currentLineRenderer = null;
-            isDrawing = false;
-            lineDist = 0;
+            CompleteLine();
         }
+    }
+
+    public void CompleteLine()
+    {
+        if (currentLineRenderer)
+        {
+            artMeter.SpendAbilityPoints((int)pointCost);
+            currentLineRenderer.GetComponent<DrawnLine>().GenerateLineCollider();
+        }
+
+        currentLineRenderer = null;
+        isDrawing = false;
+        lineDist = 0;
     }
 
     public void CreateBrush()
@@ -138,13 +152,15 @@ public class DevMode : MonoBehaviour
             if (mousePos != lastPos)
             {
                 pointCost = lineDist / lengthBeforeUseConsumed + 1;
-
+                Debug.Log("Attempting Drawing...");
                 if (pointCost < artMeter.GetAbilityPoints() + 1)
                 {
+                    Debug.Log("Allowed to draw with cost of: " + pointCost);
                     artMeter.SetHighlightPoints((int)pointCost);
                     if (lastPos != Vector2.zero)
                     {
                         lineDist += (mousePos - lastPos).magnitude;
+                        Debug.Log("Updated line dist, success");
                     }
 
                     AddPoint(mousePos);
@@ -152,6 +168,8 @@ public class DevMode : MonoBehaviour
                 }
                 else
                 {
+                    //StartCoroutine(Delay(1f));
+                    CompleteLine();
                     ExitDevMode();
                 }
             }
