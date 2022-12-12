@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] public int maxHealth = 100;
-    [SerializeField] public int currentHealth = 100;
+    [SerializeField] public float maxHealth = 100;
+    [SerializeField] public float currentHealth = 100;
 
     public virtual void TakeDamage(int _damageToTake)
     {
