@@ -1223,8 +1223,12 @@ MonoBehaviour:
   spawnPos: {fileID: 4145463336927675421}
   shootCooldown: 0.6
   meleeCooldown: 0.2
-  canAction: 1
+  canAttack: 1
   rollCooldown: 0.4
+  rollSpeed: 0.3
+  rollInv: 0.15
+  rollDist: 16
+  canRoll: 1
 --- !u!114 &1551989228
 MonoBehaviour:
   m_ObjectHideFlags: 0
