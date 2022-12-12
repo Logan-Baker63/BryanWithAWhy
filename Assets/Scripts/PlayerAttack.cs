@@ -17,6 +17,7 @@ public class PlayerAttack : Attack
     [SerializeField] float staminaRegen = 1.5f; //Percentage of max stamina gained per second
     [SerializeField] float staminaJailSentence = 3;
     [SerializeField] float staminaJailTime = 0;
+    public Coroutine rollStopCoroutine = null;
 
     [SerializeField] int amountOfKillsForAbilityPoint = 4;
     int killsOutOfRequired = 0;
@@ -101,7 +102,7 @@ public class PlayerAttack : Attack
                 currentStamina = 0;
             }
 
-            StartCoroutine(RollStop());
+            rollStopCoroutine = StartCoroutine(RollStop());
             //Play sound
             cooldownRoutine = StartCoroutine(RollCooldown());
         }
@@ -110,8 +111,12 @@ public class PlayerAttack : Attack
     IEnumerator RollStop()
     {
         yield return new WaitForSeconds(rollSpeed);
-        canAttack = true;
-        GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
+        if (rollStopCoroutine != null)
+        {
+            canAttack = true;
+            GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
+            rollStopCoroutine = null;
+        }
     }
 
     IEnumerator RollCooldown()
