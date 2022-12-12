@@ -8,7 +8,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject bullet;
     [SerializeField] Transform spawnPos;
     [SerializeField] float shootCooldown = 0.2f;
-    [SerializeField] bool canShoot = true;
+    [SerializeField] public bool canShoot = true;
+    public Coroutine cooldownRoutine;
 
     public void Shoot(InputAction.CallbackContext context)
     {
@@ -16,7 +17,7 @@ public class PlayerAttack : MonoBehaviour
         {
             GameObject bulletInstance = Instantiate(bullet, spawnPos.position, transform.rotation);
             bulletInstance.GetComponent<Projectile>().SetDir(-transform.right);
-            StartCoroutine(ShootCooldown());
+            cooldownRoutine = StartCoroutine(ShootCooldown());
         }
     }
 

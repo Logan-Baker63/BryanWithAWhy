@@ -7,6 +7,8 @@ public class PauseMenu : MonoBehaviour
 {
     GameObject pauseMenu;
     PlayerMovement playerMovement;
+    RotateToMouse rotateToMouse;
+    PlayerAttack attack;
 
     // Start is called before the first frame update
     void Awake()
@@ -14,6 +16,8 @@ public class PauseMenu : MonoBehaviour
         pauseMenu = GameObject.FindGameObjectWithTag("PauseMenu");
         pauseMenu.SetActive(false);
         playerMovement = FindObjectOfType<PlayerMovement>();
+        rotateToMouse = FindObjectOfType<RotateToMouse>();
+        attack = FindObjectOfType<PlayerAttack>();
     }
 
     // Update is called once per frame
@@ -31,12 +35,19 @@ public class PauseMenu : MonoBehaviour
                 pauseMenu.SetActive(false);
                 Time.timeScale = 1f;
                 playerMovement.canMove = true;
+                rotateToMouse.canRotate = true;
+                if(attack.cooldownRoutine == null)
+                {
+                    attack.canShoot = true;
+                }
             }
             else
             {
                 pauseMenu.SetActive(true);
                 Time.timeScale = 0f;
                 playerMovement.canMove = false;
+                rotateToMouse.canRotate = false;
+                attack.canShoot = false;
             }
         }
     }

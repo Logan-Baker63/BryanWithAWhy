@@ -1044,6 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8b5dfee83abd114e976572b1ba1ea6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canRotate: 1
 --- !u!58 &4145463335847454501
 CircleCollider2D:
   m_ObjectHideFlags: 0

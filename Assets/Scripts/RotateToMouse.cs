@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RotateToMouse : MonoBehaviour
 {
+    public bool canRotate = true;
+
     float GetAngle(Vector3 a, Vector3 b) { return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg; }
 
     // Update is called once per frame
@@ -15,7 +17,10 @@ public class RotateToMouse : MonoBehaviour
 
         float angle = GetAngle(Camera.main.ViewportToWorldPoint(objectViewportPos), Camera.main.ViewportToWorldPoint(mouseViewportPos));
 
-        transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        if (canRotate)
+        {
+            transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        }
     }
 
 }
