@@ -10,21 +10,26 @@ public class PlayerMovement : MonoBehaviour
     Vector2 moveVelocity;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Move(moveVelocity);
     }
 
-    public void Move(InputAction.CallbackContext context)
+    public void OnMove(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            moveVelocity = context.ReadValue<Vector2>() * movementSpeed;
+            moveVelocity = context.ReadValue<Vector2>() * movementSpeed * Time.fixedDeltaTime;
+        }
+
+        if (context.canceled)
+        {
+            moveVelocity = Vector2.zero;
         }
     }
 
     private void Move(Vector2 velocity)
     {
-        GetComponent<Rigidbody>().velocity = velocity;
+        GetComponent<Rigidbody2D>().velocity = velocity;
     }
 }
