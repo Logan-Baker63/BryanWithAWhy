@@ -1157,11 +1157,35 @@ MonoBehaviour:
     m_ActionId: 2b59c969-c487-441a-aaed-63692305264b
     m_ActionName: Player/Pause[/Keyboard/escape,/Keyboard/enter]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4145463335847454496}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: OnMelee
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: d150cbfe-414b-4841-addf-6022e8d85176
     m_ActionName: Player/Melee[/Mouse/rightButton]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4145463335847454496}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: Roll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6073d0ec-43d4-4c98-a9eb-8d50f735a0ac
     m_ActionName: Player/Roll[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
@@ -1182,7 +1206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  movementSpeed: 250
+  movementSpeed: 300
 --- !u!114 &4145463335847454496
 MonoBehaviour:
   m_ObjectHideFlags: 0

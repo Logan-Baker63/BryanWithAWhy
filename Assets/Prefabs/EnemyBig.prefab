@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 7497870654567832631}
   - component: {fileID: 1336083523}
   - component: {fileID: 1336083524}
+  - component: {fileID: -8712648961088398121}
+  - component: {fileID: 7572019411192337665}
   m_Layer: 7
   m_Name: EnemyBig
   m_TagString: Enemy
@@ -226,8 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  movementSpeed: 125
-  minFollowDist: 6
+  movementSpeed: 50
+  minFollowDist: 2
 --- !u!114 &1336083524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,6 +244,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 20
+--- !u!114 &-8712648961088398121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608737746056180886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f88db2b6da1d1a140b25433f5ba37374, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bullet: {fileID: 6498332353340852139, guid: 32dd8b482c1914a439b9810c11a6a6f8, type: 3}
+  spawnPos: {fileID: 0}
+  shootCooldown: 0.6
+  meleeCooldown: 0.2
+  canAction: 1
+--- !u!114 &7572019411192337665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608737746056180886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916063e6a11caa845a5b47498d037896, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyType: 2
 --- !u!1 &1495037612097290215
 GameObject:
   m_ObjectHideFlags: 0
