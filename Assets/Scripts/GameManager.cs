@@ -108,7 +108,8 @@ public class GameManager : MonoBehaviour
                 // found enemy type
                 if (randomWeight < enemyType.ratioWeight)
                 {
-                    Instantiate(enemyType.prefab, FindEnemySpawnPos(), Quaternion.identity);
+                    GameObject enemy = Instantiate(enemyType.prefab, FindEnemySpawnPos(), Quaternion.identity);
+                    enemy.GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
                 }
                     
                 randomWeight -= enemyType.ratioWeight;
