@@ -152,7 +152,7 @@ public class DevMode : MonoBehaviour
             if (mousePos != lastPos)
             {
                 pointCost = lineDist / lengthBeforeUseConsumed + 1;
-                Debug.Log("Attempting Drawing...");
+                Debug.Log("Attempting Drawing... cost equals: " + pointCost);
                 if (pointCost < artMeter.GetAbilityPoints() + 1)
                 {
                     Debug.Log("Allowed to draw with cost of: " + pointCost);
