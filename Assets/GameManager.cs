@@ -12,11 +12,15 @@ public class GameManager : MonoBehaviour
     GameObject colliderTop;
     GameObject colliderBottom;
 
+    int dontCollideEnemyLayer;
+
     private void Start()
     {
+        dontCollideEnemyLayer = LayerMask.NameToLayer("DontCollideEnemy");
+
         foreach (EnemyScriptable type in enemyTypes)
         {
-            totalEnemyWeight += type.weight;
+            totalEnemyWeight += type.ratioWeight;
         }
         
         CreateBoundaries();
@@ -48,6 +52,11 @@ public class GameManager : MonoBehaviour
         colliderRight.transform.localScale = new Vector3(1, Mathf.Abs(rightTopCorner.y - leftBottomCorner.y));
         colliderTop.transform.localScale = new Vector3(Mathf.Abs(rightTopCorner.x - leftBottomCorner.x), 1);
         colliderBottom.transform.localScale = new Vector3(Mathf.Abs(rightTopCorner.x - leftBottomCorner.x), 1);
+
+        colliderLeft.layer = dontCollideEnemyLayer;
+        colliderRight.layer = dontCollideEnemyLayer;
+        colliderTop.layer = dontCollideEnemyLayer;
+        colliderBottom.layer = dontCollideEnemyLayer;
     }
 
     Vector2 FindEnemySpawnPos()
@@ -75,8 +84,8 @@ public class GameManager : MonoBehaviour
             collider = colliderBottom.GetComponent<Collider2D>();
         }
 
-        rand2 = Random.Range(collider.bounds.min.x, collider.bounds.max.x);
-        rand3 = Random.Range(collider.bounds.min.y, collider.bounds.max.y);
+        rand2 = Random.Range(collider.transform.TransformPoint(collider.bounds.min).x, collider.transform.TransformPoint(collider.bounds.max).x);
+        rand3 = Random.Range(collider.transform.TransformPoint(collider.bounds.min).y, collider.transform.TransformPoint(collider.bounds.max).y);
 
         return new Vector2(rand2, rand3);
     }
@@ -97,12 +106,12 @@ public class GameManager : MonoBehaviour
             foreach (EnemyScriptable enemyType in enemyTypes)
             {
                 // found enemy type
-                if (randomWeight < enemyType.weight)
+                if (randomWeight < enemyType.ratioWeight)
                 {
                     Instantiate(enemyType.prefab, FindEnemySpawnPos(), Quaternion.identity);
                 }
                     
-                randomWeight -= enemyType.weight;
+                randomWeight -= enemyType.ratioWeight;
             }
         }
     }

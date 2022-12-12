@@ -6,5 +6,5 @@ using UnityEngine;
 public class EnemyScriptable : ScriptableObject
 {
     public GameObject prefab;
-    public float weight;
+    public float ratioWeight;
 }
