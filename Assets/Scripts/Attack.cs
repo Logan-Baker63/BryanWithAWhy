@@ -31,7 +31,9 @@ public class Attack : MonoBehaviour
         {
             GameObject bulletInstance = Instantiate(bullet, spawnPos.position, transform.rotation);
             bulletInstance.GetComponent<Projectile>().SetDir(-transform.right);
-            if(gameObject.tag == "Player")
+
+            bulletInstance.GetComponent<Projectile>().owner = gameObject;
+            if (gameObject.tag == "Player")
             {
                 bulletInstance.GetComponent<Projectile>().playerBullet = true;
             }

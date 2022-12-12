@@ -18,7 +18,29 @@ public class PlayerAttack : Attack
     [SerializeField] float staminaJailSentence = 3;
     [SerializeField] float staminaJailTime = 0;
 
+    [SerializeField] int amountOfKillsForAbilityPoint = 4;
+    int killsOutOfRequired = 0;
+
     PlayerMovement playerMovement;
+
+    public void AddKill()
+    {
+        if (killsOutOfRequired + 1 >= amountOfKillsForAbilityPoint)
+        {
+            killsOutOfRequired = 0;
+            foreach (AbilityMeter abilityMeter in FindObjectsOfType<AbilityMeter>())
+            {
+                if (abilityMeter.abilityType == AbilityMeter.AbilityType.Art)
+                {
+                    abilityMeter.AquireAbilityUses(1);
+                }
+            }
+        }
+        else
+        {
+            killsOutOfRequired++;
+        }
+    }
 
     protected override void OnAwake()
     {

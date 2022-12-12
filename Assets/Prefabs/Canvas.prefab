@@ -1176,6 +1176,7 @@ MonoBehaviour:
   defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
   aquiredColour: {r: 0.6745098, g: 0.72156864, b: 1, a: 1}
   abilitySlots: []
+  abilityType: 0
 --- !u!1 &859408764508496543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1186,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 859408764508496542}
+  - component: {fileID: 2136929595227542385}
   m_Layer: 5
   m_Name: Programming
   m_TagString: Untagged
@@ -1218,6 +1220,22 @@ RectTransform:
   m_AnchoredPosition: {x: -30.5, y: 16.599998}
   m_SizeDelta: {x: 25.16, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2136929595227542385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859408764508496543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1c141efe0ec9a4e8cfa9265886201e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.39215687, b: 0.39215687, a: 1}
+  abilitySlots: []
+  abilityType: 1
 --- !u!1 &859408764953273711
 GameObject:
   m_ObjectHideFlags: 0
@@ -2089,6 +2107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5984393850642933735}
+  - component: {fileID: 7180213515356478240}
   m_Layer: 5
   m_Name: Art
   m_TagString: Untagged
@@ -2122,6 +2141,22 @@ RectTransform:
   m_AnchoredPosition: {x: -1.0722046, y: 16.599998}
   m_SizeDelta: {x: 25.16, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7180213515356478240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2671383152368461513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1c141efe0ec9a4e8cfa9265886201e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 0.8980392, g: 0.84705883, b: 0.28235295, a: 1}
+  abilitySlots: []
+  abilityType: 2
 --- !u!1 &3422393762065737526
 GameObject:
   m_ObjectHideFlags: 0

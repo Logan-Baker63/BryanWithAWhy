@@ -13,6 +13,8 @@ public class Projectile : MonoBehaviour
     [SerializeField] int defaultDamage;
     [SerializeField] public bool playerBullet;
 
+    public GameObject owner;
+
     HealthBar healthBar;
 
     int damage
@@ -52,7 +54,7 @@ public class Projectile : MonoBehaviour
             {
                 if (playerBullet)
                 {
-                    other.GetComponent<Health>().TakeDamage(damage);
+                    other.GetComponent<Health>().TakeDamage(damage, this);
                 }
             }
             else if (other.tag == "Player")
@@ -61,7 +63,7 @@ public class Projectile : MonoBehaviour
                 {
                     if (!other.GetComponent<PlayerAttack>().rollInvulnerable)
                     {
-                        other.GetComponent<Health>().TakeDamage(damage);
+                        other.GetComponent<Health>().TakeDamage(damage, this);
                         healthBar.UpdateHealthBar();
                     }
                     else

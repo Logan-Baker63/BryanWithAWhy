@@ -12,6 +12,14 @@ public class AbilityMeter : MonoBehaviour
 
     [SerializeField] List<Image> abilitySlots;
 
+    public enum AbilityType
+    {
+        Design,
+        Programming,
+        Art,
+    }
+    public AbilityType abilityType;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +32,11 @@ public class AbilityMeter : MonoBehaviour
         }
 
         abilityCounter = GetComponentInChildren<AbilityCounter>();
+    }
+
+    public void AquireAbilityUses(int _abilityUses)
+    {
+        abilityUses += _abilityUses;
     }
 
     // Update is called once per frame
