@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7497870654567832650}
   - component: {fileID: 7497870654567832630}
   - component: {fileID: 7497870654567832631}
+  - component: {fileID: 1336083523}
+  - component: {fileID: 1336083524}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -129,6 +131,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1336083523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608737746056180886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d672ebe26816e54c9961c7786c14ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canMove: 1
+  movementSpeed: 125
+  minFollowDist: 6
+--- !u!114 &1336083524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608737746056180886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 866c9de454e4b114ea938bcdb910fd7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 100
 --- !u!1 &1495037612097290215
 GameObject:
   m_ObjectHideFlags: 0

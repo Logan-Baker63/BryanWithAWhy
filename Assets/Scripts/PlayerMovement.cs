@@ -3,19 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : Movement
 {
-    [SerializeField] float movementSpeed = 5;
-
-    Vector2 moveVelocity;
-    public bool canMove = true;
-
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        Move(moveVelocity);
-    }
-
     public void OnMove(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -29,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void Move(Vector2 velocity)
+    protected override void Move(Vector2 velocity)
     {
         GetComponent<Rigidbody2D>().velocity = velocity;
     }

@@ -136,3 +136,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToDestroy: 5
   projectileSpeed: 800
+  defaultDamage: 10
