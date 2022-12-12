@@ -22,6 +22,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySound(int soundID)
     {
-
+        m_audioSource.clip = m_sounds[soundID];
+        m_audioSource.Play();
     }
 }
