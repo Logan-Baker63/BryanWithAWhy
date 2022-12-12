@@ -392,22 +392,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddbbec1003adf9649af3ae330f77bb53, type: 3}
---- !u!1 &1055618617 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 859408765055055827, guid: 45c3d4b80d4059f4097e2e49594780e1, type: 3}
-  m_PrefabInstance: {fileID: 859408763538888915}
-  m_PrefabAsset: {fileID: 0}
---- !u!210 &1055618622
-SortingGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1055618617}
-  m_Enabled: 1
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &1147710687
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,26 +540,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1763518276 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 859408764465144923, guid: 45c3d4b80d4059f4097e2e49594780e1, type: 3}
-  m_PrefabInstance: {fileID: 859408763538888915}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1763518278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763518276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b1c141efe0ec9a4e8cfa9265886201e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
-  aquiredColour: {r: 0.6745098, g: 0.72156864, b: 1, a: 1}
-  abilitySlots: []
 --- !u!1001 &859408763538888915
 PrefabInstance:
   m_ObjectHideFlags: 0
