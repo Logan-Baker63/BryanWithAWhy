@@ -1170,3 +1170,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 6498332353340852139, guid: 32dd8b482c1914a439b9810c11a6a6f8, type: 3}
   spawnPos: {fileID: 4145463336927675421}
+  shootCooldown: 0.4
+  canShoot: 1
