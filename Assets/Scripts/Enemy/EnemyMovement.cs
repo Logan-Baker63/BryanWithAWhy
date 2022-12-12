@@ -21,7 +21,7 @@ public class EnemyMovement : Movement
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, GetAngle(transform.position, player.position)));
 
         // movement
-        if ((player.position - transform.position).magnitude > minFollowDist)
+        if ((player.position - transform.position).magnitude > minFollowDist || !transform.Find("OffScreenCheck").GetComponent<Renderer>().isVisible)
         {
             moveVelocity = (player.position - transform.position).normalized * movementSpeed * Time.fixedDeltaTime;
             transform.GetComponent<Rigidbody2D>().velocity = moveVelocity;
