@@ -22,3 +22,14 @@ MonoBehaviour:
   firstEnemySpawnDelayMax: 6
   enemySpawnDelayMin: 2
   enemySpawnDelayMax: 6
+  waveSpawnMultiplier: 2
+  waveSpawnPercentChance: 20
+  enemiesPerSpawnedWaveMin: 2
+  enemiesPerSpawnedWaveMax: 4
+  startingEnemiesIncreasePerWave: 0.2
+  startingEnemiesCapMax: 12
+  enemySpawnDelayDecreasePerWaveMin: 0.2
+  enemySpawnDelayDecreasePerWaveMax: 0.3
+  enemySpawnDelayCapMin: 1
+  enemySpawnDelayCapMax: 1.2
+  waveSpawnMultiDecreasePerWave: 0.1
