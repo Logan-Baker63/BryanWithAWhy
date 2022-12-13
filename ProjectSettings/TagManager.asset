@@ -11,6 +11,7 @@ TagManager:
   - RollParticle
   - Wall
   - PointDisplay
+  - WaveCount
   layers:
   - Default
   - TransparentFX

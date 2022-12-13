@@ -14,22 +14,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypeSpawnMin: 2.5
   enemyTypeSpawnMax: 13
-  startingEnemiesMin: 3
-  startingEnemiesMax: 6
-  totalEnemiesOverTimeMin: 5
-  totalEnemiesOverTimeMax: 10
-  firstEnemySpawnDelayMin: 4
-  firstEnemySpawnDelayMax: 6
+  startingEnemiesMin: 2
+  startingEnemiesMax: 3
+  totalEnemiesOverTimeMin: 2
+  totalEnemiesOverTimeMax: 4
+  firstEnemySpawnDelayMin: 3
+  firstEnemySpawnDelayMax: 4
   enemySpawnDelayMin: 2
   enemySpawnDelayMax: 6
-  waveSpawnMultiplier: 2
-  waveSpawnPercentChance: 20
+  waveSpawnMultiplier: 2.5
+  waveSpawnPercentChance: 10
   enemiesPerSpawnedWaveMin: 2
   enemiesPerSpawnedWaveMax: 4
-  startingEnemiesIncreasePerWave: 0.2
-  startingEnemiesCapMax: 12
-  enemySpawnDelayDecreasePerWaveMin: 0.2
-  enemySpawnDelayDecreasePerWaveMax: 0.3
+  startingEnemiesIncreasePerWaveMin: 0.2
+  startingEnemiesIncreasePerWaveMax: 0.3
+  startingEnemiesCapMin: 4
+  startingEnemiesCapMax: 7
+  totalEnemiesOverTimeMinIncreasePerWave: 0.5
+  totalEnemiesOverTimeMaxIncreasePerWave: 0.7
+  totalEnemiesOverTimeCapMin: 30
+  totalEnemiesOverTimeCapMax: 50
+  enemySpawnDelayDecreasePerWaveMin: 0.02
+  enemySpawnDelayDecreasePerWaveMax: 0.05
   enemySpawnDelayCapMin: 1
-  enemySpawnDelayCapMax: 1.2
-  waveSpawnMultiDecreasePerWave: 0.1
+  enemySpawnDelayCapMax: 1.6
+  waveSpawnMultiDecreasePerWave: 0.05

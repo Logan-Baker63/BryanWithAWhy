@@ -151,16 +151,36 @@ public class AttributeMeter : MonoBehaviour
                 }
                 return;
             case AttributeType.ProjectileSpread:
+
                 return;
             case AttributeType.ProjectileAmount:
+
                 return;
             case AttributeType.MeleeDamage:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().meleeDamage += 4.5f;
+                }
                 return;
             case AttributeType.Stamina:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().maxStamina += 2;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().currentStamina += 2;
+                }
                 return;
             case AttributeType.DodgeSpeed:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().rollSpeed -= 0.019f;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().rollSpeed -= 0.027f;
+                }
                 return;
             case AttributeType.DodgeInvulnerability:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().rollInv += 0.04f;
+                }
                 return;
         }
 

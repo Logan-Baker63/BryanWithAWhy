@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] EnemyScriptable[] enemyTypes;
     [SerializeField] WaveSettings waveSettings;
+    [SerializeField] Text waveCountDisplay;
 
     GameObject colliderLeft;
     GameObject colliderRight;
@@ -68,6 +70,8 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        waveCountDisplay = GameObject.FindGameObjectWithTag("WaveCount").GetComponent<Text>();
+        waveCountDisplay.text = "1";
         dontCollideEnemyLayer = LayerMask.NameToLayer("DontCollideEnemy");
         //waveCounter.SetActive(false);
         canvas = FindObjectOfType<Canvas>();
@@ -222,6 +226,7 @@ public class GameManager : MonoBehaviour
             Health playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
             playerHealth.currentHealth += healthReward * playerHealth.maxHealth;
             currentWave++;
+            waveCountDisplay.text = currentWave.ToString();
 
             GameObject temp = Instantiate(waveCounter, canvas.transform);
             temp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Wave " + (currentWave - 1);
