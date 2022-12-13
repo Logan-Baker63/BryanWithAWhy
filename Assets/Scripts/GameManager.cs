@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -178,8 +179,9 @@ public class GameManager : MonoBehaviour
             currentWave++;
 
             GameObject temp = Instantiate(waveCounter, canvas.transform);
-            
+            temp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Wave " + (currentWave - 1);
             temp.GetComponent<Animator>().Play("WaveComplete");
+
             pendingWaveEnd = false;
 
             SpawnEnemyWave();
