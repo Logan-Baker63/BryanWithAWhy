@@ -77,13 +77,12 @@ public class AbilityMeter : MonoBehaviour
 
     void UpdateUses()
     {
-        abilityCounter.UpdateCounter(abilityPoints);
-
         if (abilityPoints > abilitySlots.Count)
         {
             abilityPoints = abilitySlots.Count;
         }
-        
+        abilityCounter.UpdateCounter(abilityPoints);
+
         foreach (Image img in abilitySlots)
         {
             img.color = defaultColour;

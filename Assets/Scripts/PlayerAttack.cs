@@ -30,25 +30,32 @@ public class PlayerAttack : Attack
 
     public void AddKill(bool ranged)
     {
-        if (killsOutOfRequiredDesign + 1 >= amountOfKillsForAbilityPoint || killsOutOfRequiredProgramming +1 >= amountOfKillsForAbilityPoint)
+        foreach (AbilityMeter abilityMeter in FindObjectsOfType<AbilityMeter>())
         {
-            foreach (AbilityMeter abilityMeter in FindObjectsOfType<AbilityMeter>())
+            if (abilityMeter.abilityType == AbilityMeter.AbilityType.Design && ranged)
             {
-                if (abilityMeter.abilityType == AbilityMeter.AbilityType.Design && ranged)
+                if(killsOutOfRequiredDesign >= amountOfKillsForAbilityPoint - 1)
                 {
                     abilityMeter.AquireAbilityPoints(1);
                     killsOutOfRequiredDesign = 0;
                 }
-                else if (abilityMeter.abilityType == AbilityMeter.AbilityType.Programming && !ranged)
+                else
+                {
+                    killsOutOfRequiredDesign += 1;
+                }
+            }
+            else if (abilityMeter.abilityType == AbilityMeter.AbilityType.Programming && !ranged)
+            {
+                if(killsOutOfRequiredProgramming >= amountOfKillsForAbilityPoint - 1)
                 {
                     abilityMeter.AquireAbilityPoints(1);
                     killsOutOfRequiredProgramming = 0;
                 }
+                else
+                {
+                    killsOutOfRequiredProgramming += 1;
+                }
             }
-        }
-        else
-        {
-            killsOutOfRequiredDesign++;
         }
     }
 
