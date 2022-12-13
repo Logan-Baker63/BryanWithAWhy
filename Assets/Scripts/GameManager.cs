@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -40,11 +41,38 @@ public class GameManager : MonoBehaviour
 
     public bool IsMoreThanOneEnemy() { return GameObject.FindGameObjectsWithTag("Enemy").Length > 1; }
 
+    bool hasSetWaveSettings = false;
+
+    // wave settings
+    float enemyTypeSpawnMin;
+    float enemyTypeSpawnMax;
+
+    float startingEnemiesMin;
+    float startingEnemiesMax;
+
+    float totalEnemiesOverTimeMin;
+    float totalEnemiesOverTimeMax;
+
+    float firstEnemySpawnDelayMin;
+    float firstEnemySpawnDelayMax;
+
+    float enemySpawnDelayMin;
+    float enemySpawnDelayMax;
+
+    float waveSpawnMultiplier;
+
+    float waveSpawnPercentChance;
+
+    float enemiesPerSpawnedWaveMin;
+    float enemiesPerSpawnedWaveMax;
+
     private void Start()
     {
         dontCollideEnemyLayer = LayerMask.NameToLayer("DontCollideEnemy");
         //waveCounter.SetActive(false);
         canvas = FindObjectOfType<Canvas>();
+
+        SetWaveSettings();
 
         CreateBoundaries();
 
@@ -145,12 +173,12 @@ public class GameManager : MonoBehaviour
     int totalEnemiesOverTime = 0;
     void SpawnEnemyWave()
     {
-        int startingEnemies = Random.Range(waveSettings.startingEnemiesMin, waveSettings.startingEnemiesMax + 1);
+        int startingEnemies = Random.Range((int)startingEnemiesMin, (int)startingEnemiesMax + 1);
         SpawnEnemiesRandomPos(startingEnemies);
 
-        totalEnemiesOverTime = Random.Range(waveSettings.totalEnemiesOverTimeMin, waveSettings.totalEnemiesOverTimeMax + 1);
+        totalEnemiesOverTime = Random.Range((int)totalEnemiesOverTimeMin, (int)totalEnemiesOverTimeMax + 1);
 
-        float firstEnemySpawnDelaySeconds = Random.Range(waveSettings.firstEnemySpawnDelayMin, waveSettings.firstEnemySpawnDelayMax);
+        float firstEnemySpawnDelaySeconds = Random.Range(firstEnemySpawnDelayMin, firstEnemySpawnDelayMax);
         StartCoroutine(SpawnEnemyAtDelay(firstEnemySpawnDelaySeconds));
     }
 
@@ -166,9 +194,23 @@ public class GameManager : MonoBehaviour
         totalEnemiesOverTime--;
         if (totalEnemiesOverTime > 0)
         {
-            SpawnEnemiesRandomPos(1);
+            float nextEnemySpawnDelaySeconds = Random.Range(enemySpawnDelayMin, enemySpawnDelayMax);
 
-            float nextEnemySpawnDelaySeconds = Random.Range(waveSettings.enemySpawnDelayMin, waveSettings.enemySpawnDelayMax);
+            int randIsWave = Random.Range(1, 101);
+
+            if (randIsWave <= waveSpawnPercentChance)
+            {
+                // spawn wave
+                SpawnEnemiesRandomPos(Random.Range((int)enemiesPerSpawnedWaveMin, (int)enemiesPerSpawnedWaveMax));
+
+                nextEnemySpawnDelaySeconds *= waveSpawnMultiplier;
+            }
+            else
+            {
+                // spawn single enemy
+                SpawnEnemiesRandomPos(1);
+            }
+            
             StartCoroutine(SpawnEnemyAtDelay(nextEnemySpawnDelaySeconds));
         }
     }
@@ -182,11 +224,74 @@ public class GameManager : MonoBehaviour
             currentWave++;
 
             GameObject temp = Instantiate(waveCounter, canvas.transform);
-            
+            temp.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = "Wave " + (currentWave - 1);
             temp.GetComponent<Animator>().Play("WaveComplete");
+
             pendingWaveEnd = false;
 
             SpawnEnemyWave();
+        }
+    }
+
+    public void SetWaveSettings()
+    {
+        if (!hasSetWaveSettings)
+        {
+            hasSetWaveSettings = true;
+
+            enemyTypeSpawnMin = waveSettings.enemyTypeSpawnMin;
+            enemyTypeSpawnMax = waveSettings.enemyTypeSpawnMax;
+
+            startingEnemiesMin = waveSettings.startingEnemiesMin;
+            startingEnemiesMax = waveSettings.startingEnemiesMax;
+
+            totalEnemiesOverTimeMin = waveSettings.totalEnemiesOverTimeMin;
+            totalEnemiesOverTimeMax = waveSettings.totalEnemiesOverTimeMax;
+
+            firstEnemySpawnDelayMin = waveSettings.firstEnemySpawnDelayMin;
+            firstEnemySpawnDelayMax = waveSettings.firstEnemySpawnDelayMax;
+
+            enemySpawnDelayMin = waveSettings.enemySpawnDelayMin;
+            enemySpawnDelayMax = waveSettings.enemySpawnDelayMax;
+
+            waveSpawnMultiplier = waveSettings.waveSpawnMultiplier;
+
+            waveSpawnPercentChance = waveSettings.waveSpawnPercentChance;
+
+            enemiesPerSpawnedWaveMin = waveSettings.enemiesPerSpawnedWaveMin;
+            enemiesPerSpawnedWaveMax = waveSettings.enemiesPerSpawnedWaveMax;
+        }
+        else
+        {
+            if (startingEnemiesMin + waveSettings.startingEnemiesIncreasePerWaveMin <= waveSettings.startingEnemiesCapMin)
+            {
+                startingEnemiesMin += waveSettings.startingEnemiesIncreasePerWaveMin;
+            }
+
+            if (startingEnemiesMax + waveSettings.startingEnemiesIncreasePerWaveMax <= waveSettings.startingEnemiesCapMax)
+            {
+                startingEnemiesMax += waveSettings.startingEnemiesIncreasePerWaveMax;
+            }
+
+            if (totalEnemiesOverTimeMin + waveSettings.totalEnemiesOverTimeMinIncreasePerWave <= waveSettings.totalEnemiesOverTimeCapMin)
+            {
+                totalEnemiesOverTimeMin += waveSettings.totalEnemiesOverTimeMinIncreasePerWave;
+            }
+
+            if (totalEnemiesOverTimeMax + waveSettings.totalEnemiesOverTimeMaxIncreasePerWave <= waveSettings.totalEnemiesOverTimeCapMax)
+            {
+                totalEnemiesOverTimeMax += waveSettings.totalEnemiesOverTimeMaxIncreasePerWave;
+            }
+
+            if (enemySpawnDelayMin + waveSettings.enemySpawnDelayDecreasePerWaveMin <= waveSettings.enemySpawnDelayCapMin)
+            {
+                enemySpawnDelayMin -= waveSettings.enemySpawnDelayDecreasePerWaveMin;
+            }
+
+            if (enemySpawnDelayMax + waveSettings.enemySpawnDelayDecreasePerWaveMax <= waveSettings.enemySpawnDelayCapMax)
+            {
+                enemySpawnDelayMax -= waveSettings.enemySpawnDelayDecreasePerWaveMax;
+            }
         }
     }
 }
