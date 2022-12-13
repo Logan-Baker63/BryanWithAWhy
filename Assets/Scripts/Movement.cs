@@ -5,7 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public bool canMove = true;
-    [SerializeField] protected float movementSpeed = 5;
+    public float movementSpeed = 5;
     protected Vector2 moveVelocity;
 
     public Vector2 GetMoveVelocity() { return moveVelocity; }

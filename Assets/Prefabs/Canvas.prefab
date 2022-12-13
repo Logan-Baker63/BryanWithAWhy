@@ -489,6 +489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4885412991792858262}
+  - component: {fileID: 1982264584888773413}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -526,6 +527,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 16.655945}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1982264584888773413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150802703363311960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 10
 --- !u!1 &157501107197638687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1793,7 +1816,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6866416682150494115}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8062546292967111187}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &624461839237599663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,6 +1958,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2269791491597249969}
+  - component: {fileID: 7834900272584210673}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -1960,6 +1996,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7834900272584210673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635446431175284631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 3
 --- !u!1 &648800598937279495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3704,6 +3762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2070854560618167876}
+  - component: {fileID: 6423117736705606907}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -3741,6 +3800,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 16.655945}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6423117736705606907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917208962042416592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 8
 --- !u!1 &1036561509350259130
 GameObject:
   m_ObjectHideFlags: 0
@@ -6234,7 +6315,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4441830219976082046}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8659024281642764748}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1840998025252167158
 GameObject:
   m_ObjectHideFlags: 0
@@ -6244,6 +6337,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8671874743499881974}
+  - component: {fileID: 4433617598521400111}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -6281,6 +6375,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 16.655945}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &4433617598521400111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1840998025252167158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 11
 --- !u!1 &1875922591148530573
 GameObject:
   m_ObjectHideFlags: 0
@@ -6290,6 +6406,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2624507974721986751}
+  - component: {fileID: 5721352933361521888}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -6327,6 +6444,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 16.439634}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5721352933361521888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875922591148530573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 5
 --- !u!1 &1880511383612302352
 GameObject:
   m_ObjectHideFlags: 0
@@ -7543,6 +7682,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 925774597448200116}
+  - component: {fileID: 8659024281642764748}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -7580,6 +7720,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 16.655945}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8659024281642764748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2447867801536016976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 9
 --- !u!1 &2478806319770990942
 GameObject:
   m_ObjectHideFlags: 0
@@ -8811,6 +8973,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 953775360923098900}
+  - component: {fileID: 2348717705000699095}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -8848,6 +9011,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 17.088568}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2348717705000699095
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3170610003362470156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 4
 --- !u!1 &3174494853057708267
 GameObject:
   m_ObjectHideFlags: 0
@@ -9486,7 +9671,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3443162295111164028}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5721352933361521888}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3250686345303944986
 GameObject:
   m_ObjectHideFlags: 0
@@ -9496,6 +9693,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6410678033536838696}
+  - component: {fileID: 6252877306203019755}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -9533,6 +9731,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6252877306203019755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3250686345303944986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 2
 --- !u!1 &3263261595488671881
 GameObject:
   m_ObjectHideFlags: 0
@@ -9852,7 +10072,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4941831755570954238}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1982264584888773413}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3422393762065737526
 GameObject:
   m_ObjectHideFlags: 0
@@ -14577,7 +14809,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5326692746061799612}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7834900272584210673}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4883262329690884469
 GameObject:
   m_ObjectHideFlags: 0
@@ -16720,7 +16964,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1835013687325464236}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6423117736705606907}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5550176620338246608
 GameObject:
   m_ObjectHideFlags: 0
@@ -17643,7 +17899,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6545739585993107485}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 166651016912855141}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5967114324672985400
 GameObject:
   m_ObjectHideFlags: 0
@@ -18263,6 +18531,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 528473950826677939}
+  - component: {fileID: 5595412213086241554}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -18300,6 +18569,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5595412213086241554
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6034507606254827823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 1
 --- !u!1 &6093585572238312530
 GameObject:
   m_ObjectHideFlags: 0
@@ -19803,6 +20094,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3690935414507304583}
+  - component: {fileID: 8062546292967111187}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -19840,6 +20132,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 17.088568}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8062546292967111187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6453850907040696820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 7
 --- !u!1 &6467406719412352291
 GameObject:
   m_ObjectHideFlags: 0
@@ -20838,7 +21152,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4786416305676468282}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5595412213086241554}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6989894732362607177
 GameObject:
   m_ObjectHideFlags: 0
@@ -21357,7 +21683,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4614880582803643403}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6252877306203019755}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7242479949717005241
 GameObject:
   m_ObjectHideFlags: 0
@@ -23225,7 +23563,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9215005245244822730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4433617598521400111}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7833453502877648514
 GameObject:
   m_ObjectHideFlags: 0
@@ -23355,6 +23705,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4084432005580248402}
+  - component: {fileID: 166651016912855141}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -23392,6 +23743,28 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &166651016912855141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7855331292438383313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
+  attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
+  attributeType: 6
 --- !u!1 &7895093838395872153
 GameObject:
   m_ObjectHideFlags: 0
@@ -25537,7 +25910,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7870963090959317169}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2348717705000699095}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8700706873508082790
 GameObject:
   m_ObjectHideFlags: 0
