@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyBig
   m_EditorClassIdentifier: 
   prefab: {fileID: 6983336240316600048, guid: 8f75957484564b548ac6a61d46f309b8, type: 3}
-  ratioWeight: 1
+  rarity: 2

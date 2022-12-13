@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyRanged
   m_EditorClassIdentifier: 
   prefab: {fileID: 6983336240316600048, guid: dbe0ba0c54197f2429649dea5afd3586, type: 3}
-  ratioWeight: 1
+  rarity: 1
