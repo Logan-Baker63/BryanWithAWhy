@@ -290,8 +290,9 @@ public class DevMode : MonoBehaviour
                         else if (CheckCommand("HyperPunch(", ");"))
                         {
                             Debug.Log("Cooldown on melee attacks is reduced to 0.1 for 3 + (" + pointsAssigned + " x 2) seconds");
+                            GetComponent<Attack>().AquireHyperPunch(pointsAssigned);
 
-                            //programmingMeter.SpendAbilityPoints(pointsAssigned);
+                            programmingMeter.SpendAbilityPoints(pointsAssigned);
                         }
 
                         programmingInputField.text = "";

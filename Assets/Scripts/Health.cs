@@ -115,8 +115,6 @@ public class Health : MonoBehaviour
         }
     }
 
-    
-
     public virtual void Die()
     {
         if (!gameManager.IsMoreThanOneEnemy() && gameObject.tag != "Wall")
