@@ -9,7 +9,7 @@ public class AbilityMeter : MonoBehaviour
     [SerializeField] Color aquiredColour;
     [SerializeField] Color highlightedColour;
 
-    int abilityPoints = 3;
+    public int abilityPoints = 3;
     AbilityCounter abilityCounter;
 
     [SerializeField] List<Image> abilitySlots;
