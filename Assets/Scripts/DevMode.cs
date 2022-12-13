@@ -255,6 +255,22 @@ public class DevMode : MonoBehaviour
                         {
                             Debug.Log("Time slowed by " + pointsAssigned);
                         }
+                        else if(CheckCommand("Bomb(", ");"))
+                        {
+                            Debug.Log("Dropped bomb of range " + pointsAssigned);
+                        }
+                        else if (CheckCommand("bullet.pierce = ", ";"))
+                        {
+                            Debug.Log("Bullets temporarily pierce targets, retaining " + pointsAssigned + "% of their original damage");
+                        }
+                        else if (CheckCommand("bullet.explosionPower = ", ";"))
+                        {
+                            Debug.Log("Bullets temporarily explode on collision, dealing 2 x " + pointsAssigned + " damage");
+                        }
+                        else if (CheckCommand("HyperPunch(", ");"))
+                        {
+                            Debug.Log("Cooldown on melee attacks is reduced to 0.1 for 3 + (" + pointsAssigned + " x 2) seconds");
+                        }
 
                         programmingInputField.text = "";
                         ExitDevMode();
