@@ -249,11 +249,33 @@ public class DevMode : MonoBehaviour
                     {
                         if (CheckCommand("hp += ", ";"))
                         {
-                            Debug.Log("HP increased by " + pointsAssigned);
+                            GetComponent<Health>().currentHealth += ((float)pointsAssigned / 20) * GetComponent<Health>().maxHealth;
+                            if(GetComponent<Health>().currentHealth > GetComponent<Health>().maxHealth)
+                            {
+                                GetComponent<Health>().currentHealth = GetComponent<Health>().maxHealth;
+                            }
+                            FindObjectOfType<HealthBar>().UpdateHealthBar();
+                            programmingMeter.SpendAbilityPoints(pointsAssigned);
                         }
                         else if (CheckCommand("time.Slow(", ");"))
                         {
                             Debug.Log("Time slowed by " + pointsAssigned);
+                        }
+                        else if(CheckCommand("Bomb(", ");"))
+                        {
+                            Debug.Log("Dropped bomb of range " + pointsAssigned);
+                        }
+                        else if (CheckCommand("bullet.pierce = ", ";"))
+                        {
+                            Debug.Log("Bullets temporarily pierce targets, retaining " + pointsAssigned + "% of their original damage");
+                        }
+                        else if (CheckCommand("bullet.explosionPower = ", ";"))
+                        {
+                            Debug.Log("Bullets temporarily explode on collision, dealing 2 x " + pointsAssigned + " damage");
+                        }
+                        else if (CheckCommand("HyperPunch(", ");"))
+                        {
+                            Debug.Log("Cooldown on melee attacks is reduced to 0.1 for 3 + (" + pointsAssigned + " x 2) seconds");
                         }
 
                         programmingInputField.text = "";
@@ -293,7 +315,7 @@ public class DevMode : MonoBehaviour
                 }
             }
 
-            if (pointsAssigned != 0)
+            if (pointsAssigned > 0 && pointsAssigned <= programmingMeter.abilityPoints)
             {
                 return true;
             }

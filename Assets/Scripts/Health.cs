@@ -36,7 +36,7 @@ public class Health : MonoBehaviour
 
                 if (collidedBullet.owner.GetComponent<PlayerAttack>())
                 {
-                    collidedBullet.owner.GetComponent<PlayerAttack>().AddKill();
+                    collidedBullet.owner.GetComponent<PlayerAttack>().AddKill(true);
                 }
 
                 healthBar.UpdateHealthBar();
@@ -87,6 +87,7 @@ public class Health : MonoBehaviour
                     }
 
                     attacker.GetComponent<PlayerAttack>().SetEnemiesInRange(enemies);
+                    attacker.GetComponent<PlayerAttack>().AddKill(false);
                 }
 
                 healthBar.UpdateHealthBar();

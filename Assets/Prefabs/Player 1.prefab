@@ -674,8 +674,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866c9de454e4b114ea938bcdb910fd7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 100
+  maxHealth: 200
+  currentHealth: 200
   bloodParticlePrefab: {fileID: 508959203543866140, guid: 45ee11f1eca5f634ca8d58cb76db18d9, type: 3}
 --- !u!95 &3841437563061100719
 Animator:
@@ -708,7 +708,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0cd2fe5f11d0de4e8d74abace7006d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowness: 10
   brush: {fileID: 5292117413414553659, guid: 0555de70fd603514aa709882c46ffc7e, type: 3}
   lineDist: 0
   lengthBeforeUseConsumed: 5
