@@ -268,7 +268,9 @@ public class DevMode : MonoBehaviour
                         }
                         else if (CheckCommand("bullet.pierce = ", ";"))
                         {
-                            Debug.Log("Bullets temporarily pierce targets, retaining " + pointsAssigned + "% of their original damage");
+                            GetComponent<Attack>().SetPiercingLength(pointsAssigned * 2.5f);
+                            GetComponent<Attack>().SetPiercingStrength(50 + (pointsAssigned * 5)); // out of 100%
+                            GetComponent<Attack>().SetPiercing(true);
                         }
                         else if (CheckCommand("bullet.explosionPower = ", ";"))
                         {

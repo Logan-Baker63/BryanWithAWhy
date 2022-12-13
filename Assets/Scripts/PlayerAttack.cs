@@ -69,6 +69,18 @@ public class PlayerAttack : Attack
 
     protected override void OnUpdate()
     {
+        base.OnUpdate();
+
+        if (usePiercing)
+        {
+            piercingTimer += Time.deltaTime;
+
+            if (piercingTimer >= piercingLength)
+            {
+                SetPiercing(false);
+            }
+        }
+
         if (doMelee)
         {
             Melee();

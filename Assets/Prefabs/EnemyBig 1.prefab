@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 6983336240316599949}
   - component: {fileID: 6983336240316599950}
   - component: {fileID: 6983336240316599951}
+  - component: {fileID: 4968201092417688398}
   m_Layer: 10
   m_Name: EnemyBig 1
   m_TagString: Untagged
@@ -126,7 +127,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6983336240316600048}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.4692, y: -0.034043, z: 0}
   m_LocalScale: {x: 1.6, y: 1.6, z: 1}
   m_Children:
   - {fileID: 3220024869711573487}
@@ -235,6 +236,25 @@ PolygonCollider2D:
       - {x: 0.09375, y: -0.49609375}
       - {x: 0.14453125, y: -0.484375}
       - {x: 0.19921875, y: -0.46875}
+--- !u!95 &4968201092417688398
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6983336240316600048}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2ea5effd1ab6fe54892c08bda603fa81, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7390637732642309490
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,6 +402,12 @@ MonoBehaviour:
   meleeDamage: 15
   canAttack: 1
   meleeDelay: 0
+  doMelee: 0
+  doShoot: 0
+  maxBulletAmount: 10
+  bulletAmount: 1
+  spreadAngle: 20
+  bulletSpeed: 200
   meleeDelayTime: 0.4
 --- !u!114 &574012776415618277
 MonoBehaviour:

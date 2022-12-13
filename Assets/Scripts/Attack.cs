@@ -25,6 +25,10 @@ public class Attack : MonoBehaviour
         {
             bulletAmount = _bulletAmount;
         }
+        else
+        {
+            bulletAmount = maxBulletAmount;
+        }
     }
     public int GetBulletAmount() { return bulletAmount;}
 
@@ -32,6 +36,18 @@ public class Attack : MonoBehaviour
     [SerializeField] private float spreadAngle = 20;
 
     [SerializeField] public float bulletSpeed = 200;
+
+    protected bool usePiercing = false;
+    protected float piercingLength = 0;
+    protected float piercingStrength = 0;
+    protected float piercingTimer = 0;
+    public void SetPiercing(bool ToF) 
+    { 
+        usePiercing = ToF;
+        piercingTimer = 0;
+    }
+    public void SetPiercingLength(float _lengthSeconds) { piercingLength = _lengthSeconds;}
+    public void SetPiercingStrength(float _percentDamageRetainedAfterHit) { piercingStrength = _percentDamageRetainedAfterHit; }
 
     public Coroutine cooldownRoutine;
 
@@ -54,7 +70,7 @@ public class Attack : MonoBehaviour
 
     protected virtual void OnUpdate()
     {
-
+        
     }
 
     protected virtual void OnAwake()
@@ -98,11 +114,24 @@ public class Attack : MonoBehaviour
                 bulletInstance.GetComponent<Projectile>().projectileSpeed = bulletSpeed;
                 //Debug.Log((bulletDamage * (bulletAmountDamageIncreaseMulti * (bulletAmount - 1))) / bulletAmount);
                 bulletInstance.GetComponent<Projectile>().SetDamage(bulletDamage / bulletAmount);
+
+                if (usePiercing)
+                {
+                    bulletInstance.GetComponent<Projectile>().SetPiercing(true);
+                    bulletInstance.GetComponent<Projectile>().SetPiercingStrength(piercingStrength);
+                }
             }
             
             manager.PlaySound(0);
             cooldownRoutine = StartCoroutine(ShootCooldown());
         }
+    }
+
+    IEnumerator ActivatePiercing(float _timeToDeactivate)
+    {
+        yield return new WaitForSeconds(_timeToDeactivate);
+
+        usePiercing = false;
     }
 
     protected virtual void Melee()

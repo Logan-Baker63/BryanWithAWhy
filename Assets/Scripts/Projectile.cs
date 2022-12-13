@@ -13,6 +13,13 @@ public class Projectile : MonoBehaviour
     [SerializeField] int defaultDamage;
     [SerializeField] public bool playerBullet;
 
+    bool usePiercing = false;
+    float piercingStrength = 0;
+    public void SetPiercing(bool ToF) { usePiercing = ToF; }
+    public void SetPiercingStrength(float _percentDamageRetainedAfterHit) { piercingStrength = _percentDamageRetainedAfterHit; }
+
+    List<GameObject> targetsHit = new List<GameObject>();
+
     float slowness = 1;
     public void SetSlowness(float _slownessDivider) { slowness = _slownessDivider; }
 
@@ -48,26 +55,37 @@ public class Projectile : MonoBehaviour
     {
         if (other.transform.tag != "Bullet")
         {
-            if(other.tag == "Wall")
+            if (!targetsHit.Contains(other.gameObject))
             {
-                other.GetComponent<Health>().TakeDamage(damage, this);
-            }
-            else if (other.tag == "Enemy")
-            {
-                if (playerBullet)
+                if (other.tag == "Wall")
                 {
                     other.GetComponent<Health>().TakeDamage(damage, this);
                 }
-            }
-            else if (other.tag == "Player")
-            {
-                if (!playerBullet)
+                else if (other.tag == "Enemy")
                 {
-                    other.GetComponent<Health>().TakeDamage(damage, this);
+                    if (playerBullet)
+                    {
+                        other.GetComponent<Health>().TakeDamage(damage, this);
+                    }
+                }
+                else if (other.tag == "Player")
+                {
+                    if (!playerBullet)
+                    {
+                        other.GetComponent<Health>().TakeDamage(damage, this);
+                    }
                 }
             }
-
-            Destroy(gameObject);
+            
+            if (!usePiercing)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                targetsHit.Add(gameObject);
+                damage = (piercingStrength * damage) / 100;
+            }
         }
     }
 }
