@@ -67,7 +67,7 @@ public class PlayerAttack : Attack
         rollParticle = GameObject.FindGameObjectWithTag("RollParticle").GetComponent<ParticleSystem>();
     }
 
-    private void Update()
+    protected override void OnUpdate()
     {
         if (doMelee)
         {
