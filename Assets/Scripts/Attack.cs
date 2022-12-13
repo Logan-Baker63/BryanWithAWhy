@@ -17,6 +17,13 @@ public class Attack : MonoBehaviour
     [HideInInspector] public bool doMelee = false;
     [HideInInspector] public bool doShoot = false;
 
+    [SerializeField] int maxBulletAmount = 10;
+    [SerializeField] int bulletAmount = 1;
+    [SerializeField] float bulletAmountDamageIncreaseMulti = 1.3f;
+
+    [Range(0, 360)]
+    [SerializeField] private float spreadAngle = 20;
+
     [SerializeField] public float bulletSpeed = 200;
 
     public Coroutine cooldownRoutine;
@@ -47,28 +54,41 @@ public class Attack : MonoBehaviour
     {
         if (canAttack)
         {
-            GameObject bulletInstance = Instantiate(bullet, spawnPos.position, transform.rotation);
-            bulletInstance.GetComponent<Projectile>().SetDir(-transform.right);
+            float angleStep = spreadAngle / bulletAmount;
+            float aimingAngle = transform.rotation.eulerAngles.z;
+            float centeringOffset = (spreadAngle / 2) - (angleStep / 2); //offsets every projectile so the spread is
 
-            bulletInstance.GetComponent<Projectile>().owner = gameObject;
-            if (gameObject.tag == "Player")
+            for (int i = 0; i < bulletAmount; i++)
             {
-                bulletInstance.GetComponent<Projectile>().playerBullet = true;
-                gameObject.GetComponent<PlayerAttack>().canRoll = true;
-                gameObject.GetComponent <PlayerAttack>().rollStopCoroutine = null;
-                //gameObject.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
-                transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
-            }
-            else
-            {
-                bulletInstance.GetComponent<Projectile>().playerBullet = false;
-                bulletInstance.layer = 6;
-                bulletInstance.transform.localScale *= 2;
-            }
+                float currentBulletAngle = angleStep * i;
 
-            bulletInstance.GetComponent<Projectile>().projectileSpeed = bulletSpeed;
+                Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, aimingAngle + currentBulletAngle - centeringOffset));
 
-            bulletInstance.GetComponent<Projectile>().SetDamage(bulletDamage);
+                GameObject bulletInstance = Instantiate(bullet, spawnPos.position, rotation/*transform.rotation*/);
+                bulletInstance.GetComponent<Projectile>().SetDir(-bulletInstance.transform.right);
+
+                bulletInstance.GetComponent<Projectile>().owner = gameObject;
+                if (gameObject.tag == "Player")
+                {
+                    bulletInstance.GetComponent<Projectile>().playerBullet = true;
+                    gameObject.GetComponent<PlayerAttack>().canRoll = true;
+                    gameObject.GetComponent<PlayerAttack>().rollStopCoroutine = null;
+                    //gameObject.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
+                    transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
+                }
+                else
+                {
+                    bulletInstance.GetComponent<Projectile>().playerBullet = false;
+                    bulletInstance.layer = 6;
+                    bulletInstance.transform.localScale *= 2;
+                }
+
+                bulletInstance.GetComponent<Projectile>().projectileSpeed = bulletSpeed;
+                Debug.Log((bulletDamage * bulletAmountDamageIncreaseMulti) / bulletAmount);
+                //Debug.Log((bulletDamage * (bulletAmountDamageIncreaseMulti * (bulletAmount - 1))) / bulletAmount);
+                bulletInstance.GetComponent<Projectile>().SetDamage(bulletDamage / bulletAmount);
+            }
+            
             manager.PlaySound(0);
             cooldownRoutine = StartCoroutine(ShootCooldown());
         }
