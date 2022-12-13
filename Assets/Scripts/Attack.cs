@@ -58,6 +58,11 @@ public class Attack : MonoBehaviour
     public List<GameObject> GetEnemiesInRange() { return enemiesInMeleeRange; }
     public void SetEnemiesInRange(List<GameObject> _enemiesInMeleeRange) { enemiesInMeleeRange = _enemiesInMeleeRange; }
 
+    float speedUpMultiplier = 1;
+
+    public float GetSpeedUpMultiplier() { return speedUpMultiplier; }
+    public void SetSpeeUpMultiplier(float _speedUpMultiplier) { speedUpMultiplier = _speedUpMultiplier;}
+
     protected void Awake()
     {
         OnAwake();

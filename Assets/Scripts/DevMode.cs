@@ -260,25 +260,35 @@ public class DevMode : MonoBehaviour
                         }
                         else if (CheckCommand("time.Slow(", ");"))
                         {
-                            Debug.Log("Time slowed by " + pointsAssigned);
+                            //Debug.Log("Time slowed by " + pointsAssigned);
+
+                            //programmingMeter.SpendAbilityPoints(pointsAssigned);
                         }
                         else if(CheckCommand("Bomb(", ");"))
                         {
-                            Debug.Log("Dropped bomb of range " + pointsAssigned);
+                            GetComponent<PlayerAttack>().ReleaseBomb(pointsAssigned);
+
+                            programmingMeter.SpendAbilityPoints(pointsAssigned);
                         }
                         else if (CheckCommand("bullet.pierce = ", ";"))
                         {
                             GetComponent<Attack>().SetPiercingLength(pointsAssigned * 2.5f);
                             GetComponent<Attack>().SetPiercingStrength(50 + (pointsAssigned * 5)); // out of 100%
                             GetComponent<Attack>().SetPiercing(true);
+
+                            programmingMeter.SpendAbilityPoints(pointsAssigned);
                         }
                         else if (CheckCommand("bullet.explosionPower = ", ";"))
                         {
-                            Debug.Log("Bullets temporarily explode on collision, dealing 2 x " + pointsAssigned + " damage");
+                            //Debug.Log("Bullets temporarily explode on collision, dealing 2 x " + pointsAssigned + " damage");
+
+                            //programmingMeter.SpendAbilityPoints(pointsAssigned);
                         }
                         else if (CheckCommand("HyperPunch(", ");"))
                         {
                             Debug.Log("Cooldown on melee attacks is reduced to 0.1 for 3 + (" + pointsAssigned + " x 2) seconds");
+
+                            //programmingMeter.SpendAbilityPoints(pointsAssigned);
                         }
 
                         programmingInputField.text = "";
