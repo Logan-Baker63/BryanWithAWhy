@@ -647,6 +647,11 @@ MonoBehaviour:
   meleeDamage: 15
   canAttack: 1
   meleeDelay: 0
+  doMelee: 0
+  doShoot: 0
+  maxBulletAmount: 10
+  bulletAmount: 1
+  spreadAngle: 46
   bulletSpeed: 600
   rollCooldown: 0.35
   rollSpeed: 0.25
@@ -662,6 +667,7 @@ MonoBehaviour:
   staminaJailTime: 0
   rollParticle: {fileID: 1976449808341968486, guid: 9753812d600cb2042bd2655c6ad07898, type: 3}
   amountOfKillsForAbilityPoint: 4
+  amountOfDodgesForAbilityPoint: 2
 --- !u!114 &3632171877684350751
 MonoBehaviour:
   m_ObjectHideFlags: 0
