@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  movementSpeed: 125
+  movementSpeed: 150
   minFollowDist: 2
 --- !u!114 &8590968288421989901
 MonoBehaviour:
@@ -1285,8 +1285,10 @@ MonoBehaviour:
   shootCooldown: 0.6
   meleeCooldown: 0.9
   bulletDamage: 10
-  meleeDamage: 15
+  meleeDamage: 5
   canAttack: 1
+  meleeDelay: 0
+  meleeDelayTime: 0.3
 --- !u!114 &2798982700730077809
 MonoBehaviour:
   m_ObjectHideFlags: 0

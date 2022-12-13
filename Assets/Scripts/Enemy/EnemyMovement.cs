@@ -25,10 +25,13 @@ public class EnemyMovement : Movement
             // movement
             if ((player.position - transform.position).magnitude > minFollowDist || !transform.Find("OffScreenCheck").GetComponent<Renderer>().isVisible)
             {
-                GetComponent<EnemyState>().SetState(0);
-                moveVelocity = (player.position - transform.position).normalized * movementSpeed * Time.fixedDeltaTime;
-                //transform.GetComponent<Rigidbody2D>().velocity = moveVelocity / slowness;
-                transform.parent.GetComponent<Rigidbody2D>().velocity = moveVelocity / slowness;
+                if(GetComponent<EnemyAttack>().meleeDelay <= 0)
+                {
+                    GetComponent<EnemyState>().SetState(0);
+                    moveVelocity = (player.position - transform.position).normalized * movementSpeed * Time.fixedDeltaTime;
+                    //transform.GetComponent<Rigidbody2D>().velocity = moveVelocity / slowness;
+                    transform.parent.GetComponent<Rigidbody2D>().velocity = moveVelocity / slowness;
+                }
             }
             else
             {

@@ -1128,8 +1128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  movementSpeed: 60
-  minFollowDist: 10
+  movementSpeed: 70
+  minFollowDist: 12
 --- !u!114 &5980960495427582182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,8 +1142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 866c9de454e4b114ea938bcdb910fd7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  currentHealth: 20
+  maxHealth: 15
+  currentHealth: 15
   bloodParticlePrefab: {fileID: 508959203543866140, guid: 45ee11f1eca5f634ca8d58cb76db18d9, type: 3}
 --- !u!114 &8708235315476516176
 MonoBehaviour:
@@ -1177,6 +1177,8 @@ MonoBehaviour:
   bulletDamage: 10
   meleeDamage: 15
   canAttack: 1
+  meleeDelay: 0
+  meleeDelayTime: 0.4
 --- !u!95 &8811606599270840609
 Animator:
   serializedVersion: 3

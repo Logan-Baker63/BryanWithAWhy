@@ -13,6 +13,7 @@ public class Attack : MonoBehaviour
     [SerializeField] protected float meleeDamage = 15;
 
     [HideInInspector] public bool canAttack = true;
+    [HideInInspector] public float meleeDelay = 0f;
     
     public Coroutine cooldownRoutine;
 
@@ -53,7 +54,7 @@ public class Attack : MonoBehaviour
             {
                 bulletInstance.GetComponent<Projectile>().playerBullet = false;
                 bulletInstance.layer = 6;
-                bulletInstance.GetComponent<Projectile>().projectileSpeed = 180;
+                bulletInstance.GetComponent<Projectile>().projectileSpeed = 200;
                 bulletInstance.transform.localScale *= 2;
             }
 
@@ -65,7 +66,11 @@ public class Attack : MonoBehaviour
 
     protected virtual void Melee()
     {
-        if (canAttack)
+        if (meleeDelay > 0)
+        {
+            meleeDelay -= Time.deltaTime;
+        }
+        if (canAttack && meleeDelay <= 0)
         {
             try
             {
@@ -85,7 +90,10 @@ public class Attack : MonoBehaviour
             {
 
             }
-            
+            if (GetComponent<EnemyState>())
+            {
+                GetComponent<EnemyState>().SetState(0);
+            }
             GetComponent<Animator>().SetTrigger("Punch");
             //Play sound
             cooldownRoutine = StartCoroutine(MeleeCooldown());
