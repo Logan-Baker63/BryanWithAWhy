@@ -23,7 +23,7 @@ public class DrawnLine : MonoBehaviour
         lineRenderer.endColor = colour;
     }
 
-    public void GenerateLineCollider()
+    public void GenerateLineCollider(float pointsSpent)
     {
         // 2D line renderer mesh
 
@@ -34,8 +34,9 @@ public class DrawnLine : MonoBehaviour
             collider = gameObject.AddComponent<EdgeCollider2D>();
             gameObject.tag = "Wall";
             Health wallHealth = gameObject.AddComponent<Health>();
-            wallHealth.maxHealth = 200;
-            wallHealth.currentHealth = 200;
+            Debug.Log(pointsSpent);
+            wallHealth.maxHealth = 60 * (int)pointsSpent;
+            wallHealth.currentHealth = wallHealth.maxHealth;
         }
 
         List<Vector2> edges = new List<Vector2>();
