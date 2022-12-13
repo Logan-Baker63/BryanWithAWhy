@@ -1972,13 +1972,14 @@ GameObject:
   - component: {fileID: 241135794314431602}
   - component: {fileID: 885633908251707342}
   - component: {fileID: 1495072521}
+  - component: {fileID: 2974318634927025392}
   m_Layer: 5
   m_Name: DesignBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1114139092433306620
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2064,6 +2065,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c453b08da7bc37419c50cd43036bbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2974318634927025392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 648800598937279495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df73afbfd8fbfe244842db1a1f39d825, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetButton: {fileID: 5757091430553480349}
+  confirmButton: {fileID: 5808280254675855487}
+  potentialPoints: 0
+  attributeMeters: []
+  designMeter: {fileID: 0}
+  pointDisplay: {fileID: 0}
 --- !u!1 &859408763229188669
 GameObject:
   m_ObjectHideFlags: 0
@@ -7346,7 +7365,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6130315726584230387}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2974318634927025392}
+        m_TargetAssemblyTypeName: AttributeConfirm_Reset, Assembly-CSharp
+        m_MethodName: ResetButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2386468548637715853
 GameObject:
   m_ObjectHideFlags: 0
@@ -10075,7 +10106,7 @@ GameObject:
   - component: {fileID: 8243927442406811593}
   m_Layer: 5
   m_Name: PointDisplay
-  m_TagString: Untagged
+  m_TagString: PointDisplay
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15183,7 +15214,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 9041195358190967153}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2754139303781968476}
+        m_TargetAssemblyTypeName: AttributeMeter, Assembly-CSharp
+        m_MethodName: SpendPotentialPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5206781887522609194
 GameObject:
   m_ObjectHideFlags: 0
@@ -22435,10 +22478,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
   aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
-  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 0}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 1}
   attributePoints: 0
   attributeCounter: {fileID: 0}
+  slotsHighlighted: 0
   attributeSlots: []
+  overlordScript: {fileID: 0}
+  designMeter: {fileID: 0}
   attributeType: 0
 --- !u!1 &7643812500984836842
 GameObject:
@@ -24524,7 +24570,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 221123617482212192}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2974318634927025392}
+        m_TargetAssemblyTypeName: AttributeConfirm_Reset, Assembly-CSharp
+        m_MethodName: ConfirmButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8142843380897009159
 GameObject:
   m_ObjectHideFlags: 0

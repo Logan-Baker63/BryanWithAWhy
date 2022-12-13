@@ -141,6 +141,7 @@ public class DevMode : MonoBehaviour
                 EnterDevMode();
                 devType = DevType.Design;
                 designerScreen.SetActive(true);
+                designerScreen.GetComponent<AttributeConfirm_Reset>().PotentialPointsReset();
             }
             else
             {
