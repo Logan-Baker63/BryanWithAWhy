@@ -19,6 +19,7 @@ public class PlayerAttack : Attack
     [SerializeField] float staminaJailTime = 0;
     [SerializeField] ParticleSystem rollParticle;
     public Coroutine rollStopCoroutine = null;
+    public Coroutine rollCooldownRoutine = null;
 
     [SerializeField] int amountOfKillsForAbilityPoint = 4;
     [SerializeField] int amountOfDodgesForAbilityPoint = 2;
@@ -161,7 +162,7 @@ public class PlayerAttack : Attack
 
             rollStopCoroutine = StartCoroutine(RollStop());
             //Play sound
-            cooldownRoutine = StartCoroutine(RollCooldown());
+            rollCooldownRoutine = StartCoroutine(RollCooldown());
         }
     }
 
@@ -188,7 +189,7 @@ public class PlayerAttack : Attack
         yield return new WaitForSeconds(rollCooldown - (rollInv * rollCooldown));
         canRoll = true;
         playerMovement.canMove = true;
-        cooldownRoutine = null;
+        rollCooldownRoutine = null;
     }
 
     public void RollCatch()

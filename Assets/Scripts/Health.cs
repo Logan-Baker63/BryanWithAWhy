@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     [SerializeField] public float currentHealth = 100;
 
     [SerializeField] GameObject bloodParticlePrefab;
-    HealthBar healthBar;
+    [HideInInspector] public HealthBar healthBar;
     PlayerAttack playerAttack;
 
     GameManager gameManager;

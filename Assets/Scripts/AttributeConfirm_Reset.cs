@@ -46,7 +46,10 @@ public class AttributeConfirm_Reset : MonoBehaviour
     {
         foreach(AttributeMeter meter in attributeMeters)
         {
-            meter.SpendAttributePoints();
+            if(meter.slotsHighlighted > 0)
+            {
+                meter.SpendAttributePoints();
+            }
         }
         potentialPoints = designMeter.abilityPoints;
         UpdatePointDisplay();

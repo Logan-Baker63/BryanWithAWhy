@@ -77,6 +77,10 @@ public class AttributeMeter : MonoBehaviour
     public void ResetPointClaim()
     {
         int startingSlotID = attributePoints + slotsHighlighted - 1;
+        if(startingSlotID > attributeSlots.Count)
+        {
+            startingSlotID = attributeSlots.Count - 1;
+        }
         for (int i = startingSlotID; i >= attributePoints; i--)
         {
             attributeSlots[i].color = defaultColour;
@@ -96,6 +100,7 @@ public class AttributeMeter : MonoBehaviour
 
     public void SpendAttributePoints()
     {
+        int toAdd = slotsHighlighted;
         AcquireAttributePoints(slotsHighlighted);
         designMeter.abilityPoints -= slotsHighlighted;
         ResetPointClaim();
@@ -108,30 +113,80 @@ public class AttributeMeter : MonoBehaviour
         switch (attributeType)
         {
             case AttributeType.MaxHP:
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().maxHealth += 40;
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().currentHealth += 40;
+                for(int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().maxHealth += 40;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().currentHealth += 40;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<Health>().healthBar.UpdateHealthBar();
+                }
                 return;
             case AttributeType.MoveSpeed:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().movementSpeed += 28;
+                }
                 return;
             case AttributeType.ProjectileSpeed:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletSpeed += 80;
+                }
                 return;
             case AttributeType.RangedDamage:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletDamage += 3;
+                }
                 return;
             case AttributeType.ProjectileSize:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletScaleMultiplier += 0.18f;
+                }
                 return;
             case AttributeType.FireRate:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().shootCooldown -= 0.04f;
+                }
                 return;
             case AttributeType.ProjectileSpread:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().spreadAngle -= 5f;
+                }
                 return;
             case AttributeType.ProjectileAmount:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletAmount += 1;
+                }
                 return;
             case AttributeType.MeleeDamage:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().meleeDamage += 4.5f;
+                }
                 return;
             case AttributeType.Stamina:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().maxStamina += 2;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().currentStamina += 2;
+                }
                 return;
             case AttributeType.DodgeSpeed:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().rollSpeed -= 0.019f;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().rollSpeed -= 0.027f;
+                }
                 return;
             case AttributeType.DodgeInvulnerability:
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().rollInv += 0.04f;
+                }
                 return;
         }
 
