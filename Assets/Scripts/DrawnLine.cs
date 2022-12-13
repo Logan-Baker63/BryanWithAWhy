@@ -34,7 +34,6 @@ public class DrawnLine : MonoBehaviour
             collider = gameObject.AddComponent<EdgeCollider2D>();
             gameObject.tag = "Wall";
             Health wallHealth = gameObject.AddComponent<Health>();
-            Debug.Log(pointsSpent);
             wallHealth.maxHealth = 60 * (int)pointsSpent;
             wallHealth.currentHealth = wallHealth.maxHealth;
         }
