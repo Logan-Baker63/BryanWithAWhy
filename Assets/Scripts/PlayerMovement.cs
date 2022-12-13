@@ -20,6 +20,7 @@ public class PlayerMovement : Movement
 
     protected override void Move(Vector2 velocity)
     {
-        GetComponent<Rigidbody2D>().velocity = velocity;
+        //GetComponent<Rigidbody2D>().velocity = velocity;
+        transform.parent.GetComponent<Rigidbody2D>().velocity = velocity;
     }
 }

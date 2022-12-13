@@ -19,7 +19,8 @@ public class RotateToMouse : MonoBehaviour
 
         if (canRotate)
         {
-            GetComponent<Rigidbody2D>().MoveRotation(Quaternion.Euler(new Vector3(0f, 0f, angle)));
+            //GetComponent<Rigidbody2D>().MoveRotation(Quaternion.Euler(new Vector3(0f, 0f, angle)));
+            transform.parent.GetComponent<Rigidbody2D>().MoveRotation(Quaternion.Euler(new Vector3(0f, 0f, angle)));
         }
     }
 

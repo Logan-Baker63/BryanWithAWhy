@@ -109,7 +109,8 @@ public class GameManager : MonoBehaviour
                 if (randomWeight < enemyType.ratioWeight)
                 {
                     GameObject enemy = Instantiate(enemyType.prefab, FindEnemySpawnPos(), Quaternion.identity);
-                    enemy.GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
+                    //enemy.GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
+                    enemy.transform.GetChild(0).GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
                 }
                     
                 randomWeight -= enemyType.ratioWeight;
