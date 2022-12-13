@@ -30,10 +30,14 @@ public class PlayerAttack : Attack
     [SerializeField] float defaultBombDamage = 25;
     float bombDamage;
 
+    [SerializeField] float defaultBulletExplosionDamage = 10;
+    float bulletExplosionDamage;
+
     PlayerMovement playerMovement;
 
     [SerializeField] GameObject explosionParticlePrefab;
 
+    
     public void AddKill(bool ranged)
     {
         foreach (AbilityMeter abilityMeter in FindObjectsOfType<AbilityMeter>())
@@ -217,9 +221,14 @@ public class PlayerAttack : Attack
         //Play sound
     }
 
-    public void DealExplosionDamage(GameObject _targetToDamage)
+    public void DealBombExplosionDamage(GameObject _targetToDamage)
     {
         _targetToDamage.GetComponent<Health>().TakeDamage(bombDamage, this);
+    }
+
+    public void DealBulletExplosionDamage(GameObject _targetToDamage)
+    {
+        _targetToDamage.GetComponent<Health>().TakeDamage(bulletExplosionDamage, this);
     }
 
     public void ReleaseBomb(int _intensity)
@@ -227,7 +236,35 @@ public class PlayerAttack : Attack
         bombDamage = defaultBombDamage + (_intensity * 5);
         
         GameObject explosion = Instantiate(explosionParticlePrefab, transform.position, transform.rotation);
+        explosion.transform.GetChild(0).GetComponent<OnExplosionTrigger>().SetExplosionType(OnExplosionTrigger.ExplosionType.Bomb);
         explosion.transform.localScale = Vector3.one + (Vector3.one * ((float)_intensity / 10));
         explosion.GetComponent<ParticleSystem>().Play();
+    }
+
+    int bulletIntensity = 0;
+    public void ExplodeBullet(Projectile bullet)
+    {
+        bulletExplosionDamage = defaultBulletExplosionDamage + (bulletIntensity * 5);
+
+        GameObject explosion = Instantiate(explosionParticlePrefab, bullet.transform.position, transform.rotation);
+        explosion.transform.GetChild(0).GetComponent<OnExplosionTrigger>().SetExplosionType(OnExplosionTrigger.ExplosionType.BulletExplosion);
+        explosion.transform.localScale = (Vector3.one + (Vector3.one * ((float)bulletIntensity / 10))) / 5;
+        explosion.GetComponent<ParticleSystem>().Play();
+    }
+
+    public void AquireExplosiveBulletPowerUp(int _intensity)
+    {
+        bulletIntensity = _intensity;
+
+        StartCoroutine(ExplosiveBulletTime(3 * _intensity));
+    }
+
+    IEnumerator ExplosiveBulletTime(float _secondsTillTimeOut)
+    {
+        SetExplosiveBullets(true);
+
+        yield return new WaitForSeconds(_secondsTillTimeOut);
+
+        SetExplosiveBullets(false);
     }
 }
