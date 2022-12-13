@@ -179,7 +179,7 @@ public class AttributeMeter : MonoBehaviour
                 for (int i = 0; i < toAdd; i++)
                 {
                     GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().rollSpeed -= 0.019f;
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().rollSpeed -= 0.027f;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().rollCooldown -= 0.027f;
                 }
                 return;
             case AttributeType.DodgeInvulnerability:

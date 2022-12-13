@@ -10,7 +10,7 @@ public class EnemyAttack : Attack
     [SerializeField] float superJumpCooldown = 2f;
     [SerializeField] GameObject shockWaveParticlePrefab;
 
-    [SerializeField] float jumpAttackDamage = 20;
+    public float jumpAttackDamage = 20;
 
     GameObject superJumpColliderObject;
 

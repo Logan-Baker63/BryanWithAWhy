@@ -30,12 +30,12 @@ MonoBehaviour:
   startingEnemiesIncreasePerWaveMax: 0.3
   startingEnemiesCapMin: 4
   startingEnemiesCapMax: 7
-  totalEnemiesOverTimeMinIncreasePerWave: 0.5
-  totalEnemiesOverTimeMaxIncreasePerWave: 0.7
+  totalEnemiesOverTimeMinIncreasePerWave: 0.8
+  totalEnemiesOverTimeMaxIncreasePerWave: 1
   totalEnemiesOverTimeCapMin: 30
   totalEnemiesOverTimeCapMax: 50
-  enemySpawnDelayDecreasePerWaveMin: 0.02
-  enemySpawnDelayDecreasePerWaveMax: 0.05
-  enemySpawnDelayCapMin: 1
+  enemySpawnDelayDecreasePerWaveMin: 0.04
+  enemySpawnDelayDecreasePerWaveMax: 0.1
+  enemySpawnDelayCapMin: 0.5
   enemySpawnDelayCapMax: 1.6
   waveSpawnMultiDecreasePerWave: 0.05
