@@ -30,6 +30,8 @@ public class DevMode : MonoBehaviour
 
     float pointCost = 0;
 
+    TMP_InputField programmingInputField;
+
     public enum DevType
     {
         None,
@@ -58,6 +60,8 @@ public class DevMode : MonoBehaviour
                 artMeter = meter;
             }
         }
+
+        programmingInputField = programmerScreen.transform.Find("TextBox").GetComponent<TMP_InputField>();
     }
 
     public void HideDevUIs()
@@ -236,23 +240,71 @@ public class DevMode : MonoBehaviour
         currentLineRenderer.SetPosition(positionIndex, pointPos);
     }
 
+    int pointsAssigned = 0;
     public void Confirm(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            Debug.Log("pressed");
             if (devType == DevType.Programming)
             {
-                Debug.Log(devType);
                 if (programmerScreen.transform.Find("TextBox"))
                 {
-                    if (programmerScreen.transform.Find("TextBox").GetComponent<TMP_InputField>().isFocused)
+                    if (programmingInputField.isFocused)
                     {
-                        Debug.Log("hee");
+                        if (CheckCommand("hp += ", ";"))
+                        {
+                            Debug.Log("HP increased by " + pointsAssigned);
+                        }
+                        else if (CheckCommand("time.Slow(", ");"))
+                        {
+                            Debug.Log("Time slowed by " + pointsAssigned);
+                        }
+
+                        programmingInputField.text = "";
+                        ExitDevMode();
                     }
                 }
             }
         }
+    }
+
+    public bool CheckCommand(string _commandInput, string _endCommandInput)
+    {
+        pointsAssigned = 0;
+
+        if ((programmingInputField.text.Contains(_commandInput) && programmingInputField.text.Contains(_endCommandInput)) && programmingInputField.text[0] == _commandInput[0])
+        {
+            programmingInputField.text = programmingInputField.text.Replace(_commandInput, "");
+
+            try
+            {
+                pointsAssigned = int.Parse(programmingInputField.text);
+            }
+            catch
+            {
+                try
+                {
+                    if (programmingInputField.text[programmingInputField.text.Length - _endCommandInput.Length] == _endCommandInput[0])
+                    {
+                        programmingInputField.text = programmingInputField.text.Replace(_endCommandInput, "");
+
+                        pointsAssigned = int.Parse(programmingInputField.text);
+                    }
+                }
+                catch
+                {
+
+                }
+            }
+
+            if (pointsAssigned != 0)
+            {
+                return true;
+            }
+
+        }
+
+        return false;
     }
 
 }
