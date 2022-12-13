@@ -17,6 +17,13 @@ public class GameManager : MonoBehaviour
     Vector2 leftBottomCorner;
     Vector2 rightTopCorner;
 
+    int currentWave = 1;
+    [SerializeField] public GameObject waveCounter;
+
+    public Canvas canvas;
+
+    [SerializeField] bool pendingWaveEnd = false;
+
     [SerializeField] float slowness = 10;
     bool isGameSlow = false;
     public bool IsGameSlow() { return isGameSlow; }
@@ -29,9 +36,13 @@ public class GameManager : MonoBehaviour
         Time.fixedDeltaTime = 0.02f * _slowness;
     }
 
+    public bool IsMoreThanOneEnemy() { return GameObject.FindGameObjectsWithTag("Enemy").Length > 1; }
+
     private void Start()
     {
         dontCollideEnemyLayer = LayerMask.NameToLayer("DontCollideEnemy");
+        //waveCounter.SetActive(false);
+        canvas = FindObjectOfType<Canvas>();
 
         CreateBoundaries();
 
@@ -123,7 +134,7 @@ public class GameManager : MonoBehaviour
             {
                 enemy = Instantiate(enemyTypes[0].prefab, FindEnemySpawnPos(), Quaternion.identity);
             }
-            
+
             //enemy.GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
             enemy.transform.GetChild(0).GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
         }
@@ -143,6 +154,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator SpawnEnemyAtDelay(float _secondDelay)
     {
+        if (totalEnemiesOverTime - 1 <= 0)
+        {
+            pendingWaveEnd = true;
+        }
+        
         yield return new WaitForSeconds(_secondDelay);
 
         totalEnemiesOverTime--;
@@ -152,6 +168,21 @@ public class GameManager : MonoBehaviour
 
             float nextEnemySpawnDelaySeconds = Random.Range(waveSettings.enemySpawnDelayMin, waveSettings.enemySpawnDelayMax);
             StartCoroutine(SpawnEnemyAtDelay(nextEnemySpawnDelaySeconds));
+        }
+    }
+
+    public void WaveEnd()
+    {
+        if (pendingWaveEnd)
+        {
+            currentWave++;
+
+            GameObject temp = Instantiate(waveCounter, canvas.transform);
+            
+            temp.GetComponent<Animator>().Play("WaveComplete");
+            pendingWaveEnd = false;
+
+            SpawnEnemyWave();
         }
     }
 }
