@@ -171,8 +171,12 @@ public class DevMode : MonoBehaviour
     {
         if (currentLineRenderer)
         {
+            if(pointCost > artMeter.abilityPoints)
+            {
+                pointCost = artMeter.abilityPoints;
+            }
             artMeter.SpendAbilityPoints((int)pointCost);
-            currentLineRenderer.GetComponent<DrawnLine>().GenerateLineCollider();
+            currentLineRenderer.GetComponent<DrawnLine>().GenerateLineCollider(pointCost);
         }
 
         currentLineRenderer = null;
