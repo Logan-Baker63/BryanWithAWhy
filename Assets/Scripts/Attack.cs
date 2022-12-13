@@ -84,7 +84,6 @@ public class Attack : MonoBehaviour
                 }
 
                 bulletInstance.GetComponent<Projectile>().projectileSpeed = bulletSpeed;
-                Debug.Log((bulletDamage * bulletAmountDamageIncreaseMulti) / bulletAmount);
                 //Debug.Log((bulletDamage * (bulletAmountDamageIncreaseMulti * (bulletAmount - 1))) / bulletAmount);
                 bulletInstance.GetComponent<Projectile>().SetDamage(bulletDamage / bulletAmount);
             }
