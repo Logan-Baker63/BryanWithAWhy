@@ -199,7 +199,7 @@ public class Attack : MonoBehaviour
 
     public void AquireHyperPunch(float _intensity)
     {
-        hyperPunchMeleeCooldownSpeed = _intensity / 5;
+        hyperPunchMeleeCooldownSpeed = meleeCooldown - ((_intensity / 30));
         Debug.Log("cooldown speed: " + hyperPunchMeleeCooldownSpeed);
 
         StartCoroutine(HyperPunchDuration(3 + (_intensity * 2)));
