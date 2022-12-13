@@ -15,7 +15,7 @@ public class OnMeleeTrigger : MonoBehaviour
         }
         else
         {
-            if (other.tag == "Player")
+            if (other.tag == "Player" || other.tag == "Wall")
             {
                 transform.parent.GetComponent<Attack>().OnEnterMeleeTrigger(other.gameObject);
             }
@@ -34,7 +34,7 @@ public class OnMeleeTrigger : MonoBehaviour
         }
         else
         {
-            if (other.tag == "Player")
+            if (other.tag == "Player" || other.tag == "Wall")
             {
                 transform.parent.GetComponent<Attack>().OnExitMeleeTrigger(other.gameObject);
             }

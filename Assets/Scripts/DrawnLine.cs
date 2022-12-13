@@ -20,6 +20,7 @@ public class DrawnLine : MonoBehaviour
         if (!collider)
         {
             collider = gameObject.AddComponent<EdgeCollider2D>();
+            gameObject.tag = "Wall";
         }
 
         List<Vector2> edges = new List<Vector2>();
