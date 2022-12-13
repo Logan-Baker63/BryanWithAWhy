@@ -25,14 +25,18 @@ public class PlayerAttack : Attack
 
     PlayerMovement playerMovement;
 
-    public void AddKill()
+    public void AddKill(bool ranged)
     {
         if (killsOutOfRequired + 1 >= amountOfKillsForAbilityPoint)
         {
             killsOutOfRequired = 0;
             foreach (AbilityMeter abilityMeter in FindObjectsOfType<AbilityMeter>())
             {
-                if (abilityMeter.abilityType == AbilityMeter.AbilityType.Art)
+                if (abilityMeter.abilityType == AbilityMeter.AbilityType.Design && ranged)
+                {
+                    abilityMeter.AquireAbilityPoints(1);
+                }
+                else if (abilityMeter.abilityType == AbilityMeter.AbilityType.Programming && !ranged)
                 {
                     abilityMeter.AquireAbilityPoints(1);
                 }
