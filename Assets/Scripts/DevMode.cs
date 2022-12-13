@@ -23,9 +23,11 @@ public class DevMode : MonoBehaviour
     AbilityMeter programmingMeter;
     AbilityMeter artMeter;
 
+    [SerializeField] GameObject designerScreen;
+    [SerializeField] GameObject programmerScreen;
+
     float pointCost = 0;
 
-    [SerializeField] GameObject artCirclePrefab;
     public enum DevType
     {
         None,
@@ -56,8 +58,16 @@ public class DevMode : MonoBehaviour
         }
     }
 
+    public void HideDevUIs()
+    {
+        designerScreen.SetActive(false);
+        programmerScreen.SetActive(false);
+    }
+
     public void EnterDevMode()
     {
+        HideDevUIs();
+        
         isGameSlow = true;
         foreach (Movement movement in FindObjectsOfType<Movement>())
         {
@@ -86,13 +96,6 @@ public class DevMode : MonoBehaviour
         lineDist = 0;
     }
 
-    IEnumerator Delay(float time)
-    {
-        yield return new WaitForSeconds(time);
-
-        ExitDevMode();
-    }
-
     public void EnterArtDevMode(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -103,9 +106,28 @@ public class DevMode : MonoBehaviour
         }
     }
 
+    public void EnterProgrammerDevMode(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            EnterDevMode();
+            devType = DevType.Programming;
+            programmerScreen.SetActive(true);
+        }
+    }
+
+    public void EnterDesignerDevMode(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            EnterDevMode();
+            devType = DevType.Design;
+            designerScreen.SetActive(true);
+        }
+    }
+
     public void Draw(InputAction.CallbackContext context)
     {
-        Debug.Log(devType);
         if (context.performed && devType == DevType.Art)
         {
             CreateBrush();
@@ -130,6 +152,11 @@ public class DevMode : MonoBehaviour
         isDrawing = false;
         lineDist = 0;
         lastPos = Vector2.zero;
+
+        if (artMeter.GetAbilityPoints() == 0)
+        {
+            ExitDevMode();
+        }
     }
 
     public void CreateBrush()
@@ -166,7 +193,6 @@ public class DevMode : MonoBehaviour
                 }
                 else
                 {
-                    //StartCoroutine(Delay(1f));
                     CompleteLine();
                     ExitDevMode();
                 }
