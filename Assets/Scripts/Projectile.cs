@@ -13,6 +13,9 @@ public class Projectile : MonoBehaviour
     [SerializeField] int defaultDamage;
     [SerializeField] public bool playerBullet;
 
+    float slowness = 1;
+    public void SetSlowness(float _slownessDivider) { slowness = _slownessDivider; }
+
     public GameObject owner;
 
     float damage;
@@ -38,7 +41,7 @@ public class Projectile : MonoBehaviour
 
     private void FixedUpdate()
     {
-        transform.GetComponent<Rigidbody2D>().velocity = dir * projectileSpeed * Time.fixedDeltaTime;
+        transform.GetComponent<Rigidbody2D>().velocity = ((dir * projectileSpeed) / slowness) * Time.fixedDeltaTime;
     }
 
     private void OnTriggerEnter2D(Collider2D other)

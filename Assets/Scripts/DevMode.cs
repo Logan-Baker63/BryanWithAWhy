@@ -6,9 +6,6 @@ using TMPro;
 
 public class DevMode : MonoBehaviour
 {
-    [SerializeField] float slowness = 10;
-    bool isGameSlow = false;
-
     bool isDrawing = false;
 
     [SerializeField] GameObject brush;
@@ -32,6 +29,8 @@ public class DevMode : MonoBehaviour
 
     TMP_InputField programmingInputField;
 
+    GameManager gameManager;
+
     public enum DevType
     {
         None,
@@ -41,7 +40,7 @@ public class DevMode : MonoBehaviour
     }
     DevType devType = DevType.None;
 
-    public bool IsGameSlow() { return isGameSlow; }
+    
 
     private void Awake()
     {
@@ -61,6 +60,7 @@ public class DevMode : MonoBehaviour
             }
         }
 
+        gameManager = FindObjectOfType<GameManager>();
         programmingInputField = programmerScreen.transform.Find("TextBox").GetComponent<TMP_InputField>();
     }
 
@@ -74,14 +74,10 @@ public class DevMode : MonoBehaviour
     public void EnterDevMode()
     {
         HideDevUIs();
-        
-        isGameSlow = true;
-        foreach (Movement movement in FindObjectsOfType<Movement>())
-        {
-            movement.SetSlowness(slowness);
-            movement.GetComponent<Attack>().canAttack = false;
-        }
+
+        gameManager.SetSlowness(0.2f);
     }
+
 
     public void OnExitDevMode(InputAction.CallbackContext context)
     {
@@ -94,12 +90,8 @@ public class DevMode : MonoBehaviour
     public void ExitDevMode()
     {
         devType = DevType.None;
-        isGameSlow = false;
-        foreach (Movement movement in FindObjectsOfType<Movement>())
-        {
-            movement.SetSlowness(1);
-            movement.GetComponent<Attack>().canAttack = true;
-        }
+        gameManager.SetSlowness(1);
+
         lineDist = 0;
         HideDevUIs();
     }

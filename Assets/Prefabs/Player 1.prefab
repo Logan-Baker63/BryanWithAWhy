@@ -647,6 +647,7 @@ MonoBehaviour:
   meleeDamage: 15
   canAttack: 1
   meleeDelay: 0
+  bulletSpeed: 600
   rollCooldown: 0.35
   rollSpeed: 0.25
   rollInv: 0.3

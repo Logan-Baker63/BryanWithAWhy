@@ -30,7 +30,7 @@ public class EnemyMovement : Movement
                     GetComponent<EnemyState>().SetState(0);
                     moveVelocity = (player.position - transform.position).normalized * movementSpeed * Time.fixedDeltaTime;
                     //transform.GetComponent<Rigidbody2D>().velocity = moveVelocity / slowness;
-                    transform.parent.GetComponent<Rigidbody2D>().velocity = moveVelocity / slowness;
+                    transform.parent.GetComponent<Rigidbody2D>().velocity = moveVelocity;
                 }
             }
             else

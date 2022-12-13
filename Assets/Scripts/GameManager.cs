@@ -17,6 +17,18 @@ public class GameManager : MonoBehaviour
     Vector2 leftBottomCorner;
     Vector2 rightTopCorner;
 
+    [SerializeField] float slowness = 10;
+    bool isGameSlow = false;
+    public bool IsGameSlow() { return isGameSlow; }
+    public float GetSlowness() { return slowness; }
+    public void SetSlowness(float _slowness) 
+    { 
+        slowness = _slowness; 
+
+        Time.timeScale = _slowness;
+        Time.fixedDeltaTime = 0.02f * _slowness;
+    }
+
     private void Start()
     {
         dontCollideEnemyLayer = LayerMask.NameToLayer("DontCollideEnemy");

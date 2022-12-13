@@ -14,7 +14,9 @@ public class Attack : MonoBehaviour
 
     [HideInInspector] public bool canAttack = true;
     [HideInInspector] public float meleeDelay = 0f;
-    
+
+    [SerializeField] public float bulletSpeed = 200;
+
     public Coroutine cooldownRoutine;
 
     protected AudioManager manager;
@@ -54,9 +56,10 @@ public class Attack : MonoBehaviour
             {
                 bulletInstance.GetComponent<Projectile>().playerBullet = false;
                 bulletInstance.layer = 6;
-                bulletInstance.GetComponent<Projectile>().projectileSpeed = 200;
                 bulletInstance.transform.localScale *= 2;
             }
+
+            bulletInstance.GetComponent<Projectile>().projectileSpeed = bulletSpeed;
 
             bulletInstance.GetComponent<Projectile>().SetDamage(bulletDamage);
             manager.PlaySound(0);
