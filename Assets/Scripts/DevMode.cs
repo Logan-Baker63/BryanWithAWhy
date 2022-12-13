@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class DevMode : MonoBehaviour
 {
@@ -123,6 +124,7 @@ public class DevMode : MonoBehaviour
                 EnterDevMode();
                 devType = DevType.Programming;
                 programmerScreen.SetActive(true);
+                programmerScreen.GetComponentInChildren<TMP_InputField>().ActivateInputField();
             }
             else
             {
