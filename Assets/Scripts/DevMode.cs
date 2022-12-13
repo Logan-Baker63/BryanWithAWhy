@@ -143,6 +143,7 @@ public class DevMode : MonoBehaviour
                 devType = DevType.Design;
                 designerScreen.SetActive(true);
                 designerScreen.GetComponent<AttributeConfirm_Reset>().PotentialPointsReset();
+                designerScreen.GetComponent<AttributeConfirm_Reset>().ResetButton();
 
                 GetComponent<Movement>().SetControlLocked(true);
             }

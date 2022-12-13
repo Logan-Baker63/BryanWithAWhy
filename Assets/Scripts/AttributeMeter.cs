@@ -85,7 +85,7 @@ public class AttributeMeter : MonoBehaviour
         {
             attributeSlots[i].color = defaultColour;
         }
-        overlordScript.potentialPoints += slotsHighlighted;
+        overlordScript.potentialPoints = designMeter.abilityPoints;
         overlordScript.UpdatePointDisplay();
         slotsHighlighted = 0;
         UpdateUI();

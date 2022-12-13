@@ -36,6 +36,7 @@ public class AttributeConfirm_Reset : MonoBehaviour
 
     public void ResetButton()
     {
+        Debug.Log("Reset");
         foreach(AttributeMeter meter in attributeMeters)
         {
             meter.ResetPointClaim();

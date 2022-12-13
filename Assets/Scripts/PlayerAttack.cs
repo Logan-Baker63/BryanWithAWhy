@@ -147,12 +147,12 @@ public class PlayerAttack : Attack
                 if (/*GetComponent<Rigidbody2D>().velocity*/transform.parent.GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))
                 {
                     //GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist;
-                    transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist;
+                    transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist / rollSpeed;
                 }
                 else
                 {
                     //GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist;
-                    transform.parent.GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist;
+                    transform.parent.GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist / rollSpeed;
                 }
 
                 currentStamina -= rollCost;

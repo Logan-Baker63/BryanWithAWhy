@@ -643,6 +643,7 @@ MonoBehaviour:
   spawnPos: {fileID: 860106046905103086}
   shootCooldown: 0.6
   meleeCooldown: 0.4
+  bulletScaleMultiplier: 1
   bulletDamage: 10
   meleeDamage: 15
   canAttack: 1
@@ -656,7 +657,7 @@ MonoBehaviour:
   rollCooldown: 0.35
   rollSpeed: 0.25
   rollInv: 0.3
-  rollDist: 15
+  rollDist: 5
   canRoll: 1
   rollInvulnerable: 0
   currentStamina: 12
@@ -668,7 +669,8 @@ MonoBehaviour:
   rollParticle: {fileID: 1976449808341968486, guid: 9753812d600cb2042bd2655c6ad07898, type: 3}
   amountOfKillsForAbilityPoint: 4
   amountOfDodgesForAbilityPoint: 2
-  bombDamage: 25
+  defaultBombDamage: 25
+  defaultBulletExplosionDamage: 10
   explosionParticlePrefab: {fileID: 2910833190950494761, guid: 4f8b2bd50a7bbc149ba43af7e990c87d, type: 3}
 --- !u!114 &3632171877684350751
 MonoBehaviour:
@@ -685,6 +687,7 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 200
   bloodParticlePrefab: {fileID: 508959203543866140, guid: 45ee11f1eca5f634ca8d58cb76db18d9, type: 3}
+  healthBar: {fileID: 0}
 --- !u!95 &3841437563061100719
 Animator:
   serializedVersion: 3

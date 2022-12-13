@@ -43,5 +43,5 @@ MonoBehaviour:
   enemySpawnDelayCapMin: 0.5
   enemySpawnDelayCapMax: 1.6
   waveSpawnMultiDecreasePerWave: 0.05
-  enemyHPModifierIncreasePerWave: 0.05
-  enemyDamageModifierIncreasePerWave: 0.05
+  enemyHPModifierIncreasePerWave: 0.03
+  enemyDamageModifierIncreasePerWave: 0.03
