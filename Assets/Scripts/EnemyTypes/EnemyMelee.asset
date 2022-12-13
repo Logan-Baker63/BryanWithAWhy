@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa6ca125bcd780c43a8a6ce3142a8495, type: 3}
   m_Name: EnemyMelee
   m_EditorClassIdentifier: 
-  prefab: {fileID: 608737746056180886, guid: 672f97c3e0aebb04e937b719bffd9b02, type: 3}
-  ratioWeight: 2
+  prefab: {fileID: 6983336240316600048, guid: 38e0de8c77c24ff499451764db49f1a9, type: 3}
+  ratioWeight: 1

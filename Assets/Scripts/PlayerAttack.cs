@@ -88,13 +88,15 @@ public class PlayerAttack : Attack
     {
         if(context.performed && canRoll && staminaJailTime <= 0)
         {
-            if(GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))
+            if(/*GetComponent<Rigidbody2D>().velocity*/transform.parent.GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))
             {
-                GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist;
+                //GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist;
+                transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist;
             }
             else
             {
-                GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist;
+                //GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist;
+                transform.parent.GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist;
             }
             
             currentStamina -= rollCost;
@@ -120,7 +122,8 @@ public class PlayerAttack : Attack
         if (rollStopCoroutine != null)
         {
             canAttack = true;
-            GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
+            //GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
+            transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
             rollStopCoroutine = null;
         }
     }

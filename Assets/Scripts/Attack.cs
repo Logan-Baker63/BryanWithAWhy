@@ -38,7 +38,8 @@ public class Attack : MonoBehaviour
                 bulletInstance.GetComponent<Projectile>().playerBullet = true;
                 gameObject.GetComponent<PlayerAttack>().canRoll = true;
                 gameObject.GetComponent <PlayerAttack>().rollStopCoroutine = null;
-                gameObject.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
+                //gameObject.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
+                transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
             }
             else
             {
