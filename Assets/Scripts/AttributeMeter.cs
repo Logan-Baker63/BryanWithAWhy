@@ -141,20 +141,26 @@ public class AttributeMeter : MonoBehaviour
             case AttributeType.ProjectileSize:
                 for (int i = 0; i < toAdd; i++)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletScaleModifier += 0.2;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletScaleMultiplier += 0.18f;
                 }
                 return;
             case AttributeType.FireRate:
                 for (int i = 0; i < toAdd; i++)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().shootCooldown -= 0.04;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().shootCooldown -= 0.04f;
                 }
                 return;
             case AttributeType.ProjectileSpread:
-
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().spreadAngle -= 5f;
+                }
                 return;
             case AttributeType.ProjectileAmount:
-
+                for (int i = 0; i < toAdd; i++)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletAmount += 1;
+                }
                 return;
             case AttributeType.MeleeDamage:
                 for (int i = 0; i < toAdd; i++)

@@ -6,11 +6,12 @@ public class Attack : MonoBehaviour
 {
     [SerializeField] protected GameObject bullet;
     [SerializeField] protected Transform spawnPos;
-    [SerializeField] protected float shootCooldown = 0.2f;
+    [SerializeField] public float shootCooldown = 0.2f;
     [SerializeField] protected float meleeCooldown = 0.2f;
 
-    [SerializeField] protected float bulletDamage = 10;
-    [SerializeField] protected float meleeDamage = 15;
+    public float bulletScaleMultiplier = 1;
+    public float bulletDamage = 10;
+    public float meleeDamage = 15;
 
     [HideInInspector] public bool canAttack = true;
     [HideInInspector] public float meleeDelay = 0f;
@@ -18,7 +19,7 @@ public class Attack : MonoBehaviour
     [HideInInspector] public bool doShoot = false;
 
     [SerializeField] int maxBulletAmount = 10;
-    [SerializeField] int bulletAmount = 1;
+    public int bulletAmount = 1;
     public void SetBulletAmount(int _bulletAmount) 
     { 
         if (_bulletAmount <= maxBulletAmount)
@@ -33,7 +34,7 @@ public class Attack : MonoBehaviour
     public int GetBulletAmount() { return bulletAmount;}
 
     [Range(0, 360)]
-    [SerializeField] private float spreadAngle = 20;
+    public float spreadAngle = 20;
 
     [SerializeField] public float bulletSpeed = 200;
 
@@ -98,6 +99,7 @@ public class Attack : MonoBehaviour
                 bulletInstance.GetComponent<Projectile>().owner = gameObject;
                 if (gameObject.tag == "Player")
                 {
+                    bulletInstance.transform.localScale *= bulletScaleMultiplier;
                     bulletInstance.GetComponent<Projectile>().playerBullet = true;
                     gameObject.GetComponent<PlayerAttack>().canRoll = true;
                     gameObject.GetComponent<PlayerAttack>().rollStopCoroutine = null;
