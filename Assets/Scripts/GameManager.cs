@@ -68,6 +68,11 @@ public class GameManager : MonoBehaviour
     float enemiesPerSpawnedWaveMin;
     float enemiesPerSpawnedWaveMax;
 
+    float enemyHPModifierMax;
+    float enemyDamageModifierMax;
+    float enemyHPModifier = 1;
+    float enemyDamageModifier = 1;
+
     private void Start()
     {
         waveCountDisplay = GameObject.FindGameObjectWithTag("WaveCount").GetComponent<Text>();
@@ -171,6 +176,10 @@ public class GameManager : MonoBehaviour
 
             //enemy.GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
             enemy.transform.GetChild(0).GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
+            enemy.transform.GetChild(0).GetComponent<Health>().currentHealth *= enemyHPModifier;
+            enemy.transform.GetChild(0).GetComponent<EnemyAttack>().bulletDamage *= enemyDamageModifier;
+            enemy.transform.GetChild(0).GetComponent<EnemyAttack>().meleeDamage *= enemyDamageModifier;
+            enemy.transform.GetChild(0).GetComponent<EnemyAttack>().jumpAttackDamage *= enemyDamageModifier;
         }
     }
 
@@ -221,10 +230,15 @@ public class GameManager : MonoBehaviour
 
     public void WaveEnd()
     {
+        SetWaveSettings();
         if (pendingWaveEnd)
         {
             Health playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
             playerHealth.currentHealth += healthReward * playerHealth.maxHealth;
+            if(playerHealth.currentHealth > playerHealth.maxHealth)
+            {
+                playerHealth.currentHealth = playerHealth.maxHealth;
+            }
             currentWave++;
             waveCountDisplay.text = currentWave.ToString();
 
@@ -296,6 +310,16 @@ public class GameManager : MonoBehaviour
             if (enemySpawnDelayMax + waveSettings.enemySpawnDelayDecreasePerWaveMax <= waveSettings.enemySpawnDelayCapMax)
             {
                 enemySpawnDelayMax -= waveSettings.enemySpawnDelayDecreasePerWaveMax;
+            }
+
+            if (enemyHPModifier + waveSettings.enemyHPModifierIncreasePerWave <= waveSettings.enemyHPModifierMax)
+            {
+                enemyHPModifier += waveSettings.enemyHPModifierIncreasePerWave;
+            }
+
+            if (enemyDamageModifier + waveSettings.enemyDamageModifierIncreasePerWave <= waveSettings.enemyDamageModifierMax)
+            {
+                enemyDamageModifier += waveSettings.enemyDamageModifierIncreasePerWave;
             }
         }
     }

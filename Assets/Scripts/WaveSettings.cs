@@ -28,6 +28,11 @@ public class WaveSettings : ScriptableObject
     public int enemiesPerSpawnedWaveMin = 2;
     public int enemiesPerSpawnedWaveMax = 4;
 
+    public float enemyHPModifierMax = 10;
+    public float enemyDamageModifierMax  =10;
+    public float enemyHPModifier = 1;
+    public float enemyDamageModifier = 1;
+
     [Header("Increases per wave:")]
     public float startingEnemiesIncreasePerWaveMin = 0.2f;
     public float startingEnemiesIncreasePerWaveMax = 0.3f;
@@ -45,4 +50,7 @@ public class WaveSettings : ScriptableObject
     public float enemySpawnDelayCapMax = 1.2f;
 
     public float waveSpawnMultiDecreasePerWave = 0.1f;
+
+    public float enemyHPModifierIncreasePerWave = 0.06f;
+    public float enemyDamageModifierIncreasePerWave = 0.06f;
 }
