@@ -26,6 +26,10 @@ MonoBehaviour:
   waveSpawnPercentChance: 10
   enemiesPerSpawnedWaveMin: 2
   enemiesPerSpawnedWaveMax: 4
+  enemyHPModifierMax: 7
+  enemyDamageModifierMax: 7
+  enemyHPModifier: 1
+  enemyDamageModifier: 1
   startingEnemiesIncreasePerWaveMin: 0.2
   startingEnemiesIncreasePerWaveMax: 0.3
   startingEnemiesCapMin: 4
@@ -39,3 +43,5 @@ MonoBehaviour:
   enemySpawnDelayCapMin: 0.5
   enemySpawnDelayCapMax: 1.6
   waveSpawnMultiDecreasePerWave: 0.05
+  enemyHPModifierIncreasePerWave: 0.05
+  enemyDamageModifierIncreasePerWave: 0.05
