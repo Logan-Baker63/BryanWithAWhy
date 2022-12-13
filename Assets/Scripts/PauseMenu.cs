@@ -30,24 +30,31 @@ public class PauseMenu : MonoBehaviour
     {
         if (context.performed)
         {
-            if (pauseMenu.activeInHierarchy)
+            if (FindObjectOfType<DevMode>().GetDevType() == DevMode.DevType.None)
             {
-                pauseMenu.SetActive(false);
-                Time.timeScale = 1f;
-                playerMovement.canMove = true;
-                rotateToMouse.canRotate = true;
-                if(attack.cooldownRoutine == null)
+                if (pauseMenu.activeInHierarchy)
                 {
-                    attack.canAttack = true;
+                    pauseMenu.SetActive(false);
+                    Time.timeScale = 1f;
+                    playerMovement.canMove = true;
+                    rotateToMouse.canRotate = true;
+                    if (attack.cooldownRoutine == null)
+                    {
+                        attack.canAttack = true;
+                    }
+                }
+                else
+                {
+                    pauseMenu.SetActive(true);
+                    Time.timeScale = 0f;
+                    playerMovement.canMove = false;
+                    rotateToMouse.canRotate = false;
+                    attack.canAttack = false;
                 }
             }
             else
             {
-                pauseMenu.SetActive(true);
-                Time.timeScale = 0f;
-                playerMovement.canMove = false;
-                rotateToMouse.canRotate = false;
-                attack.canAttack = false;
+                FindObjectOfType<DevMode>().ExitDevMode();
             }
         }
     }
