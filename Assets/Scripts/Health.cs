@@ -20,10 +20,13 @@ public class Health : MonoBehaviour
 
     public virtual void TakeDamage(float _damageToTake, Projectile collidedBullet)
     {
-        if (!playerAttack.rollInvulnerable)
+        if (!playerAttack.rollInvulnerable || gameObject.tag == "Enemy" || gameObject.tag == "Wall")
         {
-            ParticleSystem blood = Instantiate(bloodParticlePrefab, GetComponent<Collider2D>().ClosestPoint(collidedBullet.transform.position), Quaternion.identity).GetComponent<ParticleSystem>();
-
+            ParticleSystem blood = null;
+            if (bloodParticlePrefab != null)
+            {
+                blood = Instantiate(bloodParticlePrefab, GetComponent<Collider2D>().ClosestPoint(collidedBullet.transform.position), Quaternion.identity).GetComponent<ParticleSystem>();
+            }
             if (currentHealth - _damageToTake <= 0)
             {
                 currentHealth = 0;
@@ -43,7 +46,10 @@ public class Health : MonoBehaviour
                 healthBar.UpdateHealthBar();
             }
 
-            blood.Play();
+            if (blood)
+            {
+                blood.Play();
+            }
         }
         else
         {
@@ -53,9 +59,13 @@ public class Health : MonoBehaviour
 
     public virtual void TakeDamage(float _damageToTake, Attack attacker)
     {
-        if (!playerAttack.rollInvulnerable)
+        if (!playerAttack.rollInvulnerable || gameObject.tag == "Enemy" || gameObject.tag == "Wall")
         {
-            ParticleSystem blood = Instantiate(bloodParticlePrefab, GetComponent<Collider2D>().ClosestPoint(attacker.transform.position), Quaternion.identity).GetComponent<ParticleSystem>();
+            ParticleSystem blood = null;
+            if (bloodParticlePrefab != null)
+            {
+                blood = Instantiate(bloodParticlePrefab, GetComponent<Collider2D>().ClosestPoint(attacker.transform.position), Quaternion.identity).GetComponent<ParticleSystem>();
+            }
 
             if (currentHealth - _damageToTake <= 0)
             {
@@ -82,10 +92,17 @@ public class Health : MonoBehaviour
             else
             {
                 currentHealth -= _damageToTake;
+                if(GetComponent<DrawnLine>())
+                {
+                    GetComponent<DrawnLine>().UpdateColour(currentHealth / maxHealth);
+                }
                 healthBar.UpdateHealthBar();
             }
 
-            blood.Play();
+            if(blood != null)
+            {
+                blood.Play();
+            }
         }
         else
         {
@@ -95,6 +112,13 @@ public class Health : MonoBehaviour
 
     public virtual void Die()
     {
-        Destroy(transform.parent.gameObject);
+        if(transform.parent != null)
+        {
+            Destroy(transform.parent.gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
