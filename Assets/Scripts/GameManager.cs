@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     Vector2 leftBottomCorner;
     Vector2 rightTopCorner;
 
+    [SerializeField] float healthReward = 0.2f; //Percentage of max
+
     int currentWave = 1;
     [SerializeField] public GameObject waveCounter;
 
@@ -175,6 +177,8 @@ public class GameManager : MonoBehaviour
     {
         if (pendingWaveEnd)
         {
+            Health playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
+            playerHealth.currentHealth += healthReward * playerHealth.maxHealth;
             currentWave++;
 
             GameObject temp = Instantiate(waveCounter, canvas.transform);
