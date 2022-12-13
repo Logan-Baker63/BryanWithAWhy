@@ -185,10 +185,7 @@ public class DevMode : MonoBehaviour
         lineDist = 0;
         lastPos = Vector2.zero;
 
-        if (artMeter.GetAbilityPoints() == 0)
-        {
             ExitDevMode();
-        }
     }
 
     public void CreateBrush()

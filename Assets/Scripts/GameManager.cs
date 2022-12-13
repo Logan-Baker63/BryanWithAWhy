@@ -76,6 +76,8 @@ public class GameManager : MonoBehaviour
     float enemyHPModifier = 1;
     float enemyDamageModifier = 1;
 
+    int wavesToIncreaseAbilityCaps;
+
     private void Awake()
     {
         waveCountDisplay = GameObject.FindGameObjectWithTag("WaveCount").GetComponent<Text>();
@@ -293,6 +295,11 @@ public class GameManager : MonoBehaviour
 
             enemiesPerSpawnedWaveMin = waveSettings.enemiesPerSpawnedWaveMin;
             enemiesPerSpawnedWaveMax = waveSettings.enemiesPerSpawnedWaveMax;
+
+            enemyHPModifierMax = waveSettings.enemyHPModifierMax;
+            enemyDamageModifierMax = waveSettings.enemyDamageModifierMax;
+
+            wavesToIncreaseAbilityCaps = waveSettings.wavesToIncreaseAbilityCaps;
         }
         else
         {
