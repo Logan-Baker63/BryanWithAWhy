@@ -5,10 +5,22 @@ using UnityEngine;
 public class DrawnLine : MonoBehaviour
 {
     LineRenderer lineRenderer;
+    public Color damageFinalColour = Color.red;
+    public Color initialColour = Color.black;
 
     public void Awake()
     {
         lineRenderer = GetComponent<LineRenderer>();
+        lineRenderer.startColor = initialColour;
+        lineRenderer.endColor = initialColour;
+    }
+
+    public void UpdateColour(float healthPercent)
+    {
+        Color colour = Color.Lerp(damageFinalColour,initialColour, healthPercent);
+        lineRenderer.material.color = colour;
+        lineRenderer.startColor = colour;
+        lineRenderer.endColor = colour;
     }
 
     public void GenerateLineCollider()
@@ -21,6 +33,9 @@ public class DrawnLine : MonoBehaviour
         {
             collider = gameObject.AddComponent<EdgeCollider2D>();
             gameObject.tag = "Wall";
+            Health wallHealth = gameObject.AddComponent<Health>();
+            wallHealth.maxHealth = 200;
+            wallHealth.currentHealth = 200;
         }
 
         List<Vector2> edges = new List<Vector2>();

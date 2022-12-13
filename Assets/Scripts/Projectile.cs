@@ -45,7 +45,11 @@ public class Projectile : MonoBehaviour
     {
         if (other.transform.tag != "Bullet")
         {
-            if (other.tag == "Enemy")
+            if(other.tag == "Wall")
+            {
+                other.GetComponent<Health>().TakeDamage(damage, this);
+            }
+            else if (other.tag == "Enemy")
             {
                 if (playerBullet)
                 {
