@@ -94,15 +94,23 @@ public class DevMode : MonoBehaviour
             movement.GetComponent<Attack>().canAttack = true;
         }
         lineDist = 0;
+        HideDevUIs();
     }
 
     public void EnterArtDevMode(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
-            EnterDevMode();
-            lineDist = 0;
-            devType = DevType.Art;
+            if (devType != DevType.Art)
+            {
+                EnterDevMode();
+                lineDist = 0;
+                devType = DevType.Art;
+            }
+            else
+            {
+                ExitDevMode();
+            }
         }
     }
 
@@ -110,9 +118,16 @@ public class DevMode : MonoBehaviour
     {
         if (context.performed)
         {
-            EnterDevMode();
-            devType = DevType.Programming;
-            programmerScreen.SetActive(true);
+            if (devType != DevType.Programming)
+            {
+                EnterDevMode();
+                devType = DevType.Programming;
+                programmerScreen.SetActive(true);
+            }
+            else
+            {
+                ExitDevMode();
+            }
         }
     }
 
@@ -120,9 +135,16 @@ public class DevMode : MonoBehaviour
     {
         if (context.performed)
         {
-            EnterDevMode();
-            devType = DevType.Design;
-            designerScreen.SetActive(true);
+            if (devType != DevType.Design)
+            {
+                EnterDevMode();
+                devType = DevType.Design;
+                designerScreen.SetActive(true);
+            }
+            else
+            {
+                ExitDevMode();
+            }
         }
     }
 
