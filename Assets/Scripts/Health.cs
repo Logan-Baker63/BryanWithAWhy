@@ -119,7 +119,7 @@ public class Health : MonoBehaviour
 
     public virtual void Die()
     {
-        if (!gameManager.IsMoreThanOneEnemy())
+        if (!gameManager.IsMoreThanOneEnemy() && gameObject.tag != "Wall")
         {
             gameManager.WaveEnd();
         }

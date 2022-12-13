@@ -21,30 +21,34 @@ public class PlayerAttack : Attack
     public Coroutine rollStopCoroutine = null;
 
     [SerializeField] int amountOfKillsForAbilityPoint = 4;
-    int killsOutOfRequired = 0;
+    [SerializeField] int amountOfDodgesForAbilityPoint = 2;
+    int killsOutOfRequiredDesign = 0;
+    int killsOutOfRequiredProgramming = 0;
+    int dodgesOutOfRequiredArt = 0;
 
     PlayerMovement playerMovement;
 
     public void AddKill(bool ranged)
     {
-        if (killsOutOfRequired + 1 >= amountOfKillsForAbilityPoint)
+        if (killsOutOfRequiredDesign + 1 >= amountOfKillsForAbilityPoint || killsOutOfRequiredProgramming +1 >= amountOfKillsForAbilityPoint)
         {
-            killsOutOfRequired = 0;
             foreach (AbilityMeter abilityMeter in FindObjectsOfType<AbilityMeter>())
             {
                 if (abilityMeter.abilityType == AbilityMeter.AbilityType.Design && ranged)
                 {
                     abilityMeter.AquireAbilityPoints(1);
+                    killsOutOfRequiredDesign = 0;
                 }
                 else if (abilityMeter.abilityType == AbilityMeter.AbilityType.Programming && !ranged)
                 {
                     abilityMeter.AquireAbilityPoints(1);
+                    killsOutOfRequiredProgramming = 0;
                 }
             }
         }
         else
         {
-            killsOutOfRequired++;
+            killsOutOfRequiredDesign++;
         }
     }
 
@@ -148,6 +152,22 @@ public class PlayerAttack : Attack
 
     public void RollCatch()
     {
+        if (dodgesOutOfRequiredArt >= amountOfDodgesForAbilityPoint - 1)
+        {
+            dodgesOutOfRequiredArt = 0;
+            foreach (AbilityMeter abilityMeter in FindObjectsOfType<AbilityMeter>())
+            {
+                if (abilityMeter.abilityType == AbilityMeter.AbilityType.Art)
+                {
+                    abilityMeter.AquireAbilityPoints(1);
+                }
+            }
+        }
+        else
+        {
+            dodgesOutOfRequiredArt += 1;
+        }
+        
         currentStamina += rollCost;
         //Play sound
     }
