@@ -136,33 +136,36 @@ public class PlayerAttack : Attack
 
     public void Roll(InputAction.CallbackContext context)
     {
-        if(context.performed && canRoll && staminaJailTime <= 0)
+        if (!isControlLocked)
         {
-            if(/*GetComponent<Rigidbody2D>().velocity*/transform.parent.GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))
+            if (context.performed && canRoll && staminaJailTime <= 0)
             {
-                //GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist;
-                transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist;
-            }
-            else
-            {
-                //GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist;
-                transform.parent.GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist;
-            }
-            
-            currentStamina -= rollCost;
-            if(currentStamina < 0)
-            {
-                staminaJailTime = staminaJailSentence;
-                currentStamina = 0;
-            }
+                if (/*GetComponent<Rigidbody2D>().velocity*/transform.parent.GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))
+                {
+                    //GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist;
+                    transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity().normalized * rollDist;
+                }
+                else
+                {
+                    //GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist;
+                    transform.parent.GetComponent<Rigidbody2D>().velocity = -transform.right * rollDist;
+                }
 
-            rollParticle.transform.position = gameObject.transform.position;
-            rollParticle.transform.rotation = gameObject.transform.rotation;
-            rollParticle.Play();
+                currentStamina -= rollCost;
+                if (currentStamina < 0)
+                {
+                    staminaJailTime = staminaJailSentence;
+                    currentStamina = 0;
+                }
 
-            rollStopCoroutine = StartCoroutine(RollStop());
-            //Play sound
-            rollCooldownRoutine = StartCoroutine(RollCooldown());
+                rollParticle.transform.position = gameObject.transform.position;
+                rollParticle.transform.rotation = gameObject.transform.rotation;
+                rollParticle.Play();
+
+                rollStopCoroutine = StartCoroutine(RollStop());
+                //Play sound
+                rollCooldownRoutine = StartCoroutine(RollCooldown());
+            }
         }
     }
 

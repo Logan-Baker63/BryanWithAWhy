@@ -39,7 +39,7 @@ public class DevMode : MonoBehaviour
         Art,
     }
     DevType devType = DevType.None;
-
+    public DevType GetDevType() { return devType; }
     
 
     private void Awake()
@@ -76,6 +76,7 @@ public class DevMode : MonoBehaviour
         HideDevUIs();
 
         gameManager.SetSlowness(0.2f);
+        GetComponent<Attack>().SetControlLocked(true);
     }
 
 
@@ -94,11 +95,14 @@ public class DevMode : MonoBehaviour
 
         lineDist = 0;
         HideDevUIs();
+
+        GetComponent<Attack>().SetControlLocked(false);
+        GetComponent<Movement>().SetControlLocked(false);
     }
 
     public void EnterArtDevMode(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && devType != DevType.Programming)
         {
             if (devType != DevType.Art && artMeter.abilityPoints > 0)
             {
@@ -124,6 +128,8 @@ public class DevMode : MonoBehaviour
                 devType = DevType.Programming;
                 programmerScreen.SetActive(true);
                 programmerScreen.GetComponentInChildren<TMP_InputField>().ActivateInputField();
+
+                GetComponent<Movement>().SetControlLocked(true);
             }
 //          else
 //          {
@@ -134,7 +140,7 @@ public class DevMode : MonoBehaviour
 
     public void EnterDesignerDevMode(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && devType != DevType.Programming)
         {
             if (devType != DevType.Design && designMeter.abilityPoints > 0)
             {
@@ -142,6 +148,8 @@ public class DevMode : MonoBehaviour
                 devType = DevType.Design;
                 designerScreen.SetActive(true);
                 designerScreen.GetComponent<AttributeConfirm_Reset>().PotentialPointsReset();
+
+                GetComponent<Movement>().SetControlLocked(true);
             }
             else
             {
