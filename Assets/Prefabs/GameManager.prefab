@@ -49,9 +49,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 89ab403585e69674c94ee452d2894879, type: 2}
   - {fileID: 11400000, guid: c1dd845065c15e44bb7b70de508fca90, type: 2}
   waveSettings: {fileID: 11400000, guid: 720f0d23e879a384598dded1a4e718ae, type: 2}
+  waveCountDisplay: {fileID: 0}
+  healthReward: 0.2
   waveCounter: {fileID: 3516871727145936491, guid: 0448be376ffcda4439464cba0b77e3dc, type: 3}
   canvas: {fileID: 859408765240338591, guid: 45c3d4b80d4059f4097e2e49594780e1, type: 3}
+  pendingWaveEnd: 0
   slowness: 10
+  menu: {fileID: 0}
+  deathUI: {fileID: 0}
+  pipPrefab: {fileID: 8205441303535252160, guid: abee36e2c80ae0e47b37fb6a00904043, type: 3}
 --- !u!114 &2414617852371652158
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class AbilityMeter : MonoBehaviour
     public int abilityPoints = 3;
     AbilityCounter abilityCounter;
 
-    [SerializeField] List<Image> abilitySlots;
+    public List<Image> abilitySlots;
 
     public int GetAbilityPoints() { return abilityPoints; }
 
