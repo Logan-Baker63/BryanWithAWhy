@@ -249,7 +249,13 @@ public class DevMode : MonoBehaviour
                     {
                         if (CheckCommand("hp += ", ";"))
                         {
-                            Debug.Log("HP increased by " + pointsAssigned);
+                            GetComponent<Health>().currentHealth += ((float)pointsAssigned / 10) * GetComponent<Health>().maxHealth;
+                            if(GetComponent<Health>().currentHealth > GetComponent<Health>().maxHealth)
+                            {
+                                GetComponent<Health>().currentHealth = GetComponent<Health>().maxHealth;
+                            }
+                            FindObjectOfType<HealthBar>().UpdateHealthBar();
+                            programmingMeter.SpendAbilityPoints(pointsAssigned);
                         }
                         else if (CheckCommand("time.Slow(", ");"))
                         {
@@ -309,7 +315,7 @@ public class DevMode : MonoBehaviour
                 }
             }
 
-            if (pointsAssigned != 0)
+            if (pointsAssigned > 0 && pointsAssigned <= programmingMeter.abilityPoints)
             {
                 return true;
             }
