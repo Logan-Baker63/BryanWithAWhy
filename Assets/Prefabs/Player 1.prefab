@@ -633,7 +633,7 @@ MonoBehaviour:
   meleeDelay: 0
   rollCooldown: 0.35
   rollSpeed: 0.25
-  rollInv: 0.4
+  rollInv: 0.3
   rollDist: 15
   canRoll: 1
   rollInvulnerable: 0
