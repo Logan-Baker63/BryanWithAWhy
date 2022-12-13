@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using TMPro;
 
 public class DevMode : MonoBehaviour
 {
@@ -101,7 +102,7 @@ public class DevMode : MonoBehaviour
     {
         if (context.performed)
         {
-            if (devType != DevType.Art)
+            if (devType != DevType.Art && artMeter.abilityPoints > 0)
             {
                 EnterDevMode();
                 lineDist = 0;
@@ -118,11 +119,12 @@ public class DevMode : MonoBehaviour
     {
         if (context.performed)
         {
-            if (devType != DevType.Programming)
+            if (devType != DevType.Programming && programmingMeter.abilityPoints > 0)
             {
                 EnterDevMode();
                 devType = DevType.Programming;
                 programmerScreen.SetActive(true);
+                programmerScreen.GetComponentInChildren<TMP_InputField>().ActivateInputField();
             }
             else
             {
@@ -135,7 +137,7 @@ public class DevMode : MonoBehaviour
     {
         if (context.performed)
         {
-            if (devType != DevType.Design)
+            if (devType != DevType.Design && designMeter.abilityPoints > 0)
             {
                 EnterDevMode();
                 devType = DevType.Design;
