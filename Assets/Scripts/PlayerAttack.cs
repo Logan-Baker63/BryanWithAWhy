@@ -105,6 +105,7 @@ public class PlayerAttack : Attack
             }
 
             rollParticle.transform.position = gameObject.transform.position;
+            rollParticle.transform.rotation = gameObject.transform.rotation;
             rollParticle.Play();
 
             rollStopCoroutine = StartCoroutine(RollStop());
