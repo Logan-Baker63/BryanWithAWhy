@@ -12,10 +12,13 @@ public class Health : MonoBehaviour
     HealthBar healthBar;
     PlayerAttack playerAttack;
 
+    GameManager gameManager;
+
     private void Awake()
     {
         healthBar = FindObjectOfType<HealthBar>();
         playerAttack = FindObjectOfType<PlayerAttack>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public virtual void TakeDamage(float _damageToTake, Projectile collidedBullet)
@@ -71,6 +74,7 @@ public class Health : MonoBehaviour
             {
                 currentHealth = 0;
 
+                // if this is enemy health
                 if (attacker.GetComponent<PlayerAttack>())
                 {
                     //attacker.GetComponent<PlayerAttack>().AddKill();
@@ -110,9 +114,17 @@ public class Health : MonoBehaviour
         }
     }
 
+    
+
     public virtual void Die()
     {
-        if(transform.parent != null)
+        if (!gameManager.IsMoreThanOneEnemy())
+        {
+            gameManager.WaveEnd();
+        }
+
+        // checks the parent - required by the drawn walls
+        if (transform.parent != null)
         {
             Destroy(transform.parent.gameObject);
         }
