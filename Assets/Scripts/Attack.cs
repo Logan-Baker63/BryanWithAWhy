@@ -64,6 +64,10 @@ public class Attack : MonoBehaviour
     public float GetSpeedUpMultiplier() { return speedUpMultiplier; }
     public void SetSpeeUpMultiplier(float _speedUpMultiplier) { speedUpMultiplier = _speedUpMultiplier;}
 
+    protected bool isControlLocked = false;
+    public bool IsControlLocked() { return isControlLocked; }
+    public void SetControlLocked(bool ToF) { isControlLocked = ToF; }
+
     protected void Awake()
     {
         OnAwake();
@@ -86,51 +90,52 @@ public class Attack : MonoBehaviour
 
     protected virtual void Shoot()
     {
-        if (canAttack)
+        if (!isControlLocked)
         {
-            float angleStep = spreadAngle / bulletAmount;
-            float aimingAngle = transform.rotation.eulerAngles.z;
-            float centeringOffset = (spreadAngle / 2) - (angleStep / 2); //offsets every projectile so the spread is
-
-            for (int i = 0; i < bulletAmount; i++)
+            if (canAttack)
             {
-                float currentBulletAngle = angleStep * i;
+                float angleStep = spreadAngle / bulletAmount;
+                float aimingAngle = transform.rotation.eulerAngles.z;
+                float centeringOffset = (spreadAngle / 2) - (angleStep / 2); //offsets every projectile so the spread is
 
-                Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, aimingAngle + currentBulletAngle - centeringOffset));
-
-                GameObject bulletInstance = Instantiate(bullet, spawnPos.position, rotation/*transform.rotation*/);
-                bulletInstance.GetComponent<Projectile>().SetDir(-bulletInstance.transform.right);
-
-                bulletInstance.GetComponent<Projectile>().owner = gameObject;
-                if (gameObject.tag == "Player")
+                for (int i = 0; i < bulletAmount; i++)
                 {
-                    bulletInstance.transform.localScale *= bulletScaleMultiplier;
-                    bulletInstance.GetComponent<Projectile>().playerBullet = true;
-                    gameObject.GetComponent<PlayerAttack>().canRoll = true;
-                    gameObject.GetComponent<PlayerAttack>().rollStopCoroutine = null;
-                    //gameObject.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
-                    transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
-                }
-                else
-                {
-                    bulletInstance.GetComponent<Projectile>().playerBullet = false;
-                    bulletInstance.layer = 6;
-                    bulletInstance.transform.localScale *= 2;
+                    float currentBulletAngle = angleStep * i;
+
+                    Quaternion rotation = Quaternion.Euler(new Vector3(0, 0, aimingAngle + currentBulletAngle - centeringOffset));
+
+                    GameObject bulletInstance = Instantiate(bullet, spawnPos.position, rotation);
+                    bulletInstance.GetComponent<Projectile>().SetDir(-bulletInstance.transform.right);
+
+                    bulletInstance.GetComponent<Projectile>().owner = gameObject;
+                    if (gameObject.tag == "Player")
+                    {
+                        bulletInstance.transform.localScale *= bulletScaleMultiplier;
+                        bulletInstance.GetComponent<Projectile>().playerBullet = true;
+                        gameObject.GetComponent<PlayerAttack>().canRoll = true;
+                        gameObject.GetComponent<PlayerAttack>().rollStopCoroutine = null;
+                        transform.parent.GetComponent<Rigidbody2D>().velocity = GetComponent<PlayerMovement>().GetMoveVelocity();
+                    }
+                    else
+                    {
+                        bulletInstance.GetComponent<Projectile>().playerBullet = false;
+                        bulletInstance.layer = 6;
+                        bulletInstance.transform.localScale *= 2;
+                    }
+
+                    bulletInstance.GetComponent<Projectile>().projectileSpeed = bulletSpeed;
+                    bulletInstance.GetComponent<Projectile>().SetDamage(bulletDamage / bulletAmount);
+
+                    if (usePiercing)
+                    {
+                        bulletInstance.GetComponent<Projectile>().SetPiercing(true);
+                        bulletInstance.GetComponent<Projectile>().SetPiercingStrength(piercingStrength);
+                    }
                 }
 
-                bulletInstance.GetComponent<Projectile>().projectileSpeed = bulletSpeed;
-                //Debug.Log((bulletDamage * (bulletAmountDamageIncreaseMulti * (bulletAmount - 1))) / bulletAmount);
-                bulletInstance.GetComponent<Projectile>().SetDamage(bulletDamage / bulletAmount);
-
-                if (usePiercing)
-                {
-                    bulletInstance.GetComponent<Projectile>().SetPiercing(true);
-                    bulletInstance.GetComponent<Projectile>().SetPiercingStrength(piercingStrength);
-                }
+                manager.PlaySound(0);
+                cooldownRoutine = StartCoroutine(ShootCooldown());
             }
-            
-            manager.PlaySound(0);
-            cooldownRoutine = StartCoroutine(ShootCooldown());
         }
     }
 
@@ -147,33 +152,37 @@ public class Attack : MonoBehaviour
         {
             meleeDelay -= Time.deltaTime;
         }
-        if (canAttack && meleeDelay <= 0)
+
+        if (!isControlLocked)
         {
-            try
+            if (canAttack && meleeDelay <= 0)
             {
-                foreach (GameObject enemy in enemiesInMeleeRange)
+                try
                 {
-                    if (enemy != null)
+                    foreach (GameObject enemy in enemiesInMeleeRange)
                     {
-                        enemy.GetComponent<Health>().TakeDamage(meleeDamage, this);
-                    }
-                    else
-                    {
-                        enemiesInMeleeRange.Remove(enemy);
+                        if (enemy != null)
+                        {
+                            enemy.GetComponent<Health>().TakeDamage(meleeDamage, this);
+                        }
+                        else
+                        {
+                            enemiesInMeleeRange.Remove(enemy);
+                        }
                     }
                 }
-            }
-            catch
-            {
+                catch
+                {
 
+                }
+                if (GetComponent<EnemyState>())
+                {
+                    GetComponent<EnemyState>().SetState(0);
+                }
+                GetComponent<Animator>().SetTrigger("Punch");
+                //Play sound
+                cooldownRoutine = StartCoroutine(MeleeCooldown());
             }
-            if (GetComponent<EnemyState>())
-            {
-                GetComponent<EnemyState>().SetState(0);
-            }
-            GetComponent<Animator>().SetTrigger("Punch");
-            //Play sound
-            cooldownRoutine = StartCoroutine(MeleeCooldown());
         }
     }
 

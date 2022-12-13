@@ -8,12 +8,25 @@ public class Movement : MonoBehaviour
     public float movementSpeed = 5;
     protected Vector2 moveVelocity;
 
+
+    protected bool isControlLocked = false;
+    public bool IsControlLocked() { return isControlLocked; }
+    public void SetControlLocked(bool ToF) { isControlLocked = ToF; }
+
+
     public Vector2 GetMoveVelocity() { return moveVelocity; }
     private void FixedUpdate()
     {
-        if (canMove)
+        if (!isControlLocked)
         {
-            Move(moveVelocity);
+            if (canMove)
+            {
+                Move(moveVelocity);
+            }
+        }
+        else
+        {
+            Move(Vector2.zero);
         }
     }
 
