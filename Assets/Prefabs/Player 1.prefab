@@ -592,6 +592,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 2144fe15-d44d-40b9-97f6-8e407f0030b7
     m_ActionName: Player/DesignMode[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3292143175114188026}
+        m_TargetAssemblyTypeName: DevMode, Assembly-CSharp
+        m_MethodName: Confirm
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: b332acf3-b0cc-4c8d-87be-05926bfb9b6b
+    m_ActionName: Player/Confirm[/Keyboard/enter]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -697,6 +713,7 @@ MonoBehaviour:
   lengthBeforeUseConsumed: 5
   designerScreen: {fileID: 0}
   programmerScreen: {fileID: 0}
+  artScreen: {fileID: 0}
 --- !u!58 &7750931935417284981
 CircleCollider2D:
   m_ObjectHideFlags: 0

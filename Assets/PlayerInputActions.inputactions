@@ -68,6 +68,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Confirm",
+                    "type": "Button",
+                    "id": "b332acf3-b0cc-4c8d-87be-05926bfb9b6b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -150,17 +158,6 @@
                 },
                 {
                     "name": "",
-                    "id": "7539b6f6-3bc7-4146-8383-3e843c8f3160",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "ca25a4cb-cbfa-4586-aa2b-078993cb2f91",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
@@ -211,6 +208,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "DesignMode",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2c7562ce-bada-4b61-a0c0-d55a0f031c85",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Confirm",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

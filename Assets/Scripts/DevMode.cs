@@ -236,4 +236,23 @@ public class DevMode : MonoBehaviour
         currentLineRenderer.SetPosition(positionIndex, pointPos);
     }
 
+    public void Confirm(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("pressed");
+            if (devType == DevType.Programming)
+            {
+                Debug.Log(devType);
+                if (programmerScreen.transform.Find("TextBox"))
+                {
+                    if (programmerScreen.transform.Find("TextBox").GetComponent<TMP_InputField>().isFocused)
+                    {
+                        Debug.Log("hee");
+                    }
+                }
+            }
+        }
+    }
+
 }
