@@ -1252,7 +1252,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canMove: 1
   movementSpeed: 150
-  minFollowDist: 2
+  minFollowDist: 1
 --- !u!114 &8590968288421989901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1288,6 +1288,7 @@ MonoBehaviour:
   meleeDamage: 5
   canAttack: 1
   meleeDelay: 0
+  bulletSpeed: 200
   meleeDelayTime: 0.3
 --- !u!114 &2798982700730077809
 MonoBehaviour:

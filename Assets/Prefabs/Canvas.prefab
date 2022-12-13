@@ -9170,8 +9170,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -264, y: 157}
-  m_SizeDelta: {x: 160, y: 40}
+  m_AnchoredPosition: {x: -258, y: 157}
+  m_SizeDelta: {x: 170, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2872823290918117732
 CanvasRenderer:
@@ -9203,7 +9203,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_FontSize: 21
     m_FontStyle: 1
     m_BestFit: 0
     m_MinSize: 2
@@ -9214,7 +9214,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Bullet Speed
+  m_Text: Projectile Speed
 --- !u!1 &3201358698362102880
 GameObject:
   m_ObjectHideFlags: 0
@@ -22383,6 +22383,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3795989670130274246}
+  - component: {fileID: 2754139303781968476}
   m_Layer: 5
   m_Name: Bar
   m_TagString: Untagged
@@ -22420,6 +22421,25 @@ RectTransform:
   m_AnchoredPosition: {x: 30, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2754139303781968476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7615927806707072346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5dc307cdb67d34c8c1e28b225a8d58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultColour: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
+  aquiredColour: {r: 1, g: 0.3921569, b: 0.3921569, a: 1}
+  highlightedColour: {r: 0.6132076, g: 0.112807065, b: 0.112807065, a: 0}
+  attributePoints: 0
+  attributeCounter: {fileID: 0}
+  attributeSlots: []
+  attributeType: 0
 --- !u!1 &7643812500984836842
 GameObject:
   m_ObjectHideFlags: 0

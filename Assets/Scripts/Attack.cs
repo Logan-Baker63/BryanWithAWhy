@@ -14,6 +14,8 @@ public class Attack : MonoBehaviour
 
     [HideInInspector] public bool canAttack = true;
     [HideInInspector] public float meleeDelay = 0f;
+    [HideInInspector] public bool doMelee = false;
+    [HideInInspector] public bool doShoot = false;
 
     [SerializeField] public float bulletSpeed = 200;
 
@@ -29,6 +31,11 @@ public class Attack : MonoBehaviour
     protected void Awake()
     {
         OnAwake();
+    }
+
+    protected void Update()
+    {
+        
     }
 
     protected virtual void OnAwake()

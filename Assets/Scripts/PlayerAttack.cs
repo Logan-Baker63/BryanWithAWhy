@@ -68,7 +68,16 @@ public class PlayerAttack : Attack
 
     private void Update()
     {
-        if(staminaJailTime <= 0)
+        if (doMelee)
+        {
+            Melee();
+        }
+        if (doShoot)
+        {
+            Shoot();
+        }
+
+        if (staminaJailTime <= 0)
         {
             staminaJailTime = 0;
             currentStamina += (staminaRegen * maxStamina) * Time.deltaTime;
@@ -87,7 +96,11 @@ public class PlayerAttack : Attack
     {
         if (context.performed)
         {
-            Shoot();
+            doShoot = true;
+        }
+        if (context.canceled)
+        {
+            doShoot = false;
         }
     }
 
@@ -95,7 +108,11 @@ public class PlayerAttack : Attack
     {
         if(context.performed)
         {
-            Melee();
+            doMelee = true;
+        }
+        if (context.canceled)
+        {
+            doMelee= false;
         }
     }
 
