@@ -324,6 +324,7 @@ public class GameManager : MonoBehaviour
             enemyDamageModifierMax = waveSettings.enemyDamageModifierMax;
 
             wavesToIncreaseAbilityCaps = waveSettings.wavesToIncreaseAbilityCaps;
+            absoluteAbilityCap = waveSettings.absoluteAbilityCap;
         }
         else
         {

@@ -30,6 +30,8 @@ MonoBehaviour:
   enemyDamageModifierMax: 7
   enemyHPModifier: 1
   enemyDamageModifier: 1
+  wavesToIncreaseAbilityCaps: 5
+  absoluteAbilityCap: 10
   startingEnemiesIncreasePerWaveMin: 0.2
   startingEnemiesIncreasePerWaveMax: 0.3
   startingEnemiesCapMin: 4

@@ -21,7 +21,8 @@ public class PlayerAttack : Attack
     public Coroutine rollStopCoroutine = null;
     public Coroutine rollCooldownRoutine = null;
 
-    [SerializeField] int amountOfKillsForAbilityPoint = 4;
+    [SerializeField] int amountOfKillsForAbilityPointDesign = 4;
+    [SerializeField] int amountOfKillsForAbilityPointProgramming = 4;
     [SerializeField] int amountOfDodgesForAbilityPoint = 2;
     int killsOutOfRequiredDesign = 0;
     int killsOutOfRequiredProgramming = 0;
@@ -44,7 +45,7 @@ public class PlayerAttack : Attack
         {
             if (abilityMeter.abilityType == AbilityMeter.AbilityType.Design && ranged)
             {
-                if(killsOutOfRequiredDesign >= amountOfKillsForAbilityPoint - 1)
+                if(killsOutOfRequiredDesign >= amountOfKillsForAbilityPointDesign - 1)
                 {
                     abilityMeter.AquireAbilityPoints(1);
                     killsOutOfRequiredDesign = 0;
@@ -56,7 +57,7 @@ public class PlayerAttack : Attack
             }
             else if (abilityMeter.abilityType == AbilityMeter.AbilityType.Programming && !ranged)
             {
-                if(killsOutOfRequiredProgramming >= amountOfKillsForAbilityPoint - 1)
+                if(killsOutOfRequiredProgramming >= amountOfKillsForAbilityPointProgramming - 1)
                 {
                     abilityMeter.AquireAbilityPoints(1);
                     killsOutOfRequiredProgramming = 0;

@@ -667,7 +667,8 @@ MonoBehaviour:
   staminaJailSentence: 2
   staminaJailTime: 0
   rollParticle: {fileID: 1976449808341968486, guid: 9753812d600cb2042bd2655c6ad07898, type: 3}
-  amountOfKillsForAbilityPoint: 4
+  amountOfKillsForAbilityPointDesign: 8
+  amountOfKillsForAbilityPointProgramming: 4
   amountOfDodgesForAbilityPoint: 2
   defaultBombDamage: 25
   defaultBulletExplosionDamage: 10

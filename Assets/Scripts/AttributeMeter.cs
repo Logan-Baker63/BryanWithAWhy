@@ -135,7 +135,7 @@ public class AttributeMeter : MonoBehaviour
             case AttributeType.RangedDamage:
                 for (int i = 0; i < toAdd; i++)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletDamage += 3;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().bulletDamage += 5;
                 }
                 return;
             case AttributeType.ProjectileSize:
@@ -165,7 +165,7 @@ public class AttributeMeter : MonoBehaviour
             case AttributeType.MeleeDamage:
                 for (int i = 0; i < toAdd; i++)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().meleeDamage += 4.5f;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().meleeDamage += 8f;
                 }
                 return;
             case AttributeType.Stamina:

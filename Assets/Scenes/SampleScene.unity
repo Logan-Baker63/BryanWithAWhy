@@ -679,7 +679,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1763518278, guid: 45c3d4b80d4059f4097e2e49594780e1, type: 3}
       propertyPath: abilityPoints
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 630584454131335589, guid: 45c3d4b80d4059f4097e2e49594780e1, type: 3}
       propertyPath: m_IsActive
@@ -783,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2136929595227542385, guid: 45c3d4b80d4059f4097e2e49594780e1, type: 3}
       propertyPath: abilityPoints
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3474911929452825169, guid: 45c3d4b80d4059f4097e2e49594780e1, type: 3}
       propertyPath: m_AnchorMax.x
@@ -875,7 +875,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7180213515356478240, guid: 45c3d4b80d4059f4097e2e49594780e1, type: 3}
       propertyPath: abilityPoints
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7730086614011689705, guid: 45c3d4b80d4059f4097e2e49594780e1, type: 3}
       propertyPath: m_AnchorMax.x
