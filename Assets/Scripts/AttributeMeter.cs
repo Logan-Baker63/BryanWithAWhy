@@ -12,10 +12,11 @@ public class AttributeMeter : MonoBehaviour
     public int attributePoints = 0;
     public Text attributeCounter;
 
-    [HideInInspector] int slotsHighlighted;
-    [HideInInspector] int potentialPoints;
+    [HideInInspector] public int slotsHighlighted;
 
     [SerializeField] List<Image> attributeSlots;
+    [SerializeField] AttributeConfirm_Reset overlordScript;
+    [SerializeField] AbilityMeter designMeter;
 
     public int GetAttributePoints() { return attributePoints; }
 
@@ -37,8 +38,18 @@ public class AttributeMeter : MonoBehaviour
     public AttributeType attributeType;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        overlordScript = FindObjectOfType<AttributeConfirm_Reset>();
+
+        foreach(AbilityMeter meter in FindObjectsOfType<AbilityMeter>())
+        {
+            if (meter.abilityType == AbilityMeter.AbilityType.Design)
+            {
+                designMeter = meter;
+            }
+        }
+
         foreach (Transform slot in transform)
         {
             if (slot.GetComponent<Image>())
@@ -49,36 +60,45 @@ public class AttributeMeter : MonoBehaviour
 
         attributeCounter = GetComponentInChildren<Text>();
 
-        UpdateUses();
+        UpdateUI();
     }
 
     public void SpendPotentialPoint()
     {
-        slotsHighlighted++;
-        SetHighlightPoints(slotsHighlighted);
-        potentialPoints--;
-    }
-
-    public void ResetPointClaim(int pointInvestment)
-    {
-        slotsHighlighted = 0;
-        int startingSlotID = attributePoints - pointInvestment;
-        for (int i = startingSlotID; i < attributePoints; i++)
+        if(overlordScript.potentialPoints > 0 && attributePoints + slotsHighlighted < attributeSlots.Count)
         {
-            attributeSlots[i].color = defaultColour;
+            slotsHighlighted++;
+            SetHighlightPoints(attributePoints + slotsHighlighted);
+            overlordScript.potentialPoints--;
+            overlordScript.UpdatePointDisplay();
         }
     }
 
-    public void AquireAttributePoints(int _abilityPoinrs)
+    public void ResetPointClaim()
     {
-        attributePoints += _abilityPoinrs;
-
-        UpdateUses();
+        int startingSlotID = attributePoints + slotsHighlighted - 1;
+        for (int i = startingSlotID; i >= attributePoints; i--)
+        {
+            attributeSlots[i].color = defaultColour;
+        }
+        overlordScript.potentialPoints += slotsHighlighted;
+        overlordScript.UpdatePointDisplay();
+        slotsHighlighted = 0;
+        UpdateUI();
     }
 
-    public void SpendAttributePoints(int _abilityPoints)
+    public void AcquireAttributePoints(int pointsToGain)
     {
-        attributePoints -= _abilityPoints;
+        attributePoints += pointsToGain;
+
+        UpdateUI();
+    }
+
+    public void SpendAttributePoints()
+    {
+        AcquireAttributePoints(slotsHighlighted);
+        designMeter.abilityPoints -= slotsHighlighted;
+        ResetPointClaim();
 
         if (attributePoints < 0)
         {
@@ -115,15 +135,14 @@ public class AttributeMeter : MonoBehaviour
                 return;
         }
 
-        potentialPoints = attributePoints;
-        UpdateUses();
+        UpdateUI();
     }
 
     public void SetHighlightPoints(int pointInvestment)
     {
-        int startingSlotID = attributePoints - pointInvestment;
+        int startingSlotID = attributePoints;
 
-        for (int i = startingSlotID; i < attributePoints; i++)
+        for (int i = startingSlotID; i < pointInvestment; i++)
         {
             attributeSlots[i].color = highlightedColour;
         }
@@ -135,13 +154,13 @@ public class AttributeMeter : MonoBehaviour
         
     }
 
-    void UpdateUses()
+    void UpdateUI()
     {
         if (attributePoints > attributeSlots.Count)
         {
             attributePoints = attributeSlots.Count;
         }
-        attributeCounter.text = potentialPoints.ToString();
+        attributeCounter.text = (attributePoints + slotsHighlighted).ToString();
 
         foreach (Image img in attributeSlots)
         {

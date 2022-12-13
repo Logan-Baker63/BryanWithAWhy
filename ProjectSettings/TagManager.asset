@@ -10,6 +10,7 @@ TagManager:
   - HealthBar
   - RollParticle
   - Wall
+  - PointDisplay
   layers:
   - Default
   - TransparentFX
