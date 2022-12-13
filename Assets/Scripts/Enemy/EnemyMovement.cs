@@ -23,7 +23,7 @@ public class EnemyMovement : Movement
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, GetAngle(transform.position, player.position)));
 
             // movement
-            if ((player.position - transform.position).magnitude > minFollowDist || !transform.Find("OffScreenCheck").GetComponent<Renderer>().isVisible)
+            if (((player.position - transform.position).magnitude > minFollowDist || !transform.Find("OffScreenCheck").GetComponent<Renderer>().isVisible) && GetComponent<Attack>().GetEnemiesInRange().Count <= 0)
             {
                 if(GetComponent<EnemyAttack>().meleeDelay <= 0)
                 {
@@ -50,6 +50,10 @@ public class EnemyMovement : Movement
 
                 //transform.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
                 transform.parent.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            }
+            if (GetComponent<OnMeleeTrigger>())
+            {
+
             }
         }
     }

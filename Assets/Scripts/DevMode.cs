@@ -26,6 +26,7 @@ public class DevMode : MonoBehaviour
 
     [SerializeField] GameObject designerScreen;
     [SerializeField] GameObject programmerScreen;
+    [SerializeField] GameObject artScreen;
 
     float pointCost = 0;
 
@@ -63,6 +64,7 @@ public class DevMode : MonoBehaviour
     {
         designerScreen.SetActive(false);
         programmerScreen.SetActive(false);
+        artScreen.SetActive(false);
     }
 
     public void EnterDevMode()
@@ -107,6 +109,7 @@ public class DevMode : MonoBehaviour
                 EnterDevMode();
                 lineDist = 0;
                 devType = DevType.Art;
+                artScreen.SetActive(true);
             }
             else
             {

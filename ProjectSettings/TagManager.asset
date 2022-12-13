@@ -9,6 +9,7 @@ TagManager:
   - AbilityCounter
   - HealthBar
   - RollParticle
+  - Wall
   layers:
   - Default
   - TransparentFX
