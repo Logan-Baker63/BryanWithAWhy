@@ -40,7 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 860106047360727180}
   - component: {fileID: 860106047360727179}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 5137927752447488511}
   - component: {fileID: 5464097086937555067}
   - component: {fileID: 1614384974127802838}
-  m_Layer: 10
+  m_Layer: 11
   m_Name: MeleeCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
