@@ -27,7 +27,12 @@ public class PlayerAttack : Attack
     int killsOutOfRequiredProgramming = 0;
     int dodgesOutOfRequiredArt = 0;
 
+    [SerializeField] float defaultBombDamage = 25;
+    float bombDamage;
+
     PlayerMovement playerMovement;
+
+    [SerializeField] GameObject explosionParticlePrefab;
 
     public void AddKill(bool ranged)
     {
@@ -207,5 +212,19 @@ public class PlayerAttack : Attack
         
         currentStamina += rollCost;
         //Play sound
+    }
+
+    public void DealExplosionDamage(GameObject _targetToDamage)
+    {
+        _targetToDamage.GetComponent<Health>().TakeDamage(bombDamage, this);
+    }
+
+    public void ReleaseBomb(int _intensity)
+    {
+        bombDamage = defaultBombDamage + (_intensity * 5);
+        
+        GameObject explosion = Instantiate(explosionParticlePrefab, transform.position, transform.rotation);
+        explosion.transform.localScale = Vector3.one + (Vector3.one * ((float)_intensity / 10));
+        explosion.GetComponent<ParticleSystem>().Play();
     }
 }

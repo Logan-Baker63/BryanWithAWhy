@@ -668,6 +668,8 @@ MonoBehaviour:
   rollParticle: {fileID: 1976449808341968486, guid: 9753812d600cb2042bd2655c6ad07898, type: 3}
   amountOfKillsForAbilityPoint: 4
   amountOfDodgesForAbilityPoint: 2
+  bombDamage: 25
+  explosionParticlePrefab: {fileID: 2910833190950494761, guid: 4f8b2bd50a7bbc149ba43af7e990c87d, type: 3}
 --- !u!114 &3632171877684350751
 MonoBehaviour:
   m_ObjectHideFlags: 0
