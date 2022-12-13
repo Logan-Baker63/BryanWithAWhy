@@ -9,11 +9,19 @@ public class Attack : MonoBehaviour
     [SerializeField] protected float shootCooldown = 0.2f;
     [SerializeField] protected float meleeCooldown = 0.2f;
 
+    [SerializeField] protected float bulletDamage = 10;
+    [SerializeField] protected float meleeDamage = 15;
+
     [HideInInspector] public bool canAttack = true;
     
     public Coroutine cooldownRoutine;
 
     protected AudioManager manager;
+
+    protected List<GameObject> enemiesInMeleeRange = new List<GameObject>();
+
+    public List<GameObject> GetEnemiesInRange() { return enemiesInMeleeRange; }
+    public void SetEnemiesInRange(List<GameObject> _enemiesInMeleeRange) { enemiesInMeleeRange = _enemiesInMeleeRange; }
 
     protected void Awake()
     {
@@ -48,6 +56,8 @@ public class Attack : MonoBehaviour
                 bulletInstance.GetComponent<Projectile>().projectileSpeed = 180;
                 bulletInstance.transform.localScale *= 2;
             }
+
+            bulletInstance.GetComponent<Projectile>().SetDamage(bulletDamage);
             manager.PlaySound(0);
             cooldownRoutine = StartCoroutine(ShootCooldown());
         }
@@ -57,11 +67,39 @@ public class Attack : MonoBehaviour
     {
         if (canAttack)
         {
-            //Do punch
+            try
+            {
+                foreach (GameObject enemy in enemiesInMeleeRange)
+                {
+                    if (enemy != null)
+                    {
+                        enemy.GetComponent<Health>().TakeDamage(meleeDamage, this);
+                    }
+                    else
+                    {
+                        enemiesInMeleeRange.Remove(enemy);
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+            
             GetComponent<Animator>().SetTrigger("Punch");
             //Play sound
             cooldownRoutine = StartCoroutine(MeleeCooldown());
         }
+    }
+
+    public void OnEnterMeleeTrigger(GameObject enemy)
+    {
+        enemiesInMeleeRange.Add(enemy);
+    }
+
+    public void OnExitMeleeTrigger(GameObject enemy)
+    {
+        enemiesInMeleeRange.Remove(enemy);
     }
 
     IEnumerator ShootCooldown()

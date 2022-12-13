@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4255174060204083662}
   - component: {fileID: 4255174060204083657}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1144,6 +1144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 20
   currentHealth: 20
+  bloodParticlePrefab: {fileID: 508959203543866140, guid: 45ee11f1eca5f634ca8d58cb76db18d9, type: 3}
 --- !u!114 &8708235315476516176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1173,6 +1174,8 @@ MonoBehaviour:
   spawnPos: {fileID: 4255174060390187948}
   shootCooldown: 1.6
   meleeCooldown: 0.6
+  bulletDamage: 10
+  meleeDamage: 15
   canAttack: 1
 --- !u!95 &8811606599270840609
 Animator:
