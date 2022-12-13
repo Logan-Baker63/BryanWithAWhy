@@ -5,8 +5,7 @@ using UnityEngine.UI;
 
 public class AttributeConfirm_Reset : MonoBehaviour
 {
-    [SerializeField] Button resetButton;
-    [SerializeField] Button confirmButton;
+    [SerializeField] DevMode devMode;
 
     public int potentialPoints;
     [SerializeField] List<AttributeMeter> attributeMeters;
@@ -16,6 +15,7 @@ public class AttributeConfirm_Reset : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        devMode = FindObjectOfType<DevMode>();
         AttributeMeter[] potentialMeters = FindObjectsOfType<AttributeMeter>();
         foreach(AttributeMeter meter in potentialMeters)
         {
@@ -53,6 +53,8 @@ public class AttributeConfirm_Reset : MonoBehaviour
         }
         potentialPoints = designMeter.abilityPoints;
         UpdatePointDisplay();
+        designMeter.UpdateUses();
+        devMode.ExitDevMode();
     }
 
     public void UpdatePointDisplay()
