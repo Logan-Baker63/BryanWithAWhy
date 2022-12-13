@@ -43,6 +43,9 @@ public class GameManager : MonoBehaviour
 
     public bool IsMoreThanOneEnemy() { return GameObject.FindGameObjectsWithTag("Enemy").Length > 1; }
 
+    [SerializeField] GameObject menu;
+    [SerializeField] GameObject deathUI;
+
     bool hasSetWaveSettings = false;
 
     // wave settings
@@ -73,19 +76,30 @@ public class GameManager : MonoBehaviour
     float enemyHPModifier = 1;
     float enemyDamageModifier = 1;
 
-    private void Start()
+    private void Awake()
     {
         waveCountDisplay = GameObject.FindGameObjectWithTag("WaveCount").GetComponent<Text>();
         waveCountDisplay.text = "1";
+
         dontCollideEnemyLayer = LayerMask.NameToLayer("DontCollideEnemy");
-        //waveCounter.SetActive(false);
+        
         canvas = FindObjectOfType<Canvas>();
+        menu.SetActive(true);
+        deathUI.SetActive(false);
 
         SetWaveSettings();
 
         CreateBoundaries();
+    }
 
+    public void StartGame()
+    {
         SpawnEnemyWave();
+    }
+
+    public void LoadDeathUI()
+    {
+        deathUI.SetActive(true);
     }
 
     void CreateBoundaries()

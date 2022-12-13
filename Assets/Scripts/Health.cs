@@ -124,14 +124,22 @@ public class Health : MonoBehaviour
             gameManager.WaveEnd();
         }
 
-        // checks the parent - required by the drawn walls
-        if (transform.parent != null)
+        if (gameObject.tag != "Player")
         {
-            Destroy(transform.parent.gameObject);
+            // checks the parent - required by the drawn walls
+            if (transform.parent != null)
+            {
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
         else
         {
-            Destroy(gameObject);
+            FindObjectOfType<GameManager>().LoadDeathUI();
         }
+        
     }
 }
