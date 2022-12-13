@@ -34,6 +34,7 @@ public class WaveSettings : ScriptableObject
     public float enemyDamageModifier = 1;
 
     public int wavesToIncreaseAbilityCaps = 5;
+    public int absoluteAbilityCap = 10;
 
     [Header("Increases per wave:")]
     public float startingEnemiesIncreasePerWaveMin = 0.2f;

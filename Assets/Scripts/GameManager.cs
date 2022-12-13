@@ -78,6 +78,7 @@ public class GameManager : MonoBehaviour
     float enemyDamageModifier = 1;
 
     int wavesToIncreaseAbilityCaps;
+    int absoluteAbilityCap;
 
     private void Awake()
     {
@@ -277,14 +278,17 @@ public class GameManager : MonoBehaviour
     {
         foreach(AbilityMeter meter in FindObjectsOfType<AbilityMeter>())
         {
-            List<Image> pipsList = new List<Image>();
-            foreach(Image img in meter.GetComponentsInChildren<Image>())
+            if(meter.abilitySlots.Count < absoluteAbilityCap)
             {
-                pipsList.Add(img);
+                List<Image> pipsList = new List<Image>();
+                foreach (Image img in meter.GetComponentsInChildren<Image>())
+                {
+                    pipsList.Add(img);
+                }
+                Vector3 newPipPos = new Vector3(pipsList[pipsList.Count - 1].transform.position.x, pipsList[pipsList.Count - 1].transform.position.y + 0.28f, pipsList[pipsList.Count - 1].transform.position.z);
+                GameObject newPip = Instantiate(pipPrefab, newPipPos, new Quaternion(0, 0, 0, 0), meter.transform);
+                meter.abilitySlots.Add(newPip.GetComponent<Image>());
             }
-            Vector3 newPipPos = new Vector3(pipsList[pipsList.Count - 1].transform.position.x, pipsList[pipsList.Count - 1].transform.position.y + 0.28f, pipsList[pipsList.Count - 1].transform.position.z);
-            GameObject newPip = Instantiate(pipPrefab, newPipPos, new Quaternion(0, 0, 0, 0), meter.transform);
-            meter.abilitySlots.Add(newPip.GetComponent<Image>());
         }
     } 
 
