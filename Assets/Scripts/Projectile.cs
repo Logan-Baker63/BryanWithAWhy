@@ -27,6 +27,9 @@ public class Projectile : MonoBehaviour
 
     float damage;
 
+    bool isExplosive = false;
+    public void SetExplosive(bool _isExplosive) { isExplosive = _isExplosive; }
+
     public void SetDamage(float _damage) { damage = _damage; }
 
     private void Awake()
@@ -76,7 +79,12 @@ public class Projectile : MonoBehaviour
                     }
                 }
             }
-            
+
+            if (isExplosive)
+            {
+                FindObjectOfType<PlayerAttack>().ExplodeBullet(this);
+            }
+
             if (!usePiercing)
             {
                 Destroy(gameObject);

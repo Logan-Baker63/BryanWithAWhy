@@ -68,6 +68,9 @@ public class Attack : MonoBehaviour
     public bool IsControlLocked() { return isControlLocked; }
     public void SetControlLocked(bool ToF) { isControlLocked = ToF; }
 
+    protected bool hasExplosiveBullets = false;
+    public void SetExplosiveBullets(bool ToF) { hasExplosiveBullets = ToF; }
+
     protected void Awake()
     {
         OnAwake();
@@ -130,6 +133,11 @@ public class Attack : MonoBehaviour
                     {
                         bulletInstance.GetComponent<Projectile>().SetPiercing(true);
                         bulletInstance.GetComponent<Projectile>().SetPiercingStrength(piercingStrength);
+                    }
+
+                    if (hasExplosiveBullets)
+                    {
+                        bulletInstance.GetComponent<Projectile>().SetExplosive(true);
                     }
                 }
 

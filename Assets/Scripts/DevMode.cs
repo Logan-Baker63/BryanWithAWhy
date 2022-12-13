@@ -79,7 +79,6 @@ public class DevMode : MonoBehaviour
         GetComponent<Attack>().SetControlLocked(true);
     }
 
-
     public void OnExitDevMode(InputAction.CallbackContext context)
     {
         if (context.performed)
@@ -131,10 +130,6 @@ public class DevMode : MonoBehaviour
 
                 GetComponent<Movement>().SetControlLocked(true);
             }
-//          else
-//          {
-//              ExitDevMode();
-//          }
         }
     }
 
@@ -288,9 +283,9 @@ public class DevMode : MonoBehaviour
                         }
                         else if (CheckCommand("bullet.explosionPower = ", ";"))
                         {
-                            //Debug.Log("Bullets temporarily explode on collision, dealing 2 x " + pointsAssigned + " damage");
+                            GetComponent<PlayerAttack>().AquireExplosiveBulletPowerUp(pointsAssigned);
 
-                            //programmingMeter.SpendAbilityPoints(pointsAssigned);
+                            programmingMeter.SpendAbilityPoints(pointsAssigned);
                         }
                         else if (CheckCommand("HyperPunch(", ");"))
                         {
