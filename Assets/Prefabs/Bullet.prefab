@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToDestroy: 5
-  projectileSpeed: 800
+  projectileSpeed: 600
   defaultDamage: 10
   playerBullet: 0
+  owner: {fileID: 0}

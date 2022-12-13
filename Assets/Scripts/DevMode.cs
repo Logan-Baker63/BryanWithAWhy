@@ -126,10 +126,10 @@ public class DevMode : MonoBehaviour
                 programmerScreen.SetActive(true);
                 programmerScreen.GetComponentInChildren<TMP_InputField>().ActivateInputField();
             }
-            else
-            {
-                ExitDevMode();
-            }
+//          else
+//          {
+//              ExitDevMode();
+//          }
         }
     }
 

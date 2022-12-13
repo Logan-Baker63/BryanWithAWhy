@@ -56,14 +56,7 @@ public class Projectile : MonoBehaviour
             {
                 if (!playerBullet)
                 {
-                    if (!other.GetComponent<PlayerAttack>().rollInvulnerable)
-                    {
-                        other.GetComponent<Health>().TakeDamage(damage, this);
-                    }
-                    else
-                    {
-                        other.GetComponent<PlayerAttack>().RollCatch();
-                    }
+                    other.GetComponent<Health>().TakeDamage(damage, this);
                 }
             }
 
