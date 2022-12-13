@@ -15,18 +15,13 @@ public class Projectile : MonoBehaviour
 
     public GameObject owner;
 
-    HealthBar healthBar;
+    float damage;
 
-    int damage
-    {
-        get;
-        set;
-    }
+    public void SetDamage(float _damage) { damage = _damage; }
 
     private void Awake()
     {
         damage = defaultDamage;
-        healthBar = FindObjectOfType<HealthBar>();
     }
 
     public void SetDir(Vector2 _dir) { dir = _dir; }
@@ -64,7 +59,6 @@ public class Projectile : MonoBehaviour
                     if (!other.GetComponent<PlayerAttack>().rollInvulnerable)
                     {
                         other.GetComponent<Health>().TakeDamage(damage, this);
-                        healthBar.UpdateHealthBar();
                     }
                     else
                     {
