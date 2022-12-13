@@ -77,7 +77,7 @@ public class AttributeMeter : MonoBehaviour
     public void ResetPointClaim()
     {
         int startingSlotID = attributePoints + slotsHighlighted - 1;
-        if(startingSlotID > attributeSlots.Count)
+        if(startingSlotID > attributeSlots.Count - 1)
         {
             startingSlotID = attributeSlots.Count - 1;
         }
@@ -153,7 +153,7 @@ public class AttributeMeter : MonoBehaviour
             case AttributeType.ProjectileSpread:
                 for (int i = 0; i < toAdd; i++)
                 {
-                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().spreadAngle -= 5f;
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>().spreadAngle -= 3.5f;
                 }
                 return;
             case AttributeType.ProjectileAmount:

@@ -75,7 +75,7 @@ public class AbilityMeter : MonoBehaviour
         
     }
 
-    void UpdateUses()
+    public void UpdateUses()
     {
         if (abilityPoints > abilitySlots.Count)
         {
