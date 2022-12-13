@@ -249,7 +249,7 @@ public class DevMode : MonoBehaviour
                     {
                         if (CheckCommand("hp += ", ";"))
                         {
-                            GetComponent<Health>().currentHealth += ((float)pointsAssigned / 20) * GetComponent<Health>().maxHealth;
+                            GetComponent<Health>().currentHealth += ((float)pointsAssigned / 15) * GetComponent<Health>().maxHealth;
                             if(GetComponent<Health>().currentHealth > GetComponent<Health>().maxHealth)
                             {
                                 GetComponent<Health>().currentHealth = GetComponent<Health>().maxHealth;
