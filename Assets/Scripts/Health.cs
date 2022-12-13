@@ -10,71 +10,87 @@ public class Health : MonoBehaviour
 
     [SerializeField] GameObject bloodParticlePrefab;
     HealthBar healthBar;
+    PlayerAttack playerAttack;
 
     private void Awake()
     {
         healthBar = FindObjectOfType<HealthBar>();
+        playerAttack = FindObjectOfType<PlayerAttack>();
     }
 
     public virtual void TakeDamage(float _damageToTake, Projectile collidedBullet)
     {
-        ParticleSystem blood = Instantiate(bloodParticlePrefab, GetComponent<Collider2D>().ClosestPoint(collidedBullet.transform.position), Quaternion.identity).GetComponent<ParticleSystem>();
-        
-        if (currentHealth - _damageToTake <= 0)
+        if (!playerAttack.rollInvulnerable)
         {
-            currentHealth = 0;
+            ParticleSystem blood = Instantiate(bloodParticlePrefab, GetComponent<Collider2D>().ClosestPoint(collidedBullet.transform.position), Quaternion.identity).GetComponent<ParticleSystem>();
 
-            if (collidedBullet.owner.GetComponent<PlayerAttack>())
+            if (currentHealth - _damageToTake <= 0)
             {
-                collidedBullet.owner.GetComponent<PlayerAttack>().AddKill();
+                currentHealth = 0;
+
+                if (collidedBullet.owner.GetComponent<PlayerAttack>())
+                {
+                    collidedBullet.owner.GetComponent<PlayerAttack>().AddKill();
+                }
+
+                healthBar.UpdateHealthBar();
+
+                Die();
+            }
+            else
+            {
+                currentHealth -= _damageToTake;
+                healthBar.UpdateHealthBar();
             }
 
-            healthBar.UpdateHealthBar();
-
-            Die();
+            blood.Play();
         }
         else
         {
-            currentHealth -= _damageToTake;
-            healthBar.UpdateHealthBar();
+            playerAttack.RollCatch();
         }
-
-        blood.Play();
     }
 
     public virtual void TakeDamage(float _damageToTake, Attack attacker)
     {
-        ParticleSystem blood = Instantiate(bloodParticlePrefab, GetComponent<Collider2D>().ClosestPoint(attacker.transform.position), Quaternion.identity).GetComponent<ParticleSystem>();
-        
-        if (currentHealth - _damageToTake <= 0)
+        if (!playerAttack.rollInvulnerable)
         {
-            currentHealth = 0;
+            ParticleSystem blood = Instantiate(bloodParticlePrefab, GetComponent<Collider2D>().ClosestPoint(attacker.transform.position), Quaternion.identity).GetComponent<ParticleSystem>();
 
-            if (attacker.GetComponent<PlayerAttack>())
+            if (currentHealth - _damageToTake <= 0)
             {
-                //attacker.GetComponent<PlayerAttack>().AddKill();
+                currentHealth = 0;
 
-                List<GameObject> enemies = attacker.GetComponent<PlayerAttack>().GetEnemiesInRange();
-
-                if (enemies.Contains(gameObject))
+                if (attacker.GetComponent<PlayerAttack>())
                 {
-                    enemies.Remove(gameObject);
+                    //attacker.GetComponent<PlayerAttack>().AddKill();
+
+                    List<GameObject> enemies = attacker.GetComponent<PlayerAttack>().GetEnemiesInRange();
+
+                    if (enemies.Contains(gameObject))
+                    {
+                        enemies.Remove(gameObject);
+                    }
+
+                    attacker.GetComponent<PlayerAttack>().SetEnemiesInRange(enemies);
                 }
 
-                attacker.GetComponent<PlayerAttack>().SetEnemiesInRange(enemies);
+                healthBar.UpdateHealthBar();
+
+                Die();
+            }
+            else
+            {
+                currentHealth -= _damageToTake;
+                healthBar.UpdateHealthBar();
             }
 
-            healthBar.UpdateHealthBar();
-
-            Die();
+            blood.Play();
         }
         else
         {
-            currentHealth -= _damageToTake;
-            healthBar.UpdateHealthBar();
+            playerAttack.RollCatch();
         }
-
-        blood.Play();
     }
 
     public virtual void Die()
