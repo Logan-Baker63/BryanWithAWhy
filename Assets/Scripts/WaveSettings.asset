@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a426344fd7dbfd41b7ef6f20934cb84, type: 3}
+  m_Name: WaveSettings
+  m_EditorClassIdentifier: 
+  enemyTypeSpawnMin: 2.5
+  enemyTypeSpawnMax: 13
+  startingEnemiesMin: 3
+  startingEnemiesMax: 6
+  totalEnemiesOverTimeMin: 5
+  totalEnemiesOverTimeMax: 10
+  firstEnemySpawnDelayMin: 4
+  firstEnemySpawnDelayMax: 6
+  enemySpawnDelayMin: 2
+  enemySpawnDelayMax: 6

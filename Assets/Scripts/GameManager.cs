@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] EnemyScriptable[] enemyTypes;
-    float totalEnemyWeight;
+    [SerializeField] WaveSettings waveSettings;
 
     GameObject colliderLeft;
     GameObject colliderRight;
@@ -14,18 +14,16 @@ public class GameManager : MonoBehaviour
 
     int dontCollideEnemyLayer;
 
+    Vector2 leftBottomCorner;
+    Vector2 rightTopCorner;
+
     private void Start()
     {
         dontCollideEnemyLayer = LayerMask.NameToLayer("DontCollideEnemy");
 
-        foreach (EnemyScriptable type in enemyTypes)
-        {
-            totalEnemyWeight += type.ratioWeight;
-        }
-        
         CreateBoundaries();
 
-        SpawnEnemiesRandomPos(3);
+        SpawnEnemyWave();
     }
 
     void CreateBoundaries()
@@ -40,8 +38,8 @@ public class GameManager : MonoBehaviour
         colliderTop.transform.SetParent(transform);
         colliderBottom.transform.SetParent(transform);
 
-        Vector2 leftBottomCorner = Camera.main.ViewportToWorldPoint(Vector3.zero);
-        Vector2 rightTopCorner = Camera.main.ViewportToWorldPoint(Vector3.one);
+        leftBottomCorner = Camera.main.ViewportToWorldPoint(Vector3.zero);
+        rightTopCorner = Camera.main.ViewportToWorldPoint(Vector3.one);
 
         colliderLeft.transform.position = new Vector2(leftBottomCorner.x - 0.5f, Camera.main.transform.position.y);
         colliderRight.transform.position = new Vector2(rightTopCorner.x + 0.5f, Camera.main.transform.position.y);
@@ -57,36 +55,31 @@ public class GameManager : MonoBehaviour
         colliderRight.layer = dontCollideEnemyLayer;
         colliderTop.layer = dontCollideEnemyLayer;
         colliderBottom.layer = dontCollideEnemyLayer;
+
     }
 
     Vector2 FindEnemySpawnPos()
     {
-        int rand1 = Random.Range(0, 4);
         float rand2;
         float rand3;
+        float minX = leftBottomCorner.x - 2;
+        float maxX = rightTopCorner.x + 2;
+        float minY = leftBottomCorner.y - 2;
+        float maxY = rightTopCorner.y + 2;
 
-        Collider2D collider;
+        rand2 = Random.Range(minX, maxX);
+        rand3 = Random.Range(minY, maxY);
 
-        if (rand1 == 0)
+        if (rand2 > minX + 2 && rand2 < maxX - 2)
         {
-            collider = colliderLeft.GetComponent<Collider2D>();
-        }
-        else if (rand1 == 1)
-        {
-            collider = colliderRight.GetComponent<Collider2D>();
-        }
-        else if (rand1 == 2)
-        {
-            collider = colliderTop.GetComponent<Collider2D>();
-        }
-        else
-        {
-            collider = colliderBottom.GetComponent<Collider2D>();
+            if (rand3 > minY + 2 && rand3 < maxY - 2)
+            {
+                return FindEnemySpawnPos();
+                
+            }
         }
 
-        rand2 = Random.Range(collider.transform.TransformPoint(collider.bounds.min).x, collider.transform.TransformPoint(collider.bounds.max).x);
-        rand3 = Random.Range(collider.transform.TransformPoint(collider.bounds.min).y, collider.transform.TransformPoint(collider.bounds.max).y);
-
+        //Debug.Log("Spawn pos: " + new Vector2(rand2, rand3));
         return new Vector2(rand2, rand3);
     }
 
@@ -94,27 +87,59 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < _enemyAmount; i++)
         {
-            float randomWeight = 0;
-            do
-            {
-                //No weight on any number?
-                if (totalEnemyWeight == 0) return;
-                randomWeight = Random.Range(0, totalEnemyWeight);
-            }
-            while (randomWeight == totalEnemyWeight);
+            float randNum = Random.Range(waveSettings.enemyTypeSpawnMin, waveSettings.enemyTypeSpawnMax); // switch 2.5f to 0 if epic/legendary enemies are added
 
-            foreach (EnemyScriptable enemyType in enemyTypes)
+            GameObject enemy;
+
+            if (randNum < 1)
             {
-                // found enemy type
-                if (randomWeight < enemyType.ratioWeight)
-                {
-                    GameObject enemy = Instantiate(enemyType.prefab, FindEnemySpawnPos(), Quaternion.identity);
-                    //enemy.GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
-                    enemy.transform.GetChild(0).GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
-                }
-                    
-                randomWeight -= enemyType.ratioWeight;
+                enemy = Instantiate(enemyTypes[4].prefab, FindEnemySpawnPos(), Quaternion.identity);
             }
+            else if (randNum < 2.5f)
+            {
+                enemy = Instantiate(enemyTypes[3].prefab, FindEnemySpawnPos(), Quaternion.identity);
+            }
+            else if (randNum < 5f)
+            {
+                enemy = Instantiate(enemyTypes[2].prefab, FindEnemySpawnPos(), Quaternion.identity);
+            }
+            else if (randNum < 9)
+            {
+                enemy = Instantiate(enemyTypes[1].prefab, FindEnemySpawnPos(), Quaternion.identity);
+            }
+            else
+            {
+                enemy = Instantiate(enemyTypes[0].prefab, FindEnemySpawnPos(), Quaternion.identity);
+            }
+            
+            //enemy.GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
+            enemy.transform.GetChild(0).GetComponent<EnemyAttack>().SetShootOffset(Random.Range(0, 0.25f));
+        }
+    }
+
+    int totalEnemiesOverTime = 0;
+    void SpawnEnemyWave()
+    {
+        int startingEnemies = Random.Range(waveSettings.startingEnemiesMin, waveSettings.startingEnemiesMax + 1);
+        SpawnEnemiesRandomPos(startingEnemies);
+
+        totalEnemiesOverTime = Random.Range(waveSettings.totalEnemiesOverTimeMin, waveSettings.totalEnemiesOverTimeMax + 1);
+
+        float firstEnemySpawnDelaySeconds = Random.Range(waveSettings.firstEnemySpawnDelayMin, waveSettings.firstEnemySpawnDelayMax);
+        StartCoroutine(SpawnEnemyAtDelay(firstEnemySpawnDelaySeconds));
+    }
+
+    IEnumerator SpawnEnemyAtDelay(float _secondDelay)
+    {
+        yield return new WaitForSeconds(_secondDelay);
+
+        totalEnemiesOverTime--;
+        if (totalEnemiesOverTime > 0)
+        {
+            SpawnEnemiesRandomPos(1);
+
+            float nextEnemySpawnDelaySeconds = Random.Range(waveSettings.enemySpawnDelayMin, waveSettings.enemySpawnDelayMax);
+            StartCoroutine(SpawnEnemyAtDelay(nextEnemySpawnDelaySeconds));
         }
     }
 }
