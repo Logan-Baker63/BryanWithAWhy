@@ -71,6 +71,9 @@ public class Attack : MonoBehaviour
     protected bool hasExplosiveBullets = false;
     public void SetExplosiveBullets(bool ToF) { hasExplosiveBullets = ToF; }
 
+    protected float hyperPunchMeleeCooldownSpeed = 0.1f;
+    protected bool isHyperPunching = false;
+
     protected void Awake()
     {
         OnAwake();
@@ -194,6 +197,21 @@ public class Attack : MonoBehaviour
         }
     }
 
+    public void AquireHyperPunch(float _intensity)
+    {
+        hyperPunchMeleeCooldownSpeed = _intensity / 5;
+        Debug.Log("cooldown speed: " + hyperPunchMeleeCooldownSpeed);
+
+        StartCoroutine(HyperPunchDuration(3 + (_intensity * 2)));
+    }
+
+    IEnumerator HyperPunchDuration(float _duration)
+    {
+        isHyperPunching = true;
+        yield return new WaitForSeconds(_duration);
+        isHyperPunching = false;
+    }
+
     public void OnEnterMeleeTrigger(GameObject enemy)
     {
         enemiesInMeleeRange.Add(enemy);
@@ -215,7 +233,7 @@ public class Attack : MonoBehaviour
     IEnumerator MeleeCooldown()
     {
         canAttack = false;
-        yield return new WaitForSeconds(meleeCooldown);
+        yield return new WaitForSeconds(isHyperPunching ? hyperPunchMeleeCooldownSpeed : meleeCooldown);
         canAttack = true;
         cooldownRoutine = null;
     }
