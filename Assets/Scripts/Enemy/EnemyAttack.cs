@@ -15,8 +15,10 @@ public class EnemyAttack : Attack
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void OnUpdate()
     {
+        base.OnUpdate();
+        
         if (GetComponent<EnemyState>().GetState() == 0)
         {
             meleeDelay = 0;

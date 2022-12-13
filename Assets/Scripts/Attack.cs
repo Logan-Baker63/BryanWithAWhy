@@ -19,7 +19,14 @@ public class Attack : MonoBehaviour
 
     [SerializeField] int maxBulletAmount = 10;
     [SerializeField] int bulletAmount = 1;
-    [SerializeField] float bulletAmountDamageIncreaseMulti = 1.3f;
+    public void SetBulletAmount(int _bulletAmount) 
+    { 
+        if (_bulletAmount <= maxBulletAmount)
+        {
+            bulletAmount = _bulletAmount;
+        }
+    }
+    public int GetBulletAmount() { return bulletAmount;}
 
     [Range(0, 360)]
     [SerializeField] private float spreadAngle = 20;
@@ -40,9 +47,14 @@ public class Attack : MonoBehaviour
         OnAwake();
     }
 
-    protected void Update()
+    void Update()
     {
-        
+        OnUpdate();
+    }
+
+    protected virtual void OnUpdate()
+    {
+
     }
 
     protected virtual void OnAwake()
