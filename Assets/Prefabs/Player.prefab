@@ -1282,6 +1282,7 @@ MonoBehaviour:
   staminaRegen: 0.15
   staminaJailSentence: 2
   staminaJailTime: 0
+  rollParticle: {fileID: 1976449808341968486, guid: 9753812d600cb2042bd2655c6ad07898, type: 3}
   amountOfKillsForAbilityPoint: 4
 --- !u!114 &1551989228
 MonoBehaviour:

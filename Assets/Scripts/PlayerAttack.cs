@@ -17,6 +17,7 @@ public class PlayerAttack : Attack
     [SerializeField] float staminaRegen = 1.5f; //Percentage of max stamina gained per second
     [SerializeField] float staminaJailSentence = 3;
     [SerializeField] float staminaJailTime = 0;
+    [SerializeField] ParticleSystem rollParticle;
     public Coroutine rollStopCoroutine = null;
 
     [SerializeField] int amountOfKillsForAbilityPoint = 4;
@@ -47,6 +48,7 @@ public class PlayerAttack : Attack
     {
         base.OnAwake();
         playerMovement = GetComponent<PlayerMovement>();
+        rollParticle = GameObject.FindGameObjectWithTag("RollParticle").GetComponent<ParticleSystem>();
     }
 
     private void Update()
@@ -101,6 +103,9 @@ public class PlayerAttack : Attack
                 staminaJailTime = staminaJailSentence;
                 currentStamina = 0;
             }
+
+            rollParticle.transform.position = gameObject.transform.position;
+            rollParticle.Play();
 
             rollStopCoroutine = StartCoroutine(RollStop());
             //Play sound
